@@ -1,0 +1,580 @@
+"Use Vim settings, rather then Vi settings (much better!).
+"This must be first, because it changes other options as a side effect.
+set nocompatible
+
+"allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+"store lots of :cmdline history
+set history=1000
+
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+
+set incsearch   "find the next match as we type the search
+set hlsearch    "hilight searches by default
+
+set nowrap      "dont wrap lines
+set linebreak   "wrap lines at convenient points
+
+"statusline setup
+set statusline=%f       "tail of the filename
+
+"display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h      "help file flag
+set statusline+=%y      "filetype
+set statusline+=%r      "read only flag
+set statusline+=%m      "modified flag
+
+"display a warning if &et is wrong, or we have mixed-indenting
+set statusline+=%#error#
+set statusline+=%{StatuslineTabWarning()}
+set statusline+=%*
+
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+
+"display a warning if &paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+
+set statusline+=%=      "left/right separator
+set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
+"recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+
+"return '[\s]' if trailing white space is detected
+"return '' otherwise
+function! StatuslineTrailingSpaceWarning()
+    if !exists("b:statusline_trailing_space_warning")
+        if search('\s\+$', 'nw') != 0
+            let b:statusline_trailing_space_warning = '[\s]'
+        else
+            let b:statusline_trailing_space_warning = ''
+        endif
+    endif
+    return b:statusline_trailing_space_warning
+endfunction
+
+
+"return the syntax highlight group under the cursor ''
+function! StatuslineCurrentHighlight()
+    let name = synIDattr(synID(line('.'),col('.'),1),'name')
+    if name == ''
+        return ''
+    else
+        return '[' . name . ']'
+    endif
+endfunction
+
+"recalculate the tab warning flag when idle and after writing
+autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+
+"return '[&et]' if &et is set wrong
+"return '[mixed-indenting]' if spaces and tabs are used to indent
+"return an empty string if everything is fine
+function! StatuslineTabWarning()
+    if !exists("b:statusline_tab_warning")
+        let tabs = search('^\t', 'nw') != 0
+        let spaces = search('^ ', 'nw') != 0
+
+        if tabs && spaces
+            let b:statusline_tab_warning =  '[mixed-indenting]'
+        elseif (spaces && !&et) || (tabs && &et)
+            let b:statusline_tab_warning = '[&et]'
+        else
+            let b:statusline_tab_warning = ''
+        endif
+    endif
+    return b:statusline_tab_warning
+endfunction
+
+"indent settings
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+set wildmode=list:longest   "make cmdline tab completion similar to bash
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+
+"display tabs and trailing spaces
+set list
+set listchars=tab:\ \ ,extends:>,precedes:<
+
+set formatoptions-=o "dont continue comments when pushing o/O
+
+"vertical/horizontal scroll off settings
+set scrolloff=3
+set sidescrolloff=7
+set sidescroll=1
+
+"load ftplugins and indent files
+filetype plugin on
+filetype indent on
+
+"turn on syntax highlighting
+syntax on
+
+"some stuff to get the mouse going in term
+set mouse=a
+set ttymouse=xterm2
+
+"tell the term has 256 colors
+set t_Co=256
+
+"hide buffers when not displayed
+set hidden
+
+"dont load csapprox if we no gui support - silences an annoying warning
+if !has("gui")
+    let g:CSApprox_loaded = 1
+else
+    if has("gui_gnome")
+        set term=gnome-256color
+        colorscheme desert
+    else
+        set t_Co=256
+"        colorscheme wombat
+       colorscheme vibrantink
+"        colorscheme zenburn
+        set guitablabel=%M%t
+"        set lines=40
+"        set columns=160
+    endif
+    if has("gui_mac") || has("gui_macvim")
+        set antialias	
+        set guifont=Monaco:h10
+    endif
+    if has("gui_macvim")
+        autocmd GUIEnter * winsize 200 120
+    endif
+    if has("gui_win32") || has("gui_win32s")
+        set guifont=Consolas:h10
+    endif
+endif
+
+nmap <silent> <Leader>p :NERDTreeToggle<CR>
+
+"make <c-l> clear the highlight as well as redraw
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+"map to bufexplorer
+nnoremap <C-B> :BufExplorer<cr>
+
+"map to fuzzy finder text mate stylez
+""nnoremap <c-f> :FuzzyFinderTextMate<CR>
+
+"map Q to something useful
+noremap Q gq
+
+"make Y consistent with C and D
+nnoremap Y y$
+
+"visual search mappings
+function! s:VSetSearch()
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@ = temp
+endfunction
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+
+
+"jump to last cursor position when opening a file
+"dont do it when writing a commit log entry
+autocmd BufReadPost * call SetCursorPosition()
+function! SetCursorPosition()
+    if &filetype !~ 'commit\c'
+        if line("'\"") > 0 && line("'\"") <= line("$")
+            exe "normal g`\""
+        endif
+    end
+endfunction
+
+"define :HighlightExcessColumns command to highlight the offending parts of
+"lines that are "too long". where "too long" is defined by &textwidth or an
+"arg passed to the command
+command! -nargs=? HighlightExcessColumns call s:HighlightExcessColumns('<args>')
+function! s:HighlightExcessColumns(width)
+    let targetWidth = a:width != '' ? a:width : &textwidth
+    if targetWidth > 0
+        exec 'match Todo /\%>' . (targetWidth+1) . 'v/'
+    else
+        echomsg "HighlightExcessColumns: set a &textwidth, or pass one in"
+    endif
+endfunction
+
+"colorscheme zenburn
+"行番号を表示する
+set number
+"バックアップファイルを作るディレクトリ
+set backupdir=$HOME/vimbackup
+" migemo
+set migemo
+"スワップファイル用のディレクトリ
+set directory=$HOME/vimbackup
+
+cmap <C-x> <C-r>=expand('%:p:h')<CR>/
+cmap <C-z> <C-r>=expand('%:p:r')<CR>
+nmap H :bp<CR>
+nmap L :bn<CR>
+
+"閉じ括弧を自動的に挿入
+"inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
+
+function! GetB()
+  let c = matchstr(getline('.'), '.', col('.') - 1)
+  let c = iconv(c, &enc, &fenc)
+  return String2Hex(c)
+endfunction
+" :help eval-examples
+" The function Nr2Hex() returns the Hex string of a number.
+func! Nr2Hex(nr)
+  let n = a:nr
+  let r = ""
+  while n
+    let r = '0123456789ABCDEF'[n % 16] . r
+    let n = n / 16
+  endwhile
+  return r
+endfunc
+" The function String2Hex() converts each character in a string to a two
+" character Hex string.
+func! String2Hex(str)
+  let out = ''
+  let ix = 0
+  while ix < strlen(a:str)
+    let out = out . Nr2Hex(char2nr(a:str[ix]))
+    let ix = ix + 1
+  endwhile
+  return out
+endfunc
+
+"ステータスラインに文字コードと改行文字を表示する
+ set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
+
+" 文字コードの自動認識
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+" 改行コードの自動認識
+set fileformats=unix,dos,mac
+
+" qfixhowm
+set runtimepath+=~/qfixapp
+let QfixHowm_Key      = 'g'
+let howm_dir          = '~/howm'
+let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
+let howm_fileencoding = 'utf-8'
+let howm_fileformat   = 'unix'
+let mygrepprg         = '/usr/bin/grep'
+let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
+let QFixHowm_FileType = 'howm_memo.rd'
+
+"howm専用MRUを基本に使用する
+let QFixHowm_SwapLcommand = 1
+let QFixHowm_MruFileMax = 30
+
+"howmタイムスタンプを更新時間として扱う
+let QFixHowm_RecentMode = 2
+let QFixHowm_RecentDays = 10
+let QFixHowm_HowmTimeStampSort = 1
+"vimで開くファイルの指定
+let QFixHowm_OpenVimExtReg = '\.txt$\|\.vim$\|\.h$\|\.c$\|\.cpp$'
+"オートリンクのタグジャンプファイル作成
+let QFixHowm_UseAutoLinkTags = 1
+"カテゴリタグ
+nnoremap <silent> g,ht :call QFixHowmCreateNewFileWithTag('[ ]')<CR>
+let QFixHowm_UserSwActionLock = ['[ ]', '[:private]', '[:vim]', '[:ot]']
+
+"クイックメモのファイル名
+let QFixHowm_QuickMemoFile = hostname().'-00-%Y-%m-00-000000.howm'
+"オートリンク上のタグジャンプを使用する
+let QFixHowm_UseAutoLinkTags = 1
+"行頭にQFixHowm_Titleがあってもタイトルとして自動整形しない
+let QFixHowm_Autoformat_TitleMode = 0
+
+
+" FuzzyFinder
+"
+""let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
+""let g:FuzzyFinderOptions.Base.ignore_case = 1
+""let g:FuzzyFinderOptions.Base.abbrev_map  = {
+""      \   '\C^VR' : [
+""      \     '$VIMRUNTIME/**',
+""      \     '~/.vim/**',
+""      \     '$VIM/.vim/**',
+""      \     '$VIM/vimfiles/**',
+""      \   ],
+""      \ }
+""let g:FuzzyFinderOptions.MruFile.max_item = 200
+""let g:FuzzyFinderOptions.MruCmd.max_item = 200
+"""nnoremap <silent> <c-n> :FuzzyFinderTextMate<CR>
+""nnoremap <silent> <C-n>      :FuzzyFinderBuffer<CR>
+""nnoremap <silent> <C-d><C-m> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+""nnoremap <silent> <C-j>      :FuzzyFinderMruFile<CR>
+""nnoremap <silent> <C-k>      :FuzzyFinderMruCmd<CR>
+""nnoremap <silent> <C-p>      :FuzzyFinderDir <C-r>=expand('%:p:~')[:-1-len(expand('%:p:~:t'))]<CR><CR>
+""nnoremap <silent> <C-d><C-d> :FuzzyFinderDir<CR>
+""nnoremap <silent> <C-d><C-f> :FuzzyFinderFavFile<CR>
+""nnoremap <silent> <C-d><C-t> :FuzzyFinderTag!<CR>
+""nnoremap <silent> <C-d><C-g> :FuzzyFinderTaggedFile<CR>
+""noremap <silent> <C-]>      :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
+"""noremap  <silent> g]         :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
+""nnoremap <silent> <C-d>F     :FuzzyFinderAddFavFile<CR>
+""nnoremap <silent> <C-d><C-e> :FuzzyFinderEditInfo<CR>
+
+
+cmap <C-x> <C-r>=expand('%:p:h')<CR>/
+cmap <C-z> <C-r>=expand('%:p:r')<CR>
+nmap H :bp<CR>
+nmap L :bn<CR>
+nnoremap <space>w :<C-u>write<CR>
+nnoremap <space>q :<C-u>quit<CR>
+nnoremap <space>f <C-f><CR>
+nnoremap <space>b <C-b><CR>
+"nnoremap <space>f <C-f>zz<CR>
+"nnoremap <space>b <C-b>zz<CR>
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap so <C-w>o
+
+vnoremap v $h
+
+
+ " QuickFix
+"au QuickFixCmdPost vimgrep cw 
+" makeなどで自動的にQuickFixを開く
+au QuickfixCmdPost make,grep,grepadd,vimgrep copen
+nnoremap <space>n :cn<CR>
+nnoremap <space>p :cp<CR>
+
+" clipboard
+nnoremap <silent> <SPACE>y :.w !pbcopy<CR><CR>
+vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
+nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+
+nnoremap <space>- <C-W>-
+nnoremap <space>+ <C-W>+
+
+" move cursor
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+noremap! <C-d> <Del>
+
+" close buffler
+nnoremap ,q :bd<CR>
+
+" Makefile
+autocmd FileType make setlocal noexpandtab
+
+" autocomplpop
+let g:AutoComplPop_NotEnableAtStartup = 1
+set completefunc=syntaxcomplete#Complete
+let g:AutoComplPop_CompleteOption = '.,w,b,k'
+let g:AutoComplPop_Behavior={'java' : [
+      \  {
+      \   'command'  : "\<C-n>",
+      \   'pattern'  : '\k\k$',
+      \   'excluded' : '^$',
+      \   'repeat'   : 0,
+      \  },
+      \  {
+      \   'command'  : "\<C-x>\<C-f>",
+      \   'pattern'  : printf('\f[%s]\f\{%d,}$', (has('win32') || has('win64') ? '/\\' : '/'),
+      \                       2),
+      \   'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
+      \   'repeat'   : 1,
+      \ },
+      \  {
+      \   'command'  : "\<C-x>\<C-u>",
+      \   'pattern'  : '[^. \t]\.$',
+      \   'excluded' : '^$',
+      \   'repeat'   : 0,
+      \  },
+      \  ]}
+
+" ruby tags
+autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
+" ruby dictionary
+autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
+
+set runtimepath+=~/pukivim
+runtime! plugin/pukiwiki.vim
+
+"neocomplcache
+set runtimepath+=~/vimplugin/neocomplcache
+let g:NeoComplCache_EnableAtStartup = 1
+let g:NeoComplCache_MinKeywordLength = 3
+let g:NeoComplCache_MinSyntaxLength = 3
+let g:NeoComplCache_SmartCase = 1
+let g:NeoComplCache_DictionaryFileTypeLists = {
+  \ 'default'    : '',
+  \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
+  \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+  \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
+  \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+  \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
+  \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
+  \ }
+let g:NeoComplCache_SameFileTypeLists = {
+  \ 'perl'    : 'man',
+  \ 'erlang'  : 'man',
+  \ 'objc'    : 'c',
+  \ 'tt2html' : 'html,perl'
+  \}
+let g:NeoComplCache_KeywordPatterns = {
+  \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
+  \ 'erlang' : '\v\h\w*(:\h\w*)*'
+  \}
+
+" <C-y>: paste.
+inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-r>0"
+" <C-e>: close popup.
+inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<End>"
+imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+
+fun! Filename(...)
+	let filename = expand('%:t:r')
+	if filename == '' | return a:0 == 2 ? a:2 : '' | endif
+	return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
+endf
+
+" hi Pmenu guibg=#666666
+" hi PmenuSel guibg=#8cd0d3 guifg=#666666
+" hi PmenuSbar guibg=#333333
+
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
+
+" scala
+augroup scala
+  au!
+  autocmd BufNewFile,BufRead $HOME/scala/scala-misc/* lcd $HOME/scala/scala-misc
+augroup END 
+
+" FuzzyFinder3
+set runtimepath+=~/vimplugin/vim-fuzzyfinder
+let g:fuf_modesDisable = []
+let g:fuf_abbrevMap = {
+      \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
+      \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
+      \ }
+let g:fuf_mrufile_maxItem = 300
+let g:fuf_mrucmd_maxItem = 400
+nnoremap <silent> <C-n>      :FufBuffer<CR>
+nnoremap <silent> <C-p>      :FufFileWithCurrentBufferDir<CR>
+nnoremap <silent> <C-d><C-p> :FufFileWithFullCwd<CR>
+nnoremap <silent> <C-d>p     :FufFile<CR>
+nnoremap <silent> <C-d><C-d> :FufDirWithCurrentBufferDir<CR>
+nnoremap <silent> <C-d>d     :FufDirWithFullCwd<CR>
+nnoremap <silent> <C-d>D     :FufDir<CR>
+nnoremap <silent> <C-j>      :FufMruFile<CR>
+nnoremap <silent> <C-k>      :FufMruCmd<CR>
+nnoremap <silent> <C-b>      :FufBookmark<CR>
+nnoremap <silent> <C-d><C-t> :FufTag<CR>
+nnoremap <silent> g]         :FufTag!<CR>
+noremap  <silent> <C-]>      :FufTagWithCursorWord!<CR>
+nnoremap <silent> <C-d><C-f> :FufTaggedFile<CR>
+nnoremap <silent> <C-d><C-b> :FufAddBookmark<CR>
+vnoremap <silent> <C-d><C-b> :FufAddBookmarkAsSelectedText<CR>
+nnoremap <silent> <C-d><C-e> :FufEditInfo<CR>
+nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
+
+
+" skk.vim
+"set runtimepath+=~/vimplugin/skk
+"let g:skk_sticky_key = ';'
+"let skk_jisyo = '~/.skk-vim-jisyo'
+"let skk_large_jisyo = '~/Library/AquaSKK/SKK-JISYO.L'
+"let skk_auto_save_jisyo = 1
+"let skk_keep_state = 0
+"let skk_egg_like_newline = 1
+"let skk_show_annotation = 1
+"let skk_use_face = 1
+

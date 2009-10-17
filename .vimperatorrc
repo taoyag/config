@@ -1,0 +1,78 @@
+" options
+set activate=quickmark,paste
+" set complete=bshf
+set guioptions=rb
+set hlsearch
+set ignorecase
+set incsearch
+set popups=2
+set preload
+set showstatuslinks=2
+set wildmode=list:full
+set wildoptions=auto
+set complete=sl
+
+set editor=/opt/local/bin/gvim -f
+
+" key mappings
+" Windows環境のCtrl+cでコピーを殺すのを回避
+map <C-c> Y 
+
+map h <C-p>
+map l <C-n>
+map a <C-p>
+map s <C-n>
+map z H
+map x L
+
+cmap <C-n> <TAB>
+cmap <C-p> <S-TAB>
+
+" livedoor reader
+map ,r :o ldr<cr>
+" livedoor clip
+map ,a :tombloo! Link<cr>
+
+" 多めにスクロールするようにする
+noremap j 5j
+noremap k 5k
+
+" 辞書を引く
+map ,d :eijiro<space>
+
+" ブックマーク検索
+map ,b :tabopen chrome://hatebu_incsearch/content/view.html<cr>
+
+qmark g http://www.google.co.jp/
+qmark m http://mail.google.com/
+qmark b http://b.hatena.ne.jp/
+
+" migemo_hint.js
+"set hintmaching=custom
+
+"Show feed-button to statusbar
+"http://d.hatena.ne.jp/teramako/20071205/p1
+:javascript <<EOF
+(function(){
+ var feedPanel = document.createElement('statusbarpanel');
+ var feedButton = document.getElementById('feed-button');
+ feedPanel.setAttribute('id','feed-panel-clone');
+ feedPanel.appendChild(feedButton.cloneNode(true));
+ feedButton.parentNode.removeChild(feedButton);
+ document.getElementById('status-bar').insertBefore(feedPanel,document.getElementById('security-button'));
+})();
+EOF
+
+" autoIgnoreKey.js
+"let g:autoignorekey_pages = "['http://www.tumblr.com/*']"
+":javascript <<EOM
+"liberator.globalVariables.autoignorekey_pages = uneval([
+"  /^https?:\/\/www\.tumblr\.com\/dashboard\//,
+"]);
+"EOM
+
+" char-hints-mod2.js
+let g:hintsio="iO"
+
+" 確認
+echo '.vimperatorrc loaded'

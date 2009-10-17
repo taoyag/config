@@ -1,0 +1,102 @@
+snippet he
+	/*
+	 * ${1:`Filename()`}.scala
+	 *
+	 * Copyright(C) 2009 taoyag
+	 *
+	 * This program is free software.
+	 * You can redistribute it and/or modify it under MIT Lincence.
+	 *
+	 * vim:ft=scala
+	 */
+	${2}
+snippet main
+	object ${1:`Filename()`} extends Application {
+		${2:/* code */}
+	}
+snippet obj
+	object ${1:`Filename()`} ${2:extends} {
+snippet class
+	class ${1:`Filename()`} ${2:extends} {
+snippet def
+	def ${1:methodName()} {
+		${2}
+	}
+snippet defv
+	def ${1:name}: ${2:Type} = ${3}
+snippet ov
+	override def ${1:methodName} {
+		${2:/* code */}
+	}
+snippet val
+	val ${1:name} = ${2:value}
+snippet var
+	var ${1:name} = ${2:value}
+snippet im
+	import ${1:module}
+snippet pr
+	println(${1:v})
+snippet fi
+	final
+snippet ab
+	abstract
+snippet re
+	return
+snippet br
+	break;
+snippet de
+	default:
+		${1}
+snippet ca
+	catch(${1:Exception} ${2:e}) ${3}
+snippet th
+	throw 
+snippet sy
+	synchronized
+snippet j.u
+	java.util
+snippet j.i
+	java.io.
+snippet j.b
+	java.beans.
+snippet j.n
+	java.net.
+snippet j.m
+	java.math.
+snippet if
+	if (${1}) ${2}
+snippet el
+	else 
+snippet elif
+	else if (${1}) ${2}
+snippet wh
+	while (${1}) ${2}
+snippet for
+	for (${1}; ${2}; ${3}) ${4}
+snippet fore
+	for (${1} : ${2}) ${3}
+snippet sw
+	switch (${1}) ${2}
+snippet cs
+	case ${1}:
+		${2}
+	${3}
+snippet tc
+	public class ${1:`Filename()`} extends ${2:TestCase}
+snippet t
+	public void test${1:Name}() throws Exception ${2}
+snippet cl
+	class ${1:`Filename("", "untitled")`} ${2}
+snippet in
+	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
+snippet m
+	${1:void} ${2:method}(${3}) ${4:throws }${5}
+snippet v
+	${1:String} ${2:var}${3: = null}${4};${5}
+snippet co
+	static public final ${1:String} ${2:var} = ${3};${4}
+snippet cos
+	static public final String ${1:var} = "${2}";${3}
+snippet as
+	assert ${1:test} : "${2:Failure message}";${3}
+

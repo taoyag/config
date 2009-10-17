@@ -1,0 +1,5 @@
+.vimperator/info
+vim/.vim/tmp
+.DS_Store
+tags
+*log

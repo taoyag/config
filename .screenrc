@@ -1,0 +1,19 @@
+escape t
+
+vbell off
+hardstatus alwayslastline " %`%-w%{=b bw}%n %t%{-}%+w"
+autodetach on
+defutf8 on
+bind  kill
+defbce on
+term xterm-256color
+termcapinfo  xterm-256color hs@:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+markkeys "h=:l=:$="
+
+bind -c REGION 2 split
+bind -c REGION 1 only
+bind -c REGION 0 remove
+bind -c REGION o focus
+bind -c REGION ^ resize
+bind x command -c REGION
