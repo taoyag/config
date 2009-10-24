@@ -10,6 +10,7 @@ darwin*)
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
   export TERM=xterm-256color
   export JAVA_HOME=/Library/Java/Home
+  export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
   export SCREENDIR=/Users/taoyag/tmp/screen
   
   export PATH=$HOME/bin:$PATH
