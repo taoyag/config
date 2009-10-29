@@ -44,11 +44,16 @@ darwin*)
   # scaladoc
   export SCALA_DOC_HOME=~/scala/InteractiveHelp/scala-2.7.5-apidocs-fixed/
 
+  # play
+  export PLAY_HOME=~/java/play-1.1
+  export PATH=$PLAY_HOME:$PATH
+
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias screen="/usr/local/bin/screen"
   alias less="/usr/share/vim/vim72/macros/less.sh"
   alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
   alias ls='ls -vG'
+  alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
   alias firefox='open -a Firefox'
   alias prev='open -a Preview'
   ;;

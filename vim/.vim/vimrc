@@ -405,6 +405,7 @@ nmap H :bp<CR>
 nmap L :bn<CR>
 nnoremap <space>w :<C-u>write<CR>
 nnoremap <space>q :<C-u>quit<CR>
+nnoremap <space>Q :<C-u>quit!<CR>
 nnoremap <space>f <C-f><CR>
 nnoremap <space>b <C-b><CR>
 "nnoremap <space>f <C-f>zz<CR>
