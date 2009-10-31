@@ -450,7 +450,7 @@ noremap! <C-d> <Del>
 nnoremap ,q :bd<CR>
 
 " Makefile
-autocmd FileType make setlocal noexpandtab
+"autocmd FileType make setlocal noexpandtab
 
 " autocomplpop
 let g:AutoComplPop_NotEnableAtStartup = 1
@@ -479,9 +479,9 @@ let g:AutoComplPop_Behavior={'java' : [
       \  ]}
 
 " ruby tags
-autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
+"autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
-autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
+"autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
 
 set runtimepath+=~/pukivim
 runtime! plugin/pukiwiki.vim
