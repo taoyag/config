@@ -337,11 +337,16 @@ set fileformats=unix,dos,mac
 " qfixhowm
 set runtimepath+=~/qfixapp
 let QfixHowm_Key      = 'g'
-let howm_dir          = '~/howm'
+let howm_dir          = $HOME . '/howm'
 let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
-let mygrepprg         = '/usr/bin/grep'
+if has("gui_mac") || has("gui_macvim")
+    let mygrepprg         = '/usr/bin/grep'
+endif
+if has("gui_win32") || has("gui_win32s")
+    let mygrepprg         = '/cygwin/bin/grep'
+endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 let QFixHowm_FileType = 'howm_memo.rd'
 
@@ -431,10 +436,15 @@ nnoremap <space>n :cn<CR>
 nnoremap <space>p :cp<CR>
 
 " clipboard
-nnoremap <silent> <SPACE>y :.w !pbcopy<CR><CR>
-vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
-nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
-vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+if has("gui_mac") || has("gui_macvim")
+    nnoremap <silent> <SPACE>y :.w !pbcopy<CR><CR>
+    vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
+    nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+    vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+endif
+if has("gui_win32") || has("gui_win32s")
+    set clipboard=unnamed
+endif
 
 nnoremap <space>- <C-W>-
 nnoremap <space>+ <C-W>+
