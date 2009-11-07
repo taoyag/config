@@ -149,6 +149,7 @@ set hidden
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
     let g:CSApprox_loaded = 1
+    colorscheme vibrantink
 else
     if has("gui_gnome")
         set term=gnome-256color
@@ -342,10 +343,13 @@ let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 if has("gui_mac") || has("gui_macvim")
-    let mygrepprg         = '/usr/bin/grep'
+    let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let mygrepprg         = '/cygwin/bin/grep'
+    let mygrepprg = '/cygwin/bin/grep'
+endif
+if has("unix")
+    let mygrepprg = '/bin/grep'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 let QFixHowm_FileType = 'howm_memo.rd'
