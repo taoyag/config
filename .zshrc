@@ -76,6 +76,9 @@ linux*)
   ;;
 esac
 
+fpath=(~/zsh-function $fpath)
+autoload -U ~/zsh-function/*(:t)
+
 autoload -U compinit
 compinit
 
@@ -162,3 +165,9 @@ preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
 [ ${STY} ] || screen -rx || screen -D -RR
+
+# mvn completion
+function listMavenCompletions {
+    reply=(cli:execute cli:execute-phase archetype:generate compile clean install test test-compile deploy package cobertura:cobertura jetty:run -Dmaven.test.skip=true -DarchetypeCatalog=http://tapestry.formos.com/maven-snapshot-repository -Dtest= `if [ -d ./src ] ; then find ./src -type f | grep -v svn | sed 's?.*/\([^/]*\)\..*?-Dtest=\1?' ; fi`);
+}
+compctl -K listMavenCompletions mvn
