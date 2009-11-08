@@ -525,6 +525,9 @@ let g:NeoComplCache_KeywordPatterns = {
   \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
   \ 'erlang' : '\v\h\w*(:\h\w*)*'
   \}
+let g:NeoComplCache_CtagsArgumentsList = {
+  \ 'scala'   : '--options=~/.tags-scala.conf'
+  \}
 
 " <C-y>: paste.
 inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-r>0"
