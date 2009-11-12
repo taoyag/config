@@ -596,3 +596,5 @@ nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
 "let skk_show_annotation = 1
 "let skk_use_face = 1
 
+" taglist.vim
+let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variable'
