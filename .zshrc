@@ -70,6 +70,8 @@ linux*)
   export M2_HOME=/usr/local/apache-maven
   export M2=$M2_HOME/bin
   export PATH=$M2:$PATH
+  # scala
+  export PATH=/usr/local/scala/bin:$PATH
 
   alias vi='vim'
   alias ls='ls -vG'
