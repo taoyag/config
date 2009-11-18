@@ -342,14 +342,14 @@ let howm_dir          = $HOME . '/howm'
 let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
+if has("unix")
+    let mygrepprg = '/bin/grep'
+endif
 if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
     let mygrepprg = '/cygwin/bin/grep'
-endif
-if has("unix")
-    let mygrepprg = '/bin/grep'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 let QFixHowm_FileType = 'howm_memo.rd'

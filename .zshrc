@@ -76,8 +76,8 @@ linux*)
   ;;
 esac
 
-fpath=(~/zsh-function $fpath)
-autoload -U ~/zsh-function/*(:t)
+# fpath=(~/zsh-function $fpath)
+# autoload -U ~/zsh-function/*(:t)
 
 autoload -U compinit
 compinit
