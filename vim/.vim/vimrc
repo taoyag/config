@@ -431,6 +431,7 @@ nnoremap so <C-w>o
 
 vnoremap v $h
 
+nnoremap <space>v :edit $HOME/config/vim/.vim/vimrc<CR>
 
  " QuickFix
 "au QuickFixCmdPost vimgrep cw 
