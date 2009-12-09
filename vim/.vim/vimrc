@@ -504,7 +504,7 @@ runtime! plugin/pukiwiki.vim
 "neocomplcache
 set runtimepath+=~/vimplugin/neocomplcache
 let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_MinKeywordLength = 3
+let g:NeoComplCache_MinKeywordLength = 2
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SmartCase = 1
 let g:NeoComplCache_DictionaryFileTypeLists = {
@@ -529,6 +529,13 @@ let g:NeoComplCache_KeywordPatterns = {
 let g:NeoComplCache_CtagsArgumentsList = {
   \ 'scala'   : '--options=~/.tags-scala.conf'
   \}
+
+if has("uni") || has("gui_mac") || has("gui_macvim")
+    let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
+endif
+if has("gui_win32") || has("gui_win32s")
+    let g:NeoComplCache_SnippetsDir = $HOME . '/vimfiles/snippets'
+endif
 
 " <C-y>: paste.
 inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-r>0"
