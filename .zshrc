@@ -43,6 +43,9 @@ darwin*)
   export PATH=$AIR:$PATH
   # scaladoc
   export SCALA_DOC_HOME=~/scala/InteractiveHelp/scala-2.7.5-apidocs-fixed/
+  # stax
+  export STAX_HOME=/usr/local/stax-sdk-0.3.6
+  export PATH=$STAX_HOME:$PATH
 
   # play
   export PLAY_HOME=~/java/play-1.1
