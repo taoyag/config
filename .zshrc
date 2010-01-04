@@ -2,7 +2,8 @@ case "$OSTYPE" in
 darwin*)
   export LANG=ja_JP.UTF-8
   
-  export PATH=/usr/local/hyperestraier/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
+  export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:$PATH
+  #export PATH=/usr/local/hyperestraier/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
   export MANPATH=/opt/local/man:$MANPATH
   export MITSCHEME_LIBRARY_PATH=~/mit-scheme
   export SVN_EDITOR=vi
@@ -16,8 +17,8 @@ darwin*)
   export PATH=$HOME/bin:$PATH
   
   # git
-  export PATH=/usr/local/git/bin:$PATH
-  export MANPATH=/usr/local/git/man:$MANPATH
+#  export PATH=/usr/local/git/bin:$PATH
+#  export MANPATH=/usr/local/git/man:$MANPATH
   # jruby
   export JRUBY=/usr/local/jruby-1.1.6/bin
   export PATH=$PATH:$JRUBY
@@ -31,8 +32,10 @@ darwin*)
   export PATH=$ORACLE_HOME/bin:$PATH
   export NLS_LANG=japanese_japan.UTF8
   # rubygems
-  export RUBYLIB=/opt/local/lib
-  export GEM_HOME=/opt/local/lib/ruby/gems/1.8
+  export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
+  export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
+  #export RUBYLIB=/opt/local/lib
+  #export GEM_HOME=/opt/local/lib/ruby/gems/1.8
   # Adobe Flex SDK
   export FLEX3_HOME=/usr/local/flex_sdk_3.4
   export FLEX3=$FLEX3_HOME/bin
