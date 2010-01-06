@@ -34,6 +34,7 @@ darwin*)
   # rubygems
   export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
   export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
+  export PATH=/usr/local/app/ruby/lib/ruby/gems/1.8/bin:$PATH
   #export RUBYLIB=/opt/local/lib
   #export GEM_HOME=/opt/local/lib/ruby/gems/1.8
   # Adobe Flex SDK
