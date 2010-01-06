@@ -19,6 +19,9 @@ syn match rdHeadline5 "^+\s\+.*"
 syn match rdHeadline6 "^++\s\+.*"
 syn match rdInline "(([*{|%:<-\'].\+[\'->:%|}*]))"
 
+syn match rdList "^+\s\*.*"
+syn match rdOrderedList "^+\s[0-9]\..*"
+
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -30,13 +33,24 @@ if version >= 508 || !exists("did_rd_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink rdHeadline1	Constant
-  HiLink rdHeadline2	PreProc
-  HiLink rdHeadline3	Type
-  HiLink rdHeadline4	Identifier
+"  HiLink rdHeadline1	Constant
+"  HiLink rdHeadline2	PreProc
+"  HiLink rdHeadline3	Type
+"  HiLink rdHeadline4	Identifier
+"  HiLink rdHeadline5	Statement
+"  HiLink rdHeadline6	Statement
+"  HiLink rdInline	Comment
+  
+  HiLink rdHeadline1	Title
+  HiLink rdHeadline2	Title
+  HiLink rdHeadline3	Title
+  HiLink rdHeadline4	Title
   HiLink rdHeadline5	Statement
   HiLink rdHeadline6	Statement
   HiLink rdInline	Comment
+  
+  HiLink rdList	        Statement
+  HiLink rdOrderedList	Statement
 
   delcommand HiLink
 endif

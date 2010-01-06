@@ -342,6 +342,7 @@ let howm_dir          = $HOME . '/howm'
 let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
+let SubWindow_Title   = $HOME . '/howm/__submenu__.howm'
 if has("unix")
     let mygrepprg = '/bin/grep'
 endif
@@ -349,10 +350,13 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
+    let $CYGWIN='nodosfilewarning'
     let mygrepprg = '/cygwin/bin/grep'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
-let QFixHowm_FileType = 'howm_memo.rd'
+let MyGrepcmd_useropt = '--exclude-dir=.svn'
+"let QFixHowm_FileType = 'howm_memo.rd'
+"let QFixHowm_FileType = 'howm_memo.rdoc'
 
 "howm専用MRUを基本に使用する
 let QFixHowm_SwapLcommand = 1
@@ -377,6 +381,28 @@ let QFixHowm_UseAutoLinkTags = 1
 "行頭にQFixHowm_Titleがあってもタイトルとして自動整形しない
 let QFixHowm_Autoformat_TitleMode = 0
 
+nnoremap <silent> g,. :<C-u>call HatenaSuperPreHighlight()<CR>
+"Hatena super pre highlight
+function! HatenaSuperPreHighlight()
+  let ft = expand('%:e')
+  if ft == 'howm'
+    let ft = 'howm_memo'
+  endif
+  if &filetype != ft
+    exec 'setlocal filetype='.ft
+    return
+  endif
+  let sl = search('^>|.\+|$', 'ncbW')
+  if sl == 0
+    let sl = search('^>|.\+|$', 'ncW')
+  endif
+  if sl != 0
+    let ft = getline(sl)
+    let ft = substitute(ft, '[>|]', '', 'g')
+    exec 'setlocal filetype='.ft
+    return
+  endif
+endfunction
 
 " FuzzyFinder
 "
@@ -503,6 +529,7 @@ runtime! plugin/pukiwiki.vim
 
 "neocomplcache
 set runtimepath+=~/vimplugin/neocomplcache
+set completeopt=menu
 let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_MinKeywordLength = 2
 let g:NeoComplCache_MinSyntaxLength = 3
