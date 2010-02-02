@@ -352,9 +352,9 @@ endif
 if has("gui_win32") || has("gui_win32s")
     let $CYGWIN='nodosfilewarning'
     let mygrepprg = '/cygwin/bin/grep'
+    let MyGrepcmd_useropt = '--exclude-dir=.svn'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
-let MyGrepcmd_useropt = '--exclude-dir=.svn'
 "let QFixHowm_FileType = 'howm_memo.rd'
 "let QFixHowm_FileType = 'howm_memo.rdoc'
 

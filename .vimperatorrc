@@ -22,7 +22,8 @@ map h <C-p>
 map l <C-n>
 map a <C-p>
 map s <C-n>
-map z H
+"map z H
+map zz H
 map x L
 
 cmap <C-n> <TAB>
@@ -64,7 +65,7 @@ qmark b http://b.hatena.ne.jp/
 EOF
 
 " autoIgnoreKey.js
-"let g:autoignorekey_pages = "['http://www.tumblr.com/*']"
+"let autoignorekey_pages = "['http://www.tumblr.com/*', 'http://www.rememberthemilk.com/home/*']"
 ":javascript <<EOM
 "liberator.globalVariables.autoignorekey_pages = uneval([
 "  /^https?:\/\/www\.tumblr\.com\/dashboard\//,

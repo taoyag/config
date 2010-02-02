@@ -38,7 +38,7 @@ darwin*)
   #export RUBYLIB=/opt/local/lib
   #export GEM_HOME=/opt/local/lib/ruby/gems/1.8
   # Adobe Flex SDK
-  export FLEX3_HOME=/usr/local/flex_sdk_3.4
+  export FLEX3_HOME=/usr/local/flex_sdk_3
   export FLEX3=$FLEX3_HOME/bin
   export PATH=$FLEX3:$PATH
   # Adobe Air SDK

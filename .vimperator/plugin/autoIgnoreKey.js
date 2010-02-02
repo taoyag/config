@@ -31,6 +31,7 @@
 const ignorePagesList = window.eval(liberator.globalVariables.autoignorekey_pages) || [
     /^https?:\/\/mail\.google\.com\//,
     /^http:\/\/(?:reader\.livedoor|fastladder)\.com\/(?:reader|public)\//,
+    /^http:\/\/www\.rememberthemilk\.com\/home\//,
 ].map(function(i)
     i instanceof RegExp ? i :
     i instanceof Array  ? new RegExp(String(i[0]), String(i[1])) :
