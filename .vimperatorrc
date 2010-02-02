@@ -1,7 +1,7 @@
 " options
 set activate=quickmark,paste
 " set complete=bshf
-set guioptions=rb
+set guioptions=rbm
 set hlsearch
 set ignorecase
 set incsearch
@@ -14,6 +14,8 @@ set complete=sl
 
 set editor=/opt/local/bin/gvim -f
 
+colorscheme bigchu
+
 " key mappings
 " Windows環境のCtrl+cでコピーを殺すのを回避
 map <C-c> Y 
@@ -22,11 +24,15 @@ map h <C-p>
 map l <C-n>
 map a <C-p>
 map s <C-n>
-map z H
+map zz H
 map x L
 
 cmap <C-n> <TAB>
 cmap <C-p> <S-TAB>
+
+" Shift + ↑↓でタブ位置変更
+map <S-Right> :tabmove! +1<CR>
+map <S-Left>  :tabmove! -1<CR>
 
 " livedoor reader
 map ,r :o ldr<cr>
