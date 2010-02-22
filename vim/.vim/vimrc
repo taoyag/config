@@ -567,7 +567,7 @@ endif
 " <C-y>: close popup.
 inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-y>"
 " <C-e>: cancel popup.
-inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<C-d>"
+"inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<C-d>"
 " <C-x><C-f>: filename completion
 inoremap <expr><C-x><C-f> neocomplcache#manual_filename_complete()
 
