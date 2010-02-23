@@ -636,3 +636,6 @@ nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
 
 " taglist.vim
 let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variable'
+
+" sparkup
+let g:sparkupExecuteMapping='<C-Space>'
