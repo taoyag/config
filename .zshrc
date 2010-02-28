@@ -23,7 +23,7 @@ darwin*)
 #  export PATH=/usr/local/git/bin:$PATH
 #  export MANPATH=/usr/local/git/man:$MANPATH
   # jruby
-  export JRUBY=/usr/local/jruby-1.1.6/bin
+  export JRUBY=/usr/local/jruby/bin
   export PATH=$PATH:$JRUBY
   # maven2
   export M2_HOME=~/java/apache-maven-2.0.9
