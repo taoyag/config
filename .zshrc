@@ -35,9 +35,9 @@ darwin*)
   export PATH=$ORACLE_HOME/bin:$PATH
   export NLS_LANG=japanese_japan.UTF8
   # rubygems
-  export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
-  export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
-  export PATH=/usr/local/app/ruby/lib/ruby/gems/1.8/bin:$PATH
+  #export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
+  #export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
+  #export PATH=/usr/local/app/ruby/lib/ruby/gems/1.8/bin:$PATH
   #export RUBYLIB=/opt/local/lib
   #export GEM_HOME=/opt/local/lib/ruby/gems/1.8
   # Adobe Flex SDK
@@ -66,6 +66,7 @@ darwin*)
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
   alias firefox='open -a Firefox'
   alias prev='open -a Preview'
+
   ;;
 linux*)
   export LANG=ja_JP.UTF-8
@@ -183,3 +184,6 @@ function listMavenCompletions {
     reply=(cli:execute cli:execute-phase archetype:generate compile clean install test test-compile deploy package cobertura:cobertura jetty:run -Dmaven.test.skip=true -DarchetypeCatalog=http://tapestry.formos.com/maven-snapshot-repository -Dtest= `if [ -d ./src ] ; then find ./src -type f | grep -v svn | sed 's?.*/\([^/]*\)\..*?-Dtest=\1?' ; fi`);
 }
 compctl -K listMavenCompletions mvn
+
+# rvm
+if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
