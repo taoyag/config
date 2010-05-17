@@ -156,12 +156,12 @@ else
         colorscheme desert
     else
         set t_Co=256
-"        colorscheme wombat
-       colorscheme vibrantink
-"        colorscheme zenburn
+        "        colorscheme wombat
+        colorscheme vibrantink
+        "        colorscheme zenburn
         set guitablabel=%M%t
-"        set lines=40
-"        set columns=160
+        "        set lines=40
+        "        set columns=160
     endif
     if has("gui_mac") || has("gui_macvim")
         set antialias	
@@ -182,7 +182,7 @@ nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
 "map to bufexplorer
-nnoremap <C-B> :BufExplorer<cr>
+nnoremap <S-B> :BufExplorer<cr>
 
 "map to fuzzy finder text mate stylez
 ""nnoremap <c-f> :FuzzyFinderTextMate<CR>
@@ -222,7 +222,7 @@ command! -nargs=? HighlightExcessColumns call s:HighlightExcessColumns('<args>')
 function! s:HighlightExcessColumns(width)
     let targetWidth = a:width != '' ? a:width : &textwidth
     if targetWidth > 0
-        exec 'match Todo /\%>' . (targetWidth+1) . 'v/'
+        exec 'match Todo /\%>' . (targetWidth+0) . 'v/'
     else
         echomsg "HighlightExcessColumns: set a &textwidth, or pass one in"
     endif
@@ -238,99 +238,86 @@ set migemo
 "スワップファイル用のディレクトリ
 set directory=$HOME/vimbackup
 
-cmap <C-x> <C-r>=expand('%:p:h')<CR>/
-cmap <C-z> <C-r>=expand('%:p:r')<CR>
-nmap H :bp<CR>
-nmap L :bn<CR>
-
-"閉じ括弧を自動的に挿入
-"inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-
-
 function! GetB()
-  let c = matchstr(getline('.'), '.', col('.') - 1)
-  let c = iconv(c, &enc, &fenc)
-  return String2Hex(c)
+    let c = matchstr(getline('.'), '.', col('.') - 1)
+    let c = iconv(c, &enc, &fenc)
+    return String2Hex(c)
 endfunction
 " :help eval-examples
 " The function Nr2Hex() returns the Hex string of a number.
 func! Nr2Hex(nr)
-  let n = a:nr
-  let r = ""
-  while n
-    let r = '0123456789ABCDEF'[n % 16] . r
-    let n = n / 16
-  endwhile
-  return r
+    let n = a:nr
+    let r = ""
+    while n
+        let r = '0123456789ABCDEF'[n % 16] . r
+        let n = n / 16
+    endwhile
+    return r
 endfunc
 " The function String2Hex() converts each character in a string to a two
 " character Hex string.
 func! String2Hex(str)
-  let out = ''
-  let ix = 0
-  while ix < strlen(a:str)
-    let out = out . Nr2Hex(char2nr(a:str[ix]))
-    let ix = ix + 1
-  endwhile
-  return out
+    let out = ''
+    let ix = 0
+    while ix < strlen(a:str)
+        let out = out . Nr2Hex(char2nr(a:str[ix]))
+        let ix = ix + 1
+    endwhile
+    return out
 endfunc
 
 "ステータスラインに文字コードと改行文字を表示する
- set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
+set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
 
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
+    set encoding=japan
+    set fileencoding=japan
 endif
 if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
+    let s:enc_euc = 'euc-jp'
+    let s:enc_jis = 'iso-2022-jp'
+    " iconvがeucJP-msに対応しているかをチェック
+    if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+        let s:enc_euc = 'eucjp-ms'
+        let s:enc_jis = 'iso-2022-jp-3'
+        " iconvがJISX0213に対応しているかをチェック
+    elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+        let s:enc_euc = 'euc-jisx0213'
+        let s:enc_jis = 'iso-2022-jp-3'
     endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
+    " fileencodingsを構築
+    if &encoding ==# 'utf-8'
+        let s:fileencodings_default = &fileencodings
+        let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+        let &fileencodings = &fileencodings .','. s:fileencodings_default
+        unlet s:fileencodings_default
+    else
+        let &fileencodings = &fileencodings .','. s:enc_jis
+        set fileencodings+=utf-8,ucs-2le,ucs-2
+        if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+            set fileencodings+=cp932
+            set fileencodings-=euc-jp
+            set fileencodings-=euc-jisx0213
+            set fileencodings-=eucjp-ms
+            let &encoding = s:enc_euc
+            let &fileencoding = s:enc_euc
+        else
+            let &fileencodings = &fileencodings .','. s:enc_euc
+        endif
+    endif
+    " 定数を処分
+    unlet s:enc_euc
+    unlet s:enc_jis
 endif
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
+    function! AU_ReCheck_FENC()
+        if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+            let &fileencoding=&encoding
+        endif
+    endfunction
+    autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
@@ -384,55 +371,33 @@ let QFixHowm_Autoformat_TitleMode = 0
 nnoremap <silent> g,. :<C-u>call HatenaSuperPreHighlight()<CR>
 "Hatena super pre highlight
 function! HatenaSuperPreHighlight()
-  let ft = expand('%:e')
-  if ft == 'howm'
-    let ft = 'howm_memo'
-  endif
-  if &filetype != ft
-    exec 'setlocal filetype='.ft
-    return
-  endif
-  let sl = search('^>|.\+|$', 'ncbW')
-  if sl == 0
-    let sl = search('^>|.\+|$', 'ncW')
-  endif
-  if sl != 0
-    let ft = getline(sl)
-    let ft = substitute(ft, '[>|]', '', 'g')
-    exec 'setlocal filetype='.ft
-    return
-  endif
+    let ft = expand('%:e')
+    if ft == 'howm'
+        let ft = 'howm_memo'
+    endif
+    if &filetype != ft
+        exec 'setlocal filetype='.ft
+        return
+    endif
+    let sl = search('^>|.\+|$', 'ncbW')
+    if sl == 0
+        let sl = search('^>|.\+|$', 'ncW')
+    endif
+    if sl != 0
+        let ft = getline(sl)
+        let ft = substitute(ft, '[>|]', '', 'g')
+        exec 'setlocal filetype='.ft
+        return
+    endif
 endfunction
 
-" FuzzyFinder
-"
-""let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
-""let g:FuzzyFinderOptions.Base.ignore_case = 1
-""let g:FuzzyFinderOptions.Base.abbrev_map  = {
-""      \   '\C^VR' : [
-""      \     '$VIMRUNTIME/**',
-""      \     '~/.vim/**',
-""      \     '$VIM/.vim/**',
-""      \     '$VIM/vimfiles/**',
-""      \   ],
-""      \ }
-""let g:FuzzyFinderOptions.MruFile.max_item = 200
-""let g:FuzzyFinderOptions.MruCmd.max_item = 200
-"""nnoremap <silent> <c-n> :FuzzyFinderTextMate<CR>
-""nnoremap <silent> <C-n>      :FuzzyFinderBuffer<CR>
-""nnoremap <silent> <C-d><C-m> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-""nnoremap <silent> <C-j>      :FuzzyFinderMruFile<CR>
-""nnoremap <silent> <C-k>      :FuzzyFinderMruCmd<CR>
-""nnoremap <silent> <C-p>      :FuzzyFinderDir <C-r>=expand('%:p:~')[:-1-len(expand('%:p:~:t'))]<CR><CR>
-""nnoremap <silent> <C-d><C-d> :FuzzyFinderDir<CR>
-""nnoremap <silent> <C-d><C-f> :FuzzyFinderFavFile<CR>
-""nnoremap <silent> <C-d><C-t> :FuzzyFinderTag!<CR>
-""nnoremap <silent> <C-d><C-g> :FuzzyFinderTaggedFile<CR>
-""noremap <silent> <C-]>      :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
-"""noremap  <silent> g]         :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
-""nnoremap <silent> <C-d>F     :FuzzyFinderAddFavFile<CR>
-""nnoremap <silent> <C-d><C-e> :FuzzyFinderEditInfo<CR>
 
+"閉じ括弧を自動的に挿入
+"inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
 
 cmap <C-x> <C-r>=expand('%:p:h')<CR>/
 cmap <C-z> <C-r>=expand('%:p:r')<CR>
@@ -459,7 +424,7 @@ vnoremap v $h
 
 nnoremap <space>v :edit $HOME/config/vim/.vim/vimrc<CR>
 
- " QuickFix
+" QuickFix
 "au QuickFixCmdPost vimgrep cw 
 " makeなどで自動的にQuickFixを開く
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
@@ -493,32 +458,6 @@ nnoremap ,q :bd<CR>
 " Makefile
 "autocmd FileType make setlocal noexpandtab
 
-" autocomplpop
-let g:AutoComplPop_NotEnableAtStartup = 1
-set completefunc=syntaxcomplete#Complete
-let g:AutoComplPop_CompleteOption = '.,w,b,k'
-let g:AutoComplPop_Behavior={'java' : [
-      \  {
-      \   'command'  : "\<C-n>",
-      \   'pattern'  : '\k\k$',
-      \   'excluded' : '^$',
-      \   'repeat'   : 0,
-      \  },
-      \  {
-      \   'command'  : "\<C-x>\<C-f>",
-      \   'pattern'  : printf('\f[%s]\f\{%d,}$', (has('win32') || has('win64') ? '/\\' : '/'),
-      \                       2),
-      \   'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
-      \   'repeat'   : 1,
-      \ },
-      \  {
-      \   'command'  : "\<C-x>\<C-u>",
-      \   'pattern'  : '[^. \t]\.$',
-      \   'excluded' : '^$',
-      \   'repeat'   : 0,
-      \  },
-      \  ]}
-
 " ruby tags
 "autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
@@ -534,29 +473,33 @@ let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_MinKeywordLength = 2
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SmartCase = 1
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:NeoComplCache_QuickMatchPatterns = {
+            \ 'default' : ';'
+            \ }
 let g:NeoComplCache_DictionaryFileTypeLists = {
-  \ 'default'    : '',
-  \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
-  \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-  \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
-  \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
-  \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
-  \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
-  \ }
+            \ 'default'    : '',
+            \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
+            \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+            \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
+            \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+            \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
+            \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
+            \ }
 let g:NeoComplCache_SameFileTypeLists = {
-  \ 'perl'    : 'man',
-  \ 'erlang'  : 'man',
-  \ 'objc'    : 'c',
-  \ 'tt2html' : 'html,perl'
-  \}
+            \ 'perl'    : 'man',
+            \ 'erlang'  : 'man',
+            \ 'objc'    : 'c',
+            \ 'tt2html' : 'html,perl'
+            \}
 let g:NeoComplCache_KeywordPatterns = {
-  \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
-  \ 'erlang' : '\v\h\w*(:\h\w*)*'
-  \}
+            \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
+            \ 'erlang' : '\v\h\w*(:\h\w*)*'
+            \}
 let g:NeoComplCache_CtagsArgumentsList = {
-  \ 'scala'   : '--options=~/.tags-scala.conf'
-  \}
-let g:skk_marker_white = '▽'
+            \ 'scala'   : '--options=~/.tags-scala.conf'
+            \}
+
 if has("uni") || has("gui_mac") || has("gui_macvim")
     let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
 endif
@@ -575,9 +518,9 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 
 fun! Filename(...)
-	let filename = expand('%:t:r')
-	if filename == '' | return a:0 == 2 ? a:2 : '' | endif
-	return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
+    let filename = expand('%:t:r')
+    if filename == '' | return a:0 == 2 ? a:2 : '' | endif
+    return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
 endf
 
 " hi Pmenu guibg=#666666
@@ -590,17 +533,17 @@ highlight PMenuSbar ctermbg=4
 
 " scala
 augroup scala
-  au!
-  autocmd BufNewFile,BufRead $HOME/scala/scala-misc/* lcd $HOME/scala/scala-misc
+    au!
+    autocmd BufNewFile,BufRead $HOME/scala/scala-misc/* lcd $HOME/scala/scala-misc
 augroup END 
 
 " FuzzyFinder3
 set runtimepath+=~/vimplugin/vim-fuzzyfinder
 let g:fuf_modesDisable = []
 let g:fuf_abbrevMap = {
-      \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
-      \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
-      \ }
+            \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
+            \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
+            \ }
 let g:fuf_mrufile_maxItem = 300
 let g:fuf_mrucmd_maxItem = 400
 nnoremap <silent> <C-n>      :FufBuffer<CR>
@@ -622,24 +565,11 @@ vnoremap <silent> <C-d><C-b> :FufAddBookmarkAsSelectedText<CR>
 nnoremap <silent> <C-d><C-e> :FufEditInfo<CR>
 nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
 
-
-" skk.vim
-"set runtimepath+=~/vimplugin/skk
-"let g:skk_sticky_key = ';'
-"let skk_jisyo = '~/.skk-vim-jisyo'
-"let skk_large_jisyo = '~/Library/AquaSKK/SKK-JISYO.L'
-"let skk_auto_save_jisyo = 1
-"let skk_keep_state = 0
-"let skk_egg_like_newline = 1
-"let skk_show_annotation = 1
-"let skk_use_face = 1
-
 " taglist.vim
 let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variable'
 
 " sparkup
-let g:sparkupExecuteMapping='<C-Space>'
-
+"let g:sparkupExecuteMapping='<C-Space>'
 
 " SQL実行
 :map _s    :rubyf $HOME/vim_tool/sql/exec_sql.rb<CR>
@@ -662,3 +592,9 @@ let g:sparkupExecuteMapping='<C-Space>'
 :map _fa   :rubyf $HOME/vim_tool/tsv/format_record_all.rb<CR>
 :map _r    :rubyf $HOME/vim_tool/tsv/restore_csv.rb<CR>
 
+" vimshell
+"set runtimepath+=~/vimplugin/vimshell
+
+"zencoding
+set runtimepath+=~/vimplugin/zencoding-vim
+let g:user_zen_leader_key = '<c-y>'
