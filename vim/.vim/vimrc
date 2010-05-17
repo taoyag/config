@@ -569,11 +569,11 @@ nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
 let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variable'
 
 " sparkup
-let g:sparkupExecuteMapping='<C-Space>'
+"let g:sparkupExecuteMapping='<C-Space>'
 
 " vimshell
 "set runtimepath+=~/vimplugin/vimshell
 
 "zencoding
 set runtimepath+=~/vimplugin/zencoding-vim
-let g:user_zen_leader_key = '<c-y>'
+"let g:user_zen_leader_key = '<C-C>'
