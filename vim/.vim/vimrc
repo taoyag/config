@@ -556,7 +556,7 @@ let g:NeoComplCache_KeywordPatterns = {
 let g:NeoComplCache_CtagsArgumentsList = {
   \ 'scala'   : '--options=~/.tags-scala.conf'
   \}
-
+let g:skk_marker_white = '▽'
 if has("uni") || has("gui_mac") || has("gui_macvim")
     let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
 endif
@@ -639,3 +639,26 @@ let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variab
 
 " sparkup
 let g:sparkupExecuteMapping='<C-Space>'
+
+
+" SQL実行
+:map _s    :rubyf $HOME/vim_tool/sql/exec_sql.rb<CR>
+:map _al   :rubyf $HOME/vim_tool/sql/select_all.rb<CR>
+
+:map _af   :rubyf $HOME/vim_tool/sql/assist_format_record.rb<CR>
+:map _ac   :rubyf $HOME/vim_tool/sql/append_comment_sql.rb<CR>
+:map _au   :rubyf $HOME/vim_tool/sql/assist_update_sql.rb<CR>
+:map _ai   :rubyf $HOME/vim_tool/sql/assist_insert_sql.rb<CR>
+:map _as   :rubyf $HOME/vim_tool/sql/assist_select_sql.rb<CR>
+:map _ad   :rubyf $HOME/vim_tool/sql/assist_delete_sql.rb<CR>
+
+:map _con  :rubyf $HOME/vim_tool/sql/connect.rb<CR>
+:map _dcn  :rubyf $HOME/vim_tool/sql/disconnect.rb<CR>
+:map _cmt  :rubyf $HOME/vim_tool/sql/commit.rb<CR>
+:map _rbk  :rubyf $HOME/vim_tool/sql/rollback.rb<CR>
+
+" CSVレコード整形,整形レコードのCSV復元
+:map _ft   :rubyf $HOME/vim_tool/tsv/format_record.rb<CR>
+:map _fa   :rubyf $HOME/vim_tool/tsv/format_record_all.rb<CR>
+:map _r    :rubyf $HOME/vim_tool/tsv/restore_csv.rb<CR>
+
