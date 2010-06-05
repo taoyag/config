@@ -4,7 +4,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal smartindent
 
-compiler maven2
+"compiler maven2
 
 setlocal tags+=~/.tags-scala,~/.m2/repository/tags-scalatest-1.0,~/.m2/repository/tags-junit-4.5,./tags;
 " lift
@@ -14,3 +14,8 @@ nmap <silent> <buffer> ,t :!(cd %:p:h;ctags_scala)&<CR>
 
 setlocal include=^import
 setlocal includeexpr=substitute(v:fname,'\.','/','g')
+
+setlocal makeprg=sbt\ compile
+setlocal efm=%E\ %#[error]\ %f:%l:\ %m,%C\ %#[error]\ %p^,%-C%.%#,%Z,
+       \%W\ %#[warn]\ %f:%l:\ %m,%C\ %#[warn]\ %p^,%-C%.%#,%Z,
+       \%-G%.%#

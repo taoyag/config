@@ -2,7 +2,7 @@ snippet he
 	/*
 	 * ${1:`Filename()`}.scala
 	 *
-	 * Copyright(C) 2009 taoyag
+	 * Copyright(C) 2010 taoyag
 	 *
 	 * This program is free software.
 	 * You can redistribute it and/or modify it under MIT Lincence.
@@ -16,8 +16,12 @@ snippet main
 	}
 snippet obj
 	object ${1:`Filename()`} ${2:extends} {
+		${3}
+	}
 snippet class
 	class ${1:`Filename()`} ${2:extends} {
+		${3}
+	}
 snippet def
 	def ${1:methodName()} {
 		${2}
