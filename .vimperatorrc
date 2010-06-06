@@ -12,7 +12,7 @@ set wildmode=list:full
 set wildoptions=auto
 set complete=sl
 
-set editor=/opt/local/bin/gvim -f
+set editor='/usr/bin//mvim -f'
 
 colorscheme bigchu
 
