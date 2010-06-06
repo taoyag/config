@@ -5,14 +5,22 @@ set guioptions=rbm
 set hlsearch
 set ignorecase
 set incsearch
-set popups=2
-set preload
+set popups=tab
+" set preload
 set showstatuslinks=2
 set wildmode=list:full
 set wildoptions=auto
 set complete=sl
 
-set editor='/usr/bin//mvim -f'
+"set editor='c:/bin/vim/gvim.exe -f'
+"set editor='/usr/bin//mvim -f'
+js<<EOM
+if (liberator.has("Win32")) {
+  liberator.execute("set\ editor=gvim\\ -f");
+} else {
+  liberator.execute("set\ editor=/usr/bin/mvim\\ -f");
+}
+EOM
 
 colorscheme bigchu
 
