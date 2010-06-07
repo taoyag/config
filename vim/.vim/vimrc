@@ -539,6 +539,7 @@ augroup END
 
 " FuzzyFinder3
 set runtimepath+=~/vimplugin/vim-fuzzyfinder
+let g:fuf_autoPreview = 0
 let g:fuf_modesDisable = []
 let g:fuf_abbrevMap = {
             \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
@@ -598,3 +599,5 @@ let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variab
 "zencoding
 set runtimepath+=~/vimplugin/zencoding-vim
 "let g:user_zen_leader_key = '<C-C>'
+"easytags
+"set runtimepath+=~/vimplugin/easytags
