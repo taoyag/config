@@ -469,15 +469,46 @@ runtime! plugin/pukiwiki.vim
 "neocomplcache
 set runtimepath+=~/vimplugin/neocomplcache
 set completeopt=menu
-let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_MinKeywordLength = 2
-let g:NeoComplCache_MinSyntaxLength = 3
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_QuickMatchPatterns = {
+"let g:NeoComplCache_EnableAtStartup = 1
+"let g:NeoComplCache_MinKeywordLength = 2
+"let g:NeoComplCache_MinSyntaxLength = 3
+"let g:NeoComplCache_SmartCase = 1
+"let g:NeoComplCache_EnableCamelCaseCompletion = 1
+"let g:NeoComplCache_QuickMatchPatterns = {
+"            \ 'default' : ';'
+"            \ }
+""let g:NeoComplCache_DictionaryFileTypeLists = {
+"            \ 'default'    : '',
+"            \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
+"            \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+"            \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
+"            \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+"            \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
+"            \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
+"            \ }
+"let g:NeoComplCache_SameFileTypeLists = {
+"            \ 'perl'    : 'man',
+"            \ 'erlang'  : 'man',
+"            \ 'objc'    : 'c',
+"            \ 'tt2html' : 'html,perl'
+"            \}
+""let g:NeoComplCache_KeywordPatterns = {
+"            \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
+"            \ 'erlang' : '\v\h\w*(:\h\w*)*'
+"            \}
+"let g:NeoComplCache_CtagsArgumentsList = {
+"            \ 'scala'   : '--options=~/.tags-scala.conf'
+"            \}
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_min_keyword_length = 2
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_quickmatchpatterns = {
             \ 'default' : ';'
             \ }
-let g:NeoComplCache_DictionaryFileTypeLists = {
+"let g:NeoComplCache_DictionaryFileTypeLists = {
+let g:NeoComplCache_Dictionary_filetype_lists = {
             \ 'default'    : '',
             \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
             \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
@@ -492,7 +523,8 @@ let g:NeoComplCache_SameFileTypeLists = {
             \ 'objc'    : 'c',
             \ 'tt2html' : 'html,perl'
             \}
-let g:NeoComplCache_KeywordPatterns = {
+"let g:NeoComplCache_KeywordPatterns = {
+let g:NeoComplCache_keyword_patterns = {
             \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
             \ 'erlang' : '\v\h\w*(:\h\w*)*'
             \}
