@@ -455,6 +455,10 @@ noremap! <C-d> <Del>
 " close buffler
 nnoremap ,q :bd<CR>
 
+" ウインドウの透過(MacVim)
+nnoremap ,t :set transparency=20<CR>
+nnoremap ,T :set transparency=0<CR>
+
 " Makefile
 "autocmd FileType make setlocal noexpandtab
 
