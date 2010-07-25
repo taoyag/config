@@ -537,10 +537,12 @@ let g:NeoComplCache_CtagsArgumentsList = {
             \}
 
 if has("uni") || has("gui_mac") || has("gui_macvim")
-    let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
+    let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+"    let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let g:NeoComplCache_SnippetsDir = $HOME . '/vimfiles/snippets'
+    let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets'
+"    let g:NeoComplCache_SnippetsDir = $HOME . '/vimfiles/snippets'
 endif
 
 " <C-y>: close popup.
@@ -637,3 +639,18 @@ set runtimepath+=~/vimplugin/zencoding-vim
 "let g:user_zen_leader_key = '<C-C>'
 "easytags
 "set runtimepath+=~/vimplugin/easytags
+
+" template.vim
+set runtimepath+=~/vimplugin/vim-template
+let g:template_files='templates/**'
+
+autocmd User plugin-template-loaded call s:template_keywords()
+function! s:template_keywords()
+    silent! %s/<+FILE NAME+>/\=Filename()/g
+    silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
+
+    if search('<+CURSOR+>')
+        execute 'normal! "_da>'
+    endif
+endfunction
+
