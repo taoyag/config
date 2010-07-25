@@ -1,0 +1,2 @@
+class <+FILE NAME+> {
+}
