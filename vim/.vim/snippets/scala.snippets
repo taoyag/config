@@ -51,8 +51,6 @@ snippet br
 snippet de
 	default:
 		${1}
-snippet ca
-	catch(${1:Exception} ${2:e}) ${3}
 snippet th
 	throw 
 snippet sy
@@ -76,11 +74,7 @@ snippet elif
 snippet wh
 	while (${1}) ${2}
 snippet for
-	for (${1}; ${2}; ${3}) ${4}
-snippet fore
-	for (${1} : ${2}) ${3}
-snippet sw
-	switch (${1}) ${2}
+	for (${1} <- ${2}) ${3}
 snippet cs
 	case ${1}:
 		${2}
@@ -103,4 +97,20 @@ snippet cos
 	static public final String ${1:var} = "${2}";${3}
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
+snippet it
+	it should "${1}" in {
+		${2}
+	}
+snippet try
+	try {
+		${1}
+	} catch {
+		case e: ${2} => ${3}
+	} finally {
+	}
+snippet match
+	match {
+		case ${1} => ${2}
+		case _ => ${3}
+	}
 
