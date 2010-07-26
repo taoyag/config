@@ -633,3 +633,6 @@ set runtimepath+=~/vimplugin/zencoding-vim
 "let g:user_zen_leader_key = '<C-C>'
 "easytags
 "set runtimepath+=~/vimplugin/easytags
+
+"set runtimepath+=~/vimplugin/vim-addon-sbt
+"let SBT_JAR='$HOME/bin'
