@@ -508,6 +508,9 @@ let g:neocomplcache_min_keyword_length = 2
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
+"let g:neocomplcache_omni_patterns = {
+"            \ 'scala' : '\%(\h\w*\|)\)\.''
+"            \ }
 let g:neocomplcache_quickmatchpatterns = {
             \ 'default' : ';'
             \ }
@@ -652,3 +655,5 @@ function! s:template_keywords()
         execute 'normal! "_da>'
     endif
 endfunction
+
+"set runtimepath+=~/vimplugin/codefellow/vim
