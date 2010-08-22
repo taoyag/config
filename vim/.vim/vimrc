@@ -156,9 +156,7 @@ else
         colorscheme desert
     else
         set t_Co=256
-        "        colorscheme wombat
         colorscheme vibrantink
-        "        colorscheme zenburn
         set guitablabel=%M%t
         "        set lines=40
         "        set columns=160
