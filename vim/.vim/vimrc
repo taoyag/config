@@ -655,3 +655,7 @@ function! s:template_keywords()
 endfunction
 
 "set runtimepath+=~/vimplugin/codefellow/vim
+
+set runtimepath+=~/vimplugin/vim-ref
+set runtimepath+=~/vimplugin/vim-quickrun
+set runtimepath+=~/vimplugin/vim-smartchr

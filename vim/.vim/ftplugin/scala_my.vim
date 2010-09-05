@@ -20,3 +20,5 @@ setlocal efm=%E\ %#[error]\ %f:%l:\ %m,%C\ %#[error]\ %p^,%-C%.%#,%Z,
        \%W\ %#[warn]\ %f:%l:\ %m,%C\ %#[warn]\ %p^,%-C%.%#,%Z,
        \%-G%.%#
 
+" smartchr
+inoremap <expr> <buffer> = smartchr#one_of(' = ', ' == ', '=')

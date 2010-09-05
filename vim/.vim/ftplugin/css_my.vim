@@ -4,3 +4,4 @@ setlocal expandtab
 setlocal autoindent
 setlocal smartindent
 
+compiler css

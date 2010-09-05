@@ -2,8 +2,8 @@ case "$OSTYPE" in
 darwin*)
   export LANG=ja_JP.UTF-8
   
-  export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:$PATH
-  #export PATH=/usr/local/hyperestraier/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
+#   export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:$PATH
+  export PATH=/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
   export MANPATH=/opt/local/man:$MANPATH
   export MITSCHEME_LIBRARY_PATH=~/mit-scheme
   export SVN_EDITOR=vi
@@ -59,6 +59,7 @@ darwin*)
   export PATH=$PLAY_HOME:$PATH
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#   alias screen="/usr/bin/screen"
   alias screen="/usr/local/bin/screen"
   alias less="/usr/share/vim/vim72/macros/less.sh"
   alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
