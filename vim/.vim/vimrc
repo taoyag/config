@@ -632,9 +632,6 @@ let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variab
 :map _fa   :rubyf $HOME/vim_tool/tsv/format_record_all.rb<CR>
 :map _r    :rubyf $HOME/vim_tool/tsv/restore_csv.rb<CR>
 
-" vimshell
-"set runtimepath+=~/vimplugin/vimshell
-
 "zencoding
 set runtimepath+=~/vimplugin/zencoding-vim
 "let g:user_zen_leader_key = '<C-C>'
@@ -659,3 +656,5 @@ endfunction
 set runtimepath+=~/vimplugin/vim-ref
 set runtimepath+=~/vimplugin/vim-quickrun
 set runtimepath+=~/vimplugin/vim-smartchr
+set runtimepath+=~/vimplugin/vimshell
+set runtimepath+=~/vimplugin/vimfiler
