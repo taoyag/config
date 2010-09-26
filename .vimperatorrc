@@ -1,3 +1,5 @@
+set titlestring=Firefox
+set verbose=9
 " options
 set activate=quickmark,paste
 " set complete=bshf
@@ -12,8 +14,6 @@ set wildmode=list:full
 set wildoptions=auto
 set complete=sl
 
-"set editor='c:/bin/vim/gvim.exe -f'
-"set editor='/usr/bin//mvim -f'
 js<<EOM
 if (liberator.has("Win32")) {
   liberator.execute("set\ editor=gvim\\ -f");
@@ -38,7 +38,7 @@ map x L
 cmap <C-n> <TAB>
 cmap <C-p> <S-TAB>
 
-" Shift + ↑↓でタブ位置変更
+" Shift + ←→でタブ位置変更
 map <S-Right> :tabmove! +1<CR>
 map <S-Left>  :tabmove! -1<CR>
 
@@ -54,15 +54,9 @@ noremap k 5k
 " 辞書を引く
 map ,d :eijiro<space>
 
-" ブックマーク検索
-map ,b :tabopen chrome://hatebu_incsearch/content/view.html<cr>
-
 qmark g http://www.google.co.jp/
 qmark m http://mail.google.com/
 qmark b http://b.hatena.ne.jp/
-
-" migemo_hint.js
-"set hintmaching=custom
 
 "Show feed-button to statusbar
 "http://d.hatena.ne.jp/teramako/20071205/p1
@@ -76,14 +70,6 @@ qmark b http://b.hatena.ne.jp/
  document.getElementById('status-bar').insertBefore(feedPanel,document.getElementById('security-button'));
 })();
 EOF
-
-" autoIgnoreKey.js
-"let autoignorekey_pages = "['http://www.tumblr.com/*', 'http://www.rememberthemilk.com/home/*']"
-":javascript <<EOM
-"liberator.globalVariables.autoignorekey_pages = uneval([
-"  /^https?:\/\/www\.tumblr\.com\/dashboard\//,
-"]);
-"EOM
 
 " char-hints-mod2.js
 let g:hintsio="iO"

@@ -173,7 +173,7 @@ else
         "        set columns=160
     endif
     if has("gui_mac") || has("gui_macvim")
-        set antialias	
+        set antialias
         set guifont=Monaco:h10
     endif
     if has("gui_macvim")
@@ -212,7 +212,6 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
-
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
@@ -237,7 +236,6 @@ function! s:HighlightExcessColumns(width)
     endif
 endfunction
 
-"colorscheme zenburn
 "行番号を表示する
 set number
 "バックアップファイルを作るディレクトリ
@@ -276,7 +274,7 @@ func! String2Hex(str)
 endfunc
 
 "ステータスラインに文字コードと改行文字を表示する
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
+"set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l,%c%V%8P
 
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
@@ -482,36 +480,6 @@ runtime! plugin/pukiwiki.vim
 "neocomplcache
 set runtimepath+=~/vimplugin/neocomplcache
 set completeopt=menu
-"let g:NeoComplCache_EnableAtStartup = 1
-"let g:NeoComplCache_MinKeywordLength = 2
-"let g:NeoComplCache_MinSyntaxLength = 3
-"let g:NeoComplCache_SmartCase = 1
-"let g:NeoComplCache_EnableCamelCaseCompletion = 1
-"let g:NeoComplCache_QuickMatchPatterns = {
-"            \ 'default' : ';'
-"            \ }
-""let g:NeoComplCache_DictionaryFileTypeLists = {
-"            \ 'default'    : '',
-"            \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
-"            \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-"            \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
-"            \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
-"            \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
-"            \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
-"            \ }
-"let g:NeoComplCache_SameFileTypeLists = {
-"            \ 'perl'    : 'man',
-"            \ 'erlang'  : 'man',
-"            \ 'objc'    : 'c',
-"            \ 'tt2html' : 'html,perl'
-"            \}
-""let g:NeoComplCache_KeywordPatterns = {
-"            \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
-"            \ 'erlang' : '\v\h\w*(:\h\w*)*'
-"            \}
-"let g:NeoComplCache_CtagsArgumentsList = {
-"            \ 'scala'   : '--options=~/.tags-scala.conf'
-"            \}
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_min_keyword_length = 2
 let g:neocomplcache_min_syntax_length = 3
@@ -523,7 +491,6 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_quickmatchpatterns = {
             \ 'default' : ';'
             \ }
-"let g:NeoComplCache_DictionaryFileTypeLists = {
 let g:NeoComplCache_Dictionary_filetype_lists = {
             \ 'default'    : '',
             \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
@@ -539,7 +506,6 @@ let g:NeoComplCache_SameFileTypeLists = {
             \ 'objc'    : 'c',
             \ 'tt2html' : 'html,perl'
             \}
-"let g:NeoComplCache_KeywordPatterns = {
 let g:NeoComplCache_keyword_patterns = {
             \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
             \ 'erlang' : '\v\h\w*(:\h\w*)*'
@@ -550,11 +516,9 @@ let g:NeoComplCache_CtagsArgumentsList = {
 
 if has("uni") || has("gui_mac") || has("gui_macvim")
     let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
-"    let g:NeoComplCache_SnippetsDir = $HOME . '/.vim/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
     let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets'
-"    let g:NeoComplCache_SnippetsDir = $HOME . '/vimfiles/snippets'
 endif
 
 " <C-y>: close popup.
@@ -618,9 +582,6 @@ nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
 
 " taglist.vim
 let g:tlist_scala_settings = 'scala;c:class;t:trait;t:type;d:definition;v:variable'
-
-" sparkup
-"let g:sparkupExecuteMapping='<C-Space>'
 
 " SQL実行
 :map _s    :rubyf $HOME/vim_tool/sql/exec_sql.rb<CR>
