@@ -630,3 +630,4 @@ set runtimepath+=~/vimplugin/vim-quickrun
 set runtimepath+=~/vimplugin/vim-smartchr
 set runtimepath+=~/vimplugin/vimshell
 set runtimepath+=~/vimplugin/vimfiler
+set runtimepath+=~/vimplugin/vim-l9
