@@ -31,9 +31,11 @@ darwin*)
   export PATH=$M2:$PATH
   # oracle client
   export ORACLE_HOME=/Users/Shared/ohome
+  export ORACLE_SID=XE
   export DYLD_LIBRARY_PATH=/usr/local/hyperestraier/lib:$ORACLE_HOME/lib:$DYLD_LIBRARY_PATH
   export PATH=$ORACLE_HOME/bin:$PATH
   export NLS_LANG=japanese_japan.UTF8
+  export SQLPATH=$HOME/sql
   # rubygems
   #export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
   #export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
