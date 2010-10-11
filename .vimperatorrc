@@ -1,3 +1,4 @@
+" ブラウザタイトル
 set titlestring=Firefox
 set verbose=9
 " options
@@ -11,6 +12,7 @@ set popups=tab
 " set preload
 set showstatuslinks=2
 set wildmode=list:full
+" ex modeでインクリメンタル補完
 set wildoptions=auto
 set complete=sl
 
@@ -25,8 +27,11 @@ EOM
 colorscheme bigchu
 
 " key mappings
+noremap ; :
+noremap : ;
+
 " Windows環境のCtrl+cでコピーを殺すのを回避
-map <C-c> Y 
+noremap <C-c> Y 
 
 map h <C-p>
 map l <C-n>
@@ -35,28 +40,33 @@ map s <C-n>
 map zz H
 map x L
 
-cmap <C-n> <TAB>
-cmap <C-p> <S-TAB>
+cnoremap <C-n> <TAB>
+cnoremap <C-p> <S-TAB>
 
 " Shift + ←→でタブ位置変更
-map <S-Right> :tabmove! +1<CR>
-map <S-Left>  :tabmove! -1<CR>
+map <S-Right> ;tabmove! +1<CR>
+map <S-Left>  ;tabmove! -1<CR>
 
 " livedoor reader
-map ,r :o ldr<cr>
+map ,r ;o ldr<cr>
 " livedoor clip
-map ,a :tombloo! Link<cr>
+map ,a ;tombloo! Link<cr>
+" twitter
+map ,t ;t http://www.twitter.com/<cr>
+map ,e ;t http://www.evernote.com/mobile/CreateNote.action?paginatedQuery.page=0&paginatedQuery.queryDefinition=RECENT%3A<cr>
 
 " 多めにスクロールするようにする
 noremap j 5j
 noremap k 5k
 
 " 辞書を引く
-map ,d :eijiro<space>
+map ,d ;eijiro<space>
 
 qmark g http://www.google.co.jp/
 qmark m http://mail.google.com/
 qmark b http://b.hatena.ne.jp/
+qmark t http://www.twitter.com/
+qmark e https://www.evernote.com/Login.action?targetUrl=%2FHome.action/
 
 "Show feed-button to statusbar
 "http://d.hatena.ne.jp/teramako/20071205/p1
@@ -74,5 +84,10 @@ EOF
 " char-hints-mod2.js
 let g:hintsio="iO"
 
+
+" JavaScriptでウィンドウ移動・リサイズ拒否
+set! dom.disable_window_move_resize=true
+
 " 確認
 echo '.vimperatorrc loaded'
+
