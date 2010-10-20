@@ -62,7 +62,8 @@ darwin*)
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #   alias screen="/usr/bin/screen"
-  alias screen="/usr/local/bin/screen"
+  #alias screen="/usr/local/bin/screen"
+  alias screen="/Users/taoyag/bin/screen"
   alias less="/usr/share/vim/vim72/macros/less.sh"
   alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
   alias ls='ls -vG'
@@ -205,3 +206,4 @@ function mvi() {
   fi
 }
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
