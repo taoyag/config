@@ -2,9 +2,9 @@ set ignorecase
 set smartcase
 
 " 保存・終了
-noremap <Space>w :w<C-m>
-noremap <Space>q :q<C-m>
-noremap <Space>Q :q!<C-m>
+noremap <Space>w :w<CR>
+noremap <Space>q :q<CR>
+noremap <Space>Q :q!<CR>
 
 " カーソル移動
 inoremap <C-o> <Esc>o
@@ -14,6 +14,9 @@ inoremap <C-e> <Esc>$a
 inoremap <C-f> <Esc><Right>a
 inoremap <C-b> <Esc>i
 inoremap <C-d> <Esc><Right>xi
+
+noremap ; :
+noremap : ;
 
 ""nnoremap <C-a> 0
 ""nnoremap <C-e> :LineEnd<CR>
