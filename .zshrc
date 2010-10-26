@@ -25,6 +25,8 @@ darwin*)
   # jruby
   #export JRUBY=/usr/local/app/jruby/bin
   #export PATH=$PATH:$JRUBY
+  # scala
+  export PATH=$HOME/local/scala/bin:$PATH
   # maven2
   export M2_HOME=~/java/apache-maven-2.0.9
   export M2=$M2_HOME/bin
