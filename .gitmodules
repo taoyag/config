@@ -1,0 +1,36 @@
+[submodule "vim/.vim-new/bundle/cocoa-vim"]
+	path = vim/.vim-new/bundle/cocoa-vim
+	url = git://github.com/msanders/cocoa.vim.git
+[submodule "vim/.vim-new/bundle/neocomplecache"]
+	path = vim/.vim-new/bundle/neocomplecache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule "vim/.vim-new/bundle/unite.vim"]
+	path = vim/.vim-new/bundle/unite.vim
+	url = git://github.com/Shougo/unite.vim.git
+[submodule "vim/.vim-new/bundle/vimfiler"]
+	path = vim/.vim-new/bundle/vimfiler
+	url = git://github.com/Shougo/vimfiler.git
+[submodule "vim/.vim-new/bundle/vimshell"]
+	path = vim/.vim-new/bundle/vimshell
+	url = git://github.com/Shougo/vimshell.git
+[submodule "vim/.vim-new/bundle/vimproc"]
+	path = vim/.vim-new/bundle/vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule "vim/.vim-new/bundle/vim-quickrun"]
+	path = vim/.vim-new/bundle/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun.git
+[submodule "vim/.vim-new/bundle/vim-ref"]
+	path = vim/.vim-new/bundle/vim-ref
+	url = git://github.com/thinca/vim-ref.git
+[submodule "vim/.vim-new/bundle/codefellow"]
+	path = vim/.vim-new/bundle/codefellow
+	url = git://github.com/romanroe/codefellow.git
+[submodule "vim/.vim-new/bundle/vim-easytags"]
+	path = vim/.vim-new/bundle/vim-easytags
+	url = http://github.com/xolox/vim-easytags.git
+[submodule "vim/.vim-new/bundle/vim-smartchr"]
+	path = vim/.vim-new/bundle/vim-smartchr
+	url = git://github.com/kana/vim-smartchr.git
+[submodule "vim/.vim-new/bundle/unite-tags"]
+	path = vim/.vim-new/bundle/unite-tags
+	url = git://github.com/tsukkee/unite-tags.git

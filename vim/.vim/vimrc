@@ -429,7 +429,11 @@ nnoremap so <C-w>o
 
 vnoremap v $h
 
-nnoremap <space>v :edit $HOME/config/vim/.vim/vimrc<CR>
+if has("gui_win32") || has("gui_win32s")
+    nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
+else
+    nnoremap <space>v :edit $HOME/.vimrc<CR>
+endif
 
 " QuickFix
 "au QuickFixCmdPost vimgrep cw 
@@ -631,3 +635,4 @@ set runtimepath+=~/vimplugin/vim-smartchr
 set runtimepath+=~/vimplugin/vimshell
 set runtimepath+=~/vimplugin/vimfiler
 set runtimepath+=~/vimplugin/vim-l9
+set runtimepath+=~/vimplugin/postmail-vim-plugin
