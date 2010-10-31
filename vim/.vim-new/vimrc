@@ -768,8 +768,10 @@ nmap    f [unite]
 
 nnoremap [unite]u  :<C-u>Unite<Space>
 
-nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files buffer<CR>
+nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
+nnoremap <silent> <C-b>  :<C-u>Unite -buffer-name=files bookmark<CR>
+nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 " nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files -start-insert buffer<CR>
 " nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 
