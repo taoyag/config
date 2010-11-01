@@ -534,9 +534,9 @@ endfunction
 "autocmd FileType make setlocal noexpandtab
 
 " ruby tags
-"autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
+autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
-"autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
+autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
 
 "------------------------------------
 " pathogen
