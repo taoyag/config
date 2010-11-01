@@ -34,3 +34,6 @@
 [submodule "vim/.vim-new/bundle/unite-tags"]
 	path = vim/.vim-new/bundle/unite-tags
 	url = git://github.com/tsukkee/unite-tags.git
+[submodule "vim/.vim-new/bundle/vim-tabrecent"]
+	path = vim/.vim-new/bundle/vim-tabrecent
+	url = git://github.com/thinca/vim-tabrecent.git
