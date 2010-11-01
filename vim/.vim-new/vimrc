@@ -813,3 +813,24 @@ call unite#set_substitute_pattern('files', '^\~', escape($HOME, '\'), -2)
 call unite#set_substitute_pattern('files', '\\\@<! ', '\\ ', -20)
 call unite#set_substitute_pattern('files', '\\ \@!', '/', -30)
 
+
+"------------------------------------
+" tabに関する設定
+"------------------------------------
+nnoremap [TABCMD]  <nop>
+nmap     <leader>t [TABCMD]
+
+nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
+nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
+nnoremap <silent> [TABCMD]n :<c-u>tabnext<cr>
+nnoremap <silent> [TABCMD]N :<c-u>tabNext<cr>
+nnoremap <silent> [TABCMD]p :<c-u>tabprevious<cr>
+nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
+nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
+nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
+nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+
+"------------------------------------
+" tabrecent
+"------------------------------------
+nnoremap <silent> [TABCMD]r :<c-u>TabRecent<cr>
