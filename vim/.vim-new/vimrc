@@ -1,3 +1,11 @@
+"------------------------------------
+" pathogen
+"------------------------------------
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin on
+
 set nocompatible                  " vi互換無し
 set backspace=indent,eol,start    " backspaceで削除できるようにする
 set history=1000
@@ -310,26 +318,6 @@ highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
-
-"""<c-space>でomni補完
-""imap <c-space> <c-x><c-o>
-""" -- tabでオムニ補完
-""function! InsertTabWrapper()
-""    if pumvisible()
-""        return "\<c-n>"
-""    endif
-""    let col = col('.') - 1
-""    if !col || getline('.')[col -1] !~ '\k\|<\|/'
-""        return "\<tab>"
-""    elseif exists('&omnifunc') && &omnifunc == ''
-""        return "\<c-n>"
-""    else
-""        return "\<c-x>\<c-o>"
-""    endif
-""endfunction
-""inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-
 "-------------------------------------------------------------------------------
 " キーマッピング
 "-------------------------------------------------------------------------------
@@ -436,10 +424,9 @@ inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
 inoremap <expr> ,dd strftime('%Y/%m/%d')
 inoremap <expr> ,dt strftime('%H:%M:%S')
 
-" ;でExコマンド入力( ;と:を入れ替)
+" ;でExコマンド入力( ;と:を入替)
 noremap ; :
 noremap : ;
-
 
 "-------------------------------------------------------------------------------
 " 各種プラグインの設定
@@ -530,19 +517,10 @@ function! HatenaSuperPreHighlight()
 endfunction
 
 
-" Makefile
-"autocmd FileType make setlocal noexpandtab
-
 " ruby tags
 autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
 autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
-
-"------------------------------------
-" pathogen
-"------------------------------------
-call pathogen#runtime_append_all_bundles()
-
 
 "------------------------------------
 "neocomplcache
@@ -557,28 +535,38 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
+" AutoComplPop like behavior.
+let g:neocomplcache_enable_auto_select = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-            \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
-""let g:neocomplcache_dictionary_filetype_lists = {
-""            \ 'default' : '',
-""            \ 'vimshell' : $HOME.'/.vimshell_hist',
-""            \ 'scheme' : $HOME.'/.gosh_completions'
-""            \ 'default'    : '',
-""            \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
-""            \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-""            \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
-""            \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
-""            \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
-""            \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
-            ""\ }
+if has("gui_win32") || has("gui_win32s")
+    let g:neocomplcache_dictionary_filetype_lists = {
+                \ 'default'    : '',
+                \ 'vimshell'   : $HOME . '/.vimshell_hist',
+                \ 'scala'      : $HOME . '/vimfiles/bundle/vim-scala/dict/scala.dict',
+                \ 'erlang'     : $HOME . '/vimfiles/dict/erlang.dict',
+                \ 'javascript' : $HOME . '/vimfiles/dict/javascript.dict',
+                \ 'mxml'       : $HOME . '/vimfiles/dict/mxml.dict',
+                \ 'ruby'       : $HOME . '/vimfiles/dict/ruby.dict',
+                \ 'perl'       : $HOME . '/vimfiles/dict/perl.dict',
+                \ 'scheme'     : $HOME . '/vimfiles/dict/gauche.dict'
+                \ }
+else
+    let g:neocomplcache_dictionary_filetype_lists = {
+                \ 'default'    : '',
+                \ 'vimshell'   : $HOME . '/.vimshell_hist',
+                \ 'scala'      : $HOME . '/.vim/bundle/vim-scala/dict/scala.dict',
+                \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
+                \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+                \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
+                \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+                \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
+                \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
+                \ }
+endif
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -609,9 +597,6 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 "inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
 " Shell like behavior(not recommended).
 "set completeopt+=longest
 "let g:neocomplcache_enable_auto_select = 1
@@ -619,12 +604,15 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
 "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" FileType毎のOmni補完を設定
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -633,40 +621,6 @@ endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-""set completeopt=menu
-""let g:neocomplcache_enable_at_startup = 1
-""let g:neocomplcache_min_keyword_length = 2
-""let g:neocomplcache_min_syntax_length = 3
-""let g:neocomplcache_smart_case = 1
-""let g:neocomplcache_enable_camel_case_completion = 1
-"""let g:neocomplcache_omni_patterns = {
-"""            \ 'scala' : '\%(\h\w*\|)\)\.''
-"""            \ }
-""let g:neocomplcache_quickmatchpatterns = {
-""            \ 'default' : ';'
-""            \ }
-""let g:NeoComplCache_Dictionary_filetype_lists = {
-""            \ 'default'    : '',
-""            \ 'erlang'     : $HOME . '/.vim/dict/erlang.dict',
-""            \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
-""            \ 'mxml'       : $HOME . '/.vim/dict/mxml.dict',
-""            \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
-""            \ 'perl'       : $HOME . '/.vim/dict/perl.dict',
-""            \ 'scheme'     : $HOME . '/.vim/dict/gauche.dict'
-""            \ }
-""let g:NeoComplCache_SameFileTypeLists = {
-""            \ 'perl'    : 'man',
-""            \ 'erlang'  : 'man',
-""            \ 'objc'    : 'c',
-""            \ 'tt2html' : 'html,perl'
-""            \}
-""let g:NeoComplCache_keyword_patterns = {
-""            \ 'perl'   : '\v\<\h\w*\>?|\h\w*(::\h\w*)*|[$@%&*]\h\w*|\h\w*%(\s*\(\)?)?',
-""            \ 'erlang' : '\v\h\w*(:\h\w*)*'
-""            \}
-""let g:NeoComplCache_CtagsArgumentsList = {
-""            \ 'scala'   : '--options=~/.tags-scala.conf'
-""            \}
 
 if has("uni") || has("gui_mac") || has("gui_macvim")
     let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
@@ -674,52 +628,6 @@ endif
 if has("gui_win32") || has("gui_win32s")
     let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets'
 endif
-
-""" <C-y>: close popup.
-""inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-y>"
-""" <C-e>: cancel popup.
-"""inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<C-d>"
-""" <C-x><C-f>: filename completion
-""inoremap <expr><C-x><C-f> neocomplcache#manual_filename_complete()
-""
-""imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-""smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-
-"------------------------------------
-" FuzzyFinder3
-"------------------------------------
-" let g:fuf_autoPreview = 0
-" let g:fuf_modesDisable = []
-" let g:fuf_abbrevMap = {
-            " \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
-            " \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
-            " \ }
-" let g:fuf_mrufile_maxItem = 300
-" let g:fuf_mrucmd_maxItem = 400
-" nnoremap <silent> <C-n>      :FufBuffer<CR>
-" nnoremap <silent> <C-p>      :FufFileWithCurrentBufferDir<CR>
-" nnoremap <silent> <C-d><C-p> :FufFileWithFullCwd<CR>
-" nnoremap <silent> <C-d>p     :FufFile<CR>
-" nnoremap <silent> <C-d><C-d> :FufDirWithCurrentBufferDir<CR>
-" nnoremap <silent> <C-d>d     :FufDirWithFullCwd<CR>
-" nnoremap <silent> <C-d>D     :FufDir<CR>
-" nnoremap <silent> <C-j>      :FufMruFile<CR>
-" nnoremap <silent> <C-k>      :FufMruCmd<CR>
-" nnoremap <silent> <C-b>      :FufBookmark<CR>
-" nnoremap <silent> <C-d><C-t> :FufTag<CR>
-" nnoremap <silent> g]         :FufTag!<CR>
-" "noremap  <silent> <C-]>      :FufTagWithCursorWord!<CR>
-" "nnoremap <silent> <C-d><C-f> :FufTaggedFile<CR>
-" "nnoremap <silent> <C-d><C-b> :FufAddBookmark<CR>
-" "vnoremap <silent> <C-d><C-b> :FufAddBookmarkAsSelectedText<CR>
-" "nnoremap <silent> <C-d><C-e> :FufEditInfo<CR>
-" "nnoremap <silent> <C-d><C-r> :FufRenewCache<CR>
-" noremap  <silent> tt       :FufTagWithCursorWord!<CR>
-" nnoremap <silent> tf       :FufTaggedFile<CR>
-" nnoremap <silent> tb       :FufAddBookmark<CR>
-" vnoremap <silent> tb       :FufAddBookmarkAsSelectedText<CR>
-" nnoremap <silent> te       :FufEditInfo<CR>
-" nnoremap <silent> tr       :FufRenewCache<CR>
 
 "------------------------------------
 " template.vim
@@ -831,6 +739,39 @@ nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
 
 "------------------------------------
-" tabrecent
+" tabrecent.vim
 "------------------------------------
 nnoremap <silent> [TABCMD]r :<c-u>TabRecent<cr>
+
+"------------------------------------
+" surround.vim
+"------------------------------------
+nmap s <Plug>Ysurround
+nmap ss <Plug>Yssurround
+
+"------------------------------------
+" grep.vim
+"------------------------------------
+" カーソル下の単語でGrepBuffer
+nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><CR>
+
+"------------------------------------
+" open-browser.vim
+"------------------------------------
+" カーソル下の単語でGrepBuffer
+nmap Fu <Plug>(openbrowser-open)
+vmap Fu <Plug>(openbrowser-open)
+nnoremap fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
+
+" XMLの閉タグを自動挿入
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+"------------------------------------
+" YankRing.vim
+"------------------------------------
+" Yankの履歴参照
+nmap ,y ;YRShow<CR>
+
