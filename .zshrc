@@ -6,7 +6,8 @@ darwin*)
   export PATH=/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
   export MANPATH=/opt/local/man:$MANPATH
   export MITSCHEME_LIBRARY_PATH=~/mit-scheme
-  export SVN_EDITOR=vi
+  export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+  export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
   export TERM=xterm-256color
