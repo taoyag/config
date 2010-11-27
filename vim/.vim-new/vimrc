@@ -473,6 +473,7 @@ let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 "howm専用MRUを基本に使用する
 let QFixHowm_SwapLcommand = 1
 let QFixHowm_MruFileMax = 30
+let QFixHowm_FileType = 'howm_memo.markdown'
 
 "howmタイムスタンプを更新時間として扱う
 let QFixHowm_RecentMode = 2
@@ -842,3 +843,23 @@ autocmd FileType html let b:surround_68  = "<div class=\"section\">\r</div>"
     " endif
 " endfunction
 
+"------------------------------------
+" quickrun.vim
+"------------------------------------
+if !exists('g:quickrun_config')
+    let g:quickrun_config = {'*' : {'split' : 'vertical rightbelow'}}
+    let g:quickrun_config.markdown = {'exec' : ['Markdown.pl --html4tags %s > /tmp/markdown.html', 'open -g /tmp/markdown.html', 'cat /tmp/markdown.html']}
+    " let g:quickrun_config.markdown = {'exec' : ['pandoc -f markdown -t html -o /tmp/markdown.html %s', 'open /tmp/markdown.html', 'cat /tmp/markdown.html']}
+endif
+
+"------------------------------------
+" reading-memo
+"------------------------------------
+nnoremap <Leader>m :call UploadReadingMemo()<CR>
+function! UploadReadingMemo()
+    let name = getline(1)
+
+    QuickRun
+    exec "!google docs delete --folder \"reading-memo\" --title \"" . name . "\""
+    exec "!google docs upload --src /tmp/markdown.html --folder \"reading-memo\" --title \"" . name . "\""
+endfunction
