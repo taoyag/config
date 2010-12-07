@@ -46,3 +46,6 @@
 [submodule "vim/.vim-new/bundle/git-vim"]
 	path = vim/.vim-new/bundle/git-vim
 	url = git://github.com/motemen/git-vim.git
+[submodule "vim/.vim-new/bundle/blogit"]
+	path = vim/.vim-new/bundle/blogit
+	url = http://git.symlink.me/pub/romain/blogit.git

@@ -6,6 +6,11 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin on
 
+"------------------------------------
+" set runtimepath for local scripts
+"------------------------------------
+set runtimepath+=~/vimlocal
+
 set nocompatible                  " vi互換無し
 set backspace=indent,eol,start    " backspaceで削除できるようにする
 set history=1000
@@ -863,3 +868,10 @@ function! UploadReadingMemo()
     exec "!google docs delete --folder \"reading-memo\" --title \"" . name . "\""
     exec "!google docs upload --src /tmp/markdown.html --folder \"reading-memo\" --title \"" . name . "\""
 endfunction
+
+"------------------------------------
+" blogit.vim
+"------------------------------------
+let blogit_unformat='pandoc --from=html --to=markdown --reference-links'
+let blogit_format='pandoc --from=markdown --to=html --no-wrap'
+
