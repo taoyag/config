@@ -49,3 +49,9 @@
 [submodule "vim/.vim-new/bundle/blogit"]
 	path = vim/.vim-new/bundle/blogit
 	url = http://git.symlink.me/pub/romain/blogit.git
+[submodule "vim/.vim-new/bundle/unite-font"]
+	path = vim/.vim-new/bundle/unite-font
+	url = git://github.com/ujihisa/unite-font.git
+[submodule "vim/.vim-new/bundle/unite-colorscheme"]
+	path = vim/.vim-new/bundle/unite-colorscheme
+	url = git://github.com/ujihisa/unite-colorscheme.git
