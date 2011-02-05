@@ -55,3 +55,12 @@
 [submodule "vim/.vim-new/bundle/unite-colorscheme"]
 	path = vim/.vim-new/bundle/unite-colorscheme
 	url = git://github.com/ujihisa/unite-colorscheme.git
+[submodule "vim/.vim-new/bundle/unite-outlie"]
+	path = vim/.vim-new/bundle/unite-outlie
+	url = git://github.com/h1mesuke/unite-outline.git
+[submodule "vim/.vim-new/bundle/unite.qf"]
+	path = vim/.vim-new/bundle/unite.qf
+	url = https://github.com/sgur/unite-qf.git
+[submodule "vim/.vim-new/bundle/unite-script"]
+	path = vim/.vim-new/bundle/unite-script
+	url = https://github.com/hakobe/unite-script.git
