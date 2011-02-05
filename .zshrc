@@ -99,6 +99,12 @@ linux*)
   ;;
 esac
 
+# tscreen
+# if [ -x /usr/bin/tscreen -o ]; then
+    # alias screen="$HOME/bin/screen.sh"
+    # # alias screen="tscreen"
+# fi
+
 # fpath=(~/zsh-function $fpath)
 # autoload -U ~/zsh-function/*(:t)
 
@@ -212,4 +218,5 @@ function mvi() {
   fi
 }
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s $HOME/.rvm/scripts/rvm ]] && . $HOME/.rvm/scripts/rvm
+
