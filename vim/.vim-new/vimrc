@@ -429,6 +429,10 @@ inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
 inoremap <expr> ,dd strftime('%Y/%m/%d')
 inoremap <expr> ,dt strftime('%H:%M:%S')
 
+" パス・ファイル名の挿入
+inoremap ,f <C-R>%
+inoremap ,p <C-R>=expand('%:p')<CR>
+
 " ;でExコマンド入力( ;と:を入替)
 noremap ; :
 noremap : ;
@@ -690,8 +694,20 @@ nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 " nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 
 
+nnoremap <silent> [unite]n  :<C-u>Unite -buffer-name=files buffer<CR>
+nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
 nnoremap <silent> [unite]f  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
+" nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
+command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
+function! s:grep(args)
+    let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
+    execute 'vimgrep' '/' . a:args[0] . '/j ' . target
+    " if len(getqflist()) != 0 | copen | endif
+endfunction
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
@@ -726,7 +742,6 @@ call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
 call unite#set_substitute_pattern('files', '^\~', escape($HOME, '\'), -2)
 call unite#set_substitute_pattern('files', '\\\@<! ', '\\ ', -20)
 call unite#set_substitute_pattern('files', '\\ \@!', '/', -30)
-
 
 "------------------------------------
 " tabに関する設定
@@ -874,4 +889,15 @@ endfunction
 "------------------------------------
 let blogit_unformat='pandoc --from=html --to=markdown --reference-links'
 let blogit_format='pandoc --from=markdown --to=html --no-wrap'
+
+
+"------------------------------------
+" copypath.vim
+"------------------------------------
+" The prefix key.
+nnoremap   [copypath] <Nop>
+nmap     c [copypath]
+
+nnoremap [copypath]p :<C-u>CopyPath<CR>
+nnoremap [copypath]f :<C-u>CopyFileName<CR>
 
