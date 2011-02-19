@@ -1,69 +1,92 @@
 [submodule "vim/.vim-new/bundle/cocoa-vim"]
 	path = vim/.vim-new/bundle/cocoa-vim
 	url = git://github.com/msanders/cocoa.vim.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/neocomplecache"]
 	path = vim/.vim-new/bundle/neocomplecache
 	url = git://github.com/Shougo/neocomplcache.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite.vim"]
 	path = vim/.vim-new/bundle/unite.vim
 	url = git://github.com/Shougo/unite.vim.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vimfiler"]
 	path = vim/.vim-new/bundle/vimfiler
 	url = git://github.com/Shougo/vimfiler.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vimshell"]
 	path = vim/.vim-new/bundle/vimshell
 	url = git://github.com/Shougo/vimshell.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vimproc"]
 	path = vim/.vim-new/bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-quickrun"]
 	path = vim/.vim-new/bundle/vim-quickrun
 	url = git://github.com/thinca/vim-quickrun.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-ref"]
 	path = vim/.vim-new/bundle/vim-ref
 	url = git://github.com/thinca/vim-ref.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/codefellow"]
 	path = vim/.vim-new/bundle/codefellow
 	url = git://github.com/romanroe/codefellow.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-easytags"]
 	path = vim/.vim-new/bundle/vim-easytags
 	url = http://github.com/xolox/vim-easytags.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-smartchr"]
 	path = vim/.vim-new/bundle/vim-smartchr
 	url = git://github.com/kana/vim-smartchr.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-tabrecent"]
 	path = vim/.vim-new/bundle/vim-tabrecent
 	url = git://github.com/thinca/vim-tabrecent.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-surround"]
 	path = vim/.vim-new/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/open-browser"]
 	path = vim/.vim-new/bundle/open-browser
 	url = git://github.com/tyru/open-browser.vim.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/git-vim"]
 	path = vim/.vim-new/bundle/git-vim
 	url = git://github.com/motemen/git-vim.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/blogit"]
 	path = vim/.vim-new/bundle/blogit
 	url = http://git.symlink.me/pub/romain/blogit.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite-font"]
 	path = vim/.vim-new/bundle/unite-font
 	url = git://github.com/ujihisa/unite-font.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite-colorscheme"]
 	path = vim/.vim-new/bundle/unite-colorscheme
 	url = git://github.com/ujihisa/unite-colorscheme.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite-outlie"]
 	path = vim/.vim-new/bundle/unite-outlie
 	url = git://github.com/h1mesuke/unite-outline.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite.qf"]
 	path = vim/.vim-new/bundle/unite.qf
 	url = https://github.com/sgur/unite-qf.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite-script"]
 	path = vim/.vim-new/bundle/unite-script
 	url = https://github.com/hakobe/unite-script.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-unite-svn"]
 	path = vim/.vim-new/bundle/vim-unite-svn
 	url = http://github.com/kmnk/vim-unite-svn.git
+        ignore = untracked
 [submodule "vim/.vim-new/bundle/unite-tag"]
 	path = vim/.vim-new/bundle/unite-tag
 	url = http://github.com/tsukkee/unite-tag.git
+        ignore = untracked
