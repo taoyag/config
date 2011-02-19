@@ -31,9 +31,6 @@
 [submodule "vim/.vim-new/bundle/vim-smartchr"]
 	path = vim/.vim-new/bundle/vim-smartchr
 	url = git://github.com/kana/vim-smartchr.git
-[submodule "vim/.vim-new/bundle/unite-tags"]
-	path = vim/.vim-new/bundle/unite-tags
-	url = git://github.com/tsukkee/unite-tags.git
 [submodule "vim/.vim-new/bundle/vim-tabrecent"]
 	path = vim/.vim-new/bundle/vim-tabrecent
 	url = git://github.com/thinca/vim-tabrecent.git
@@ -64,3 +61,9 @@
 [submodule "vim/.vim-new/bundle/unite-script"]
 	path = vim/.vim-new/bundle/unite-script
 	url = https://github.com/hakobe/unite-script.git
+[submodule "vim/.vim-new/bundle/vim-unite-svn"]
+	path = vim/.vim-new/bundle/vim-unite-svn
+	url = http://github.com/kmnk/vim-unite-svn.git
+[submodule "vim/.vim-new/bundle/unite-tag"]
+	path = vim/.vim-new/bundle/unite-tag
+	url = http://github.com/tsukkee/unite-tag.git
