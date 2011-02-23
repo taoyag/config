@@ -867,7 +867,7 @@ let blogit_format='pandoc --from=markdown --to=html --no-wrap'
 "------------------------------------
 " The prefix key.
 nnoremap   [copypath] <Nop>
-nmap     c [copypath]
+nmap     C [copypath]
 
 nnoremap [copypath]p :<C-u>CopyPath<CR>
 nnoremap [copypath]f :<C-u>CopyFileName<CR>

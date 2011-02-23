@@ -99,6 +99,8 @@ linux*)
   ;;
 esac
 
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
 # tscreen
 # if [ -x /usr/bin/tscreen -o ]; then
     # alias screen="$HOME/bin/screen.sh"
