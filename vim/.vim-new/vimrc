@@ -696,7 +696,8 @@ nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 
 nnoremap <silent> [unite]n  :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
-nnoremap <silent> [unite]f  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]j  :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
