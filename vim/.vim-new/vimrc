@@ -548,7 +548,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 " AutoComplPop like behavior.
 let g:neocomplcache_enable_auto_select = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 2
+let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
@@ -587,8 +587,8 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
 " imap <TAB>     <Plug>(neocomplcache_snippets_expand)
 ""smap <TAB>     <Plug>(neocomplcache_snippets_expand)
-"imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-"smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
@@ -615,14 +615,14 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 " FileType毎のOmni補完を設定
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -656,6 +656,8 @@ endfunction
 " vim-ref
 "------------------------------------
 nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
+
+" let g:ref_jquery_path = $HOME . '/Documents/jqapi-latest/docs'
 
 "------------------------------------
 " NERD_commenter
