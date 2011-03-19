@@ -528,7 +528,7 @@ endfunction
 
 
 " ruby tags
-autocmd FileType ruby,eruby set tags+=~/.tags-ruby,~/.tags-rubygems
+autocmd FileType ruby,eruby setlocal tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
 autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
 
@@ -546,7 +546,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
 " AutoComplPop like behavior.
-let g:neocomplcache_enable_auto_select = 1
+" let g:neocomplcache_enable_auto_select = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -874,4 +874,9 @@ nmap     C [copypath]
 
 nnoremap [copypath]p :<C-u>CopyPath<CR>
 nnoremap [copypath]f :<C-u>CopyFileName<CR>
+
+"------------------------------------
+" vim-easytags
+"------------------------------------
+" let g:easytags_cmd='/opt/local/bin/ctags'
 
