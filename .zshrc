@@ -220,5 +220,17 @@ function mvi() {
   fi
 }
 
+# nvm (for node.js)
+if [[ -f ~/.nvm/nvm.sh ]]; then
+    source ~/.nvm/nvm.sh
+    if which nvm > /dev/null 2>&1 ; then
+        _nodejs_use_version="v0.4.3"
+        if nvm ls | grep "${_nodejs_use_version}" > /dev/null 2>&1 ; then
+            nvm use "${_nodejs_use_version}" > /dev/null 2>&1
+        fi
+        unset _nodejs_use_version
+    fi
+fi
+
 [[ -s $HOME/.rvm/scripts/rvm ]] && . $HOME/.rvm/scripts/rvm
 
