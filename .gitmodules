@@ -34,10 +34,6 @@
 	path = vim/.vim-new/bundle/codefellow
 	url = git://github.com/romanroe/codefellow.git
         ignore = untracked
-[submodule "vim/.vim-new/bundle/vim-easytags"]
-	path = vim/.vim-new/bundle/vim-easytags
-	url = http://github.com/xolox/vim-easytags.git
-        ignore = untracked
 [submodule "vim/.vim-new/bundle/vim-smartchr"]
 	path = vim/.vim-new/bundle/vim-smartchr
 	url = git://github.com/kana/vim-smartchr.git
