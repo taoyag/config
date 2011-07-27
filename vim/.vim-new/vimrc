@@ -2,9 +2,47 @@
 " pathogen
 "------------------------------------
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin on
+
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+
+" github repos
+Bundle "msanders/cocoa.vim"
+Bundle "Shougo/neocomplcache"
+Bundle "Shougo/unite.vim"
+Bundle "Shougo/vimfiler"
+Bundle "Shougo/vimshell"
+Bundle "Shougo/vimproc"
+Bundle "thinca/vim-quickrun"
+Bundle "thinca/vim-ref"
+Bundle "romanroe/codefellow"
+Bundle "kana/vim-smartchr"
+Bundle "thinca/vim-tabrecent"
+Bundle "tpope/vim-surround"
+Bundle "tyru/open-browser.vim"
+Bundle "motemen/git-vim"
+Bundle "ujihisa/unite-font"
+Bundle "ujihisa/unite-colorscheme"
+Bundle "h1mesuke/unite-outline"
+Bundle "sgur/unite-qf"
+Bundle "hakobe/unite-script"
+Bundle "kmnk/vim-unite-svn"
+Bundle "tsukkee/unite-tag"
+
+" vim-scripts repos
+Bundle "rails.vim"
+
+" non github repos
+Bundle "git://git.symlink.me/pub/romain/blogit.git"
+
+filetype plugin indent on
+"------------------------------------
+" pathogen
+"------------------------------------
+" filetype off
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+" filetype plugin on
 
 "------------------------------------
 " set runtimepath for local scripts
