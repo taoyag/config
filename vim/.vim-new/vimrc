@@ -184,7 +184,8 @@ else
     endif
     if has("gui_mac") || has("gui_macvim")
         set antialias
-        set guifont=Monaco:h10
+        set guifont=Ricty:h10
+        " set guifont=Monaco:h10
     endif
     if has("gui_macvim")
         autocmd GUIEnter * winsize 200 120
