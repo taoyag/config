@@ -2,9 +2,14 @@
 " pathogen
 "------------------------------------
 filetype off
-
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+if has("gui_win32") || has("gui_win32s")
+    set rtp+=~/vimfiles/vundle/
+    let $PATH=$PATH . ';c:/Program Files/Git/bin'
+    call vundle#rc("~/vimfiles/bundle/")
+else
+    set rtp+=~/.vim/vundle/
+    call vundle#rc()
+endif
 
 " github repos
 Bundle "msanders/cocoa.vim"
@@ -33,7 +38,7 @@ Bundle "tsukkee/unite-tag"
 Bundle "rails.vim"
 
 " non github repos
-Bundle "git://git.symlink.me/pub/romain/blogit.git"
+Bundle "http://git.symlink.me/pub/romain/blogit.git"
 
 filetype plugin indent on
 "------------------------------------
