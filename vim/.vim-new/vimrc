@@ -38,6 +38,9 @@ Bundle "t9md/vim-textmanip"
 " vim-scripts repos
 Bundle "rails.vim"
 Bundle 'neco-look'
+Bundle 'grep.vim'
+Bundle 'The-NERD-Commenter'
+Bundle 'copypath.vim'
 
 " non github repos
 Bundle "git://git.symlink.me/pub/romain/blogit.git"
