@@ -3,8 +3,13 @@
 "------------------------------------
 filetype off
 
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+if has("win32") || has("win64")
+    set rtp+=~/vimfiles/vundle/
+    call vundle#rc("~/vimfiles/bundle/")
+else
+    set rtp+=~/.vim/vundle/
+    call vundle#rc()
+endif
 
 " github repos
 Bundle "msanders/cocoa.vim"
@@ -28,9 +33,11 @@ Bundle "sgur/unite-qf"
 Bundle "hakobe/unite-script"
 Bundle "kmnk/vim-unite-svn"
 Bundle "tsukkee/unite-tag"
+Bundle "t9md/vim-textmanip"
 
 " vim-scripts repos
 Bundle "rails.vim"
+Bundle 'neco-look'
 
 " non github repos
 Bundle "git://git.symlink.me/pub/romain/blogit.git"
@@ -673,7 +680,7 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
-if has("uni") || has("gui_mac") || has("gui_macvim")
+if has("unix") || has("gui_mac") || has("gui_macvim")
     let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
@@ -920,4 +927,29 @@ nnoremap [copypath]f :<C-u>CopyFileName<CR>
 " vim-easytags
 "------------------------------------
 " let g:easytags_cmd='/opt/local/bin/ctags'
+
+"------------------------------------
+" vim-textmanip 
+"------------------------------------
+" 選択したテキストの移動
+vmap <C-j> <Plug>(Textmanip.move_selection_down)
+vmap <C-k> <Plug>(Textmanip.move_selection_up)
+vmap <C-h> <Plug>(Textmanip.move_selection_left)
+vmap <C-l> <Plug>(Textmanip.move_selection_right)
+
+" 行の複製
+vmap <M-d> <Plug>(Textmanip.duplicate_selection_v)
+nmap <M-d> <Plug>(Textmanip.duplicate_selection_n)
+
+" ディレクトリが無い場合に作成する
+augroup vimrc-auto-mkdir  " {{{
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)  " {{{
+    if !isdirectory(a:dir) && (a:force ||
+    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction  " }}}
+augroup END  " }}}
 
