@@ -427,7 +427,8 @@ nnoremap so <C-w>o
 vnoremap v $h
 
 if has("gui_win32") || has("gui_win32s")
-    nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
+    " nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
+    nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
 else
     nnoremap <space>v :edit $HOME/.vimrc<CR>
 endif
