@@ -2,15 +2,8 @@
 " pathogen
 "------------------------------------
 filetype off
-<<<<<<< HEAD
-if has("gui_win32") || has("gui_win32s")
-    set rtp+=~/vimfiles/vundle/
-    let $PATH=$PATH . ';c:/Program Files/Git/bin'
-=======
-
 if has("win32") || has("win64")
     set rtp+=~/vimfiles/vundle/
->>>>>>> 07945680193891f4d1f3ae6ee9db3ad475a6604d
     call vundle#rc("~/vimfiles/bundle/")
 else
     set rtp+=~/.vim/vundle/
