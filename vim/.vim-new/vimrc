@@ -965,9 +965,3 @@ augroup vimrc-auto-mkdir  " {{{
   endfunction  " }}}
 augroup END  " }}}
 
-" vcscommand.vim
-" msysGit
-if executable($ProgramFiles . '\Git\bin\git.exe')
-    let g:VCSCommandGitExec= $ProgramFiles . '\Git\bin\git.exe'
-endif
-
