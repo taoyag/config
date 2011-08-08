@@ -1,5 +1,5 @@
 "------------------------------------
-" pathogen
+" vundle
 "------------------------------------
 filetype off
 if has("win32") || has("win64")
@@ -48,13 +48,6 @@ Bundle 'vcscommand.vim'
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
 
 filetype plugin indent on
-"------------------------------------
-" pathogen
-"------------------------------------
-" filetype off
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
-" filetype plugin on
 
 "------------------------------------
 " set runtimepath for local scripts
@@ -186,7 +179,7 @@ syntax on
 
 " clipboard
 if has("gui_mac") || has("gui_macvim")
-    nnoremap <silent> <SPACE>y :.w !pbcopy<CR><CR>
+    nnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
@@ -607,7 +600,6 @@ function! HatenaSuperPreHighlight()
     endif
 endfunction
 
-
 " ruby tags
 autocmd FileType ruby,eruby setlocal tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
@@ -668,16 +660,10 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-" imap <TAB>     <Plug>(neocomplcache_snippets_expand)
-""smap <TAB>     <Plug>(neocomplcache_snippets_expand)
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" SuperTab like snippets behavior.
-" imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -689,13 +675,6 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 "inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 " FileType毎のOmni補完を設定
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
@@ -738,16 +717,15 @@ endfunction
 "------------------------------------
 " vim-ref
 "------------------------------------
+<<<<<<< HEAD
 let g:ref_alc_encoding = 'Shift-JIS'
+=======
+nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
+>>>>>>> e950d8c8eec552f67545a89e479b9a36a90e8ca3
 let g:ref_jquery_path = $HOME . '/Documents/jqapi-latest/docs'
 
 nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
-
-"------------------------------------
-" NERD_commenter
-"------------------------------------
-map <Leader>x ,c<SPACE>
 
 "------------------------------------
 " vimfiler.vim
@@ -864,11 +842,12 @@ nmap ss <Plug>Yssurround
 "------------------------------------
 " カーソル下の単語でGrepBuffer
 nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><CR>
+nnoremap gb :<C-u>GrepBuffer<Space><C-r><C-w><CR>
 
 "------------------------------------
 " open-browser.vim
 "------------------------------------
-" カーソル下の単語でGrepBuffer
+" カーソル下の単語でGoogle検索
 nmap Fu <Plug>(openbrowser-open)
 vmap Fu <Plug>(openbrowser-open)
 nnoremap fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
