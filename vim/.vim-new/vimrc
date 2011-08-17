@@ -27,6 +27,7 @@ Bundle "tyru/open-browser.vim"
 Bundle "motemen/git-vim"
 Bundle "ujihisa/unite-font"
 Bundle "ujihisa/unite-colorscheme"
+Bundle "ujihisa/unite-locate"
 Bundle "h1mesuke/unite-outline"
 Bundle "sgur/unite-qf"
 Bundle "hakobe/unite-script"
@@ -761,6 +762,7 @@ nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookm
 nnoremap <silent> [unite]j  :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 " noremap tt :<C-u>Unite tags:<C-r>=expand('<cword>')<CR><CR>
