@@ -6,7 +6,9 @@ autodetach on
 defutf8 on
 bind  kill
 defbce on
+# term screen-256color
 term xterm-256color
+# termcapinfo  screen-256color hs@:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
 termcapinfo  xterm-256color hs@:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
 
 markkeys "h=:l=:$="

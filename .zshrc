@@ -2,7 +2,6 @@ case "$OSTYPE" in
 darwin*)
   export LANG=ja_JP.UTF-8
   
-#   export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:$PATH
   export PATH=/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
   export MANPATH=/opt/local/man:$MANPATH
   export MITSCHEME_LIBRARY_PATH=~/mit-scheme
@@ -11,7 +10,6 @@ darwin*)
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
   export TERM=xterm-256color
-#   export JAVA_HOME=/Library/Java/Home
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -62,7 +60,6 @@ darwin*)
   # play
   export PLAY_HOME=~/java/play-1.1
   export PATH=$PLAY_HOME:$PATH
-
   # cabal
   export PATH=$HOME/.cabal/bin:$PATH
 
@@ -195,7 +192,7 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
-[ ${STY} ] || screen -rx || screen -D -RR
+# [ ${STY} ] || screen -rx || screen -D -RR
 
 # mvn completion
 function listMavenCompletions {
@@ -222,7 +219,7 @@ function mvi() {
 
 # nvm (for node.js)
 if [[ -f ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh
+    source ~/.nvm/nvm.sh > /dev/null 2>&1
     if which nvm > /dev/null 2>&1 ; then
         _nodejs_use_version="v0.4.3"
         if nvm ls | grep "${_nodejs_use_version}" > /dev/null 2>&1 ; then
@@ -234,3 +231,37 @@ fi
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && . $HOME/.rvm/scripts/rvm
 
+
+is_screen_running() {
+    # tscreen also uses this varariable.
+    [ ! -z "$WINDOW" ]
+}
+is_tmux_runnning() {
+    [ ! -z "$TMUX" ]
+}
+is_screen_or_tmux_running() {
+    is_screen_running || is_tmux_runnning
+}
+shell_has_started_interactively() {
+    [ ! -z "$PS1" ]
+}
+resolve_alias() {
+    cmd="$1"
+    while \
+        whence "$cmd" >/dev/null 2>/dev/null \
+        && [ "$(whence "$cmd")" != "$cmd" ]
+    do
+        cmd=$(whence "$cmd")
+    done
+    echo "$cmd"
+}
+
+
+if ! is_screen_or_tmux_running && shell_has_started_interactively; then
+    for cmd in tmux tscreen screen; do
+        if whence $cmd >/dev/null 2>/dev/null; then
+            $(resolve_alias "$cmd")
+            break
+        fi
+    done
+fi
