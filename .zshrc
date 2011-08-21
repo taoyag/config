@@ -123,6 +123,8 @@ setopt numeric_glob_sort
 setopt auto_param_keys
 setopt auto_param_slash
 
+setopt no_nomatch
+
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 
