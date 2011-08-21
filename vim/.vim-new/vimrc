@@ -36,6 +36,7 @@ Bundle "kmnk/vim-unite-svn"
 Bundle "tsukkee/unite-tag"
 Bundle "t9md/vim-textmanip"
 Bundle "soh335/vim-ref-jquery"
+Bundle "kakkyz81/evervim"
 
 " vim-scripts repos
 Bundle "rails.vim"
@@ -968,3 +969,5 @@ augroup vimrc-auto-mkdir  " {{{
   endfunction  " }}}
 augroup END  " }}}
 
+" evervim
+nnoremap ,en :<C-u>EvervimCreateNote<Cr>
