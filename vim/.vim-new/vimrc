@@ -17,10 +17,12 @@ Bundle "Shougo/unite.vim"
 Bundle "Shougo/vimfiler"
 Bundle "Shougo/vimshell"
 Bundle "Shougo/vimproc"
+Bundle "Shougo/unite-help"
 Bundle "thinca/vim-quickrun"
 Bundle "thinca/vim-ref"
 Bundle "thinca/vim-qfreplace"
 Bundle "thinca/vim-tabrecent"
+Bundle "thinca/vim-unite-history"
 Bundle "romanroe/codefellow"
 Bundle "kana/vim-smartchr"
 Bundle "tpope/vim-surround"
@@ -429,6 +431,13 @@ nnoremap so <C-w>o
 
 vnoremap v $h
 
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+
 if has("gui_win32") || has("gui_win32s")
     " nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
     nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
@@ -693,6 +702,15 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
+if !exists('g:neocomplcache_quick_match_patterns')
+  let g:neocomplcache_quick_match_patterns = {}
+endif
+let g:neocomplcache_quick_match_patterns.default = '-'
+let g:neocomplcache_quick_match_table = {
+      \'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+      \'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20, 
+      \}
+
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
@@ -730,15 +748,13 @@ nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 " vimfiler.vim
 "------------------------------------
 let g:vimfiler_as_default_explorer = 1
-" Enable file operation commands.
-"let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_safe_mode_by_default = 1
 
 call vimfiler#set_execute_file('vim', 'vim')
 let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
 let g:vimfiler_external_copy_file_command = 'cp $src $dest'
 let g:vimfiler_external_delete_command = 'rm -r $srcs'
 let g:vimfiler_external_move_command = 'mv $srcs $dest'
-let g:vimfiler_as_default_explorer = 1
 
 
 "------------------------------------
@@ -748,8 +764,6 @@ let g:vimfiler_as_default_explorer = 1
 nnoremap    [unite]   <Nop>
 nmap    f [unite]
 
-nnoremap [unite]u  :<C-u>Unite<Space>
-
 nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
 nnoremap <silent> <C-b>  :<C-u>Unite -buffer-name=files bookmark<CR>
@@ -758,6 +772,10 @@ nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 " nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 
 
+nnoremap [unite]u  :<C-u>Unite<Space>
+nnoremap <silent> [unite];  :<C-u>Unite history/command command<CR>
+nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
 nnoremap <silent> [unite]n  :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
 nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file<CR>
@@ -767,6 +785,11 @@ nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
+nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
+
+nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
+nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
+
 " noremap tt :<C-u>Unite tags:<C-r>=expand('<cword>')<CR><CR>
 " nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
 command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
@@ -981,7 +1004,6 @@ nnoremap ,en :<C-u>EvervimCreateNote<Cr>
 ""let g:vimshell_execute_file_list['py'] = 'python'
 ""call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
 ""
-let g:vimshell_use_ckw = 1
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
@@ -989,6 +1011,7 @@ let g:vimshell_enable_smart_case = 1
 if has('win32') || has('win64')
   " Display user name on Windows.
   let g:vimshell_prompt = $USERNAME."% "
+  let g:vimshell_use_ckw = 1
 else
   " Display user name on Linux.
   let g:vimshell_prompt = $USER."% "
