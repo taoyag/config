@@ -48,6 +48,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'copypath.vim'
 Bundle 'eregex.vim'
 Bundle 'vcscommand.vim'
+Bundle 'remote-PHP-debugger'
 
 " non github repos
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -740,6 +741,7 @@ endfunction
 "------------------------------------
 let g:ref_alc_encoding = 'Shift-JIS'
 let g:ref_jquery_path = $HOME . '/Documents/jqapi-latest/docs'
+let g:ref_phpmanual_path = $HOME . '/Documents/phpmanual'
 
 nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
