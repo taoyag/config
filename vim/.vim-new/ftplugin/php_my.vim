@@ -5,3 +5,7 @@ else
 endif
 
 
+setlocal shiftwidth=4 tabstop=4 expandtab nowrap
+
+setlocal makeprg=php\ -l\ %
+setlocal errorformat=%m\ in\ %f\ on\ line\ %l
