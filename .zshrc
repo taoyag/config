@@ -231,9 +231,6 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
     fi
 fi
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && . $HOME/.rvm/scripts/rvm
-
-
 is_screen_running() {
     # tscreen also uses this varariable.
     [ ! -z "$WINDOW" ]
