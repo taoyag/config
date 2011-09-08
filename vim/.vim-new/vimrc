@@ -49,6 +49,7 @@ Bundle 'copypath.vim'
 Bundle 'eregex.vim'
 Bundle 'vcscommand.vim'
 Bundle 'remote-PHP-debugger'
+Bundle 'YankRing.vim'
 
 " non github repos
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -790,7 +791,7 @@ nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
 
 nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
-nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
+nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
 
 " noremap tt :<C-u>Unite tags:<C-r>=expand('<cword>')<CR><CR>
 " nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
