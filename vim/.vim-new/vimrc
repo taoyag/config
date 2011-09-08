@@ -49,7 +49,6 @@ Bundle 'copypath.vim'
 Bundle 'eregex.vim'
 Bundle 'vcscommand.vim'
 Bundle 'remote-PHP-debugger'
-Bundle 'YankRing.vim'
 
 " non github repos
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
