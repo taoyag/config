@@ -793,9 +793,17 @@ nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]P :<C-u>call <SID>unite_project()<CR>
 
 nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
+
+
+function! s:unite_project(...)
+  let opts = (a:0 ? join(a:000, ' ') : '')
+  let dir = unite#util#path2project_directory(expand('%'))
+  execute 'Unite' opts 'file_rec:' . dir
+endfunction
 
 " noremap tt :<C-u>Unite tags:<C-r>=expand('<cword>')<CR><CR>
 " nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
