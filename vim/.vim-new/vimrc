@@ -39,6 +39,8 @@ Bundle "tsukkee/unite-tag"
 Bundle "t9md/vim-textmanip"
 Bundle "soh335/vim-ref-jquery"
 Bundle "kakkyz81/evervim"
+Bundle "h1mesuke/ref-dicts-en"
+Bundle "mattn/gist-vim"
 
 " vim-scripts repos
 Bundle "rails.vim"
@@ -49,6 +51,7 @@ Bundle 'copypath.vim'
 Bundle 'eregex.vim'
 Bundle 'vcscommand.vim'
 Bundle 'remote-PHP-debugger'
+Bundle 'quickhl.vim'
 
 " non github repos
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -744,6 +747,8 @@ let g:ref_jquery_path = $HOME . '/Documents/jqapi-latest/docs'
 let g:ref_phpmanual_path = $HOME . '/Documents/phpmanual'
 
 nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
+nnoremap <silent> <Space>e :Ref hyperdict <C-r><C-w><C-m><C-w>_
+nnoremap <silent> <Space>s :Ref synonym <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 
 "------------------------------------
@@ -1039,3 +1044,12 @@ endfunction
 autocmd FileType int-* call s:interactive_settings()
 function! s:interactive_settings()
 endfunction
+
+" quickhl.vim
+nmap <Space>m <Plug>(quickhl-toggle)
+xmap <Space>m <Plug>(quickhl-toggle)
+nmap <Space>M <Plug>(quickhl-reset)
+xmap <Space>M <Plug>(quickhl-reset)
+nmap <Space>j <Plug>(quickhl-match)
+xmap <Space>J :QuickhlMatchClear<CR>
+
