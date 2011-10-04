@@ -41,6 +41,7 @@ Bundle "soh335/vim-ref-jquery"
 Bundle "kakkyz81/evervim"
 Bundle "h1mesuke/ref-dicts-en"
 Bundle "mattn/gist-vim"
+Bundle "Lokaltog/vim-easymotion"
 
 " vim-scripts repos
 Bundle "rails.vim"
