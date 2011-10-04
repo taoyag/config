@@ -74,6 +74,13 @@ darwin*)
   alias firefox='open -a Firefox'
   alias prev='open -a Preview'
 
+  if [ ! -S $SSH_AUTH_SOCK ]; then
+      eval `ssh-agent -a $SSH_AUTH_SOCK`
+      echo $SSH_AGENT_PID > /tmp/ssh_agent_pid
+      ssh-add
+  else
+      export SSH_AGENT_PID=`cat /tmp/ssh_agent_pid`
+  fi
   ;;
 linux*)
   export LANG=ja_JP.UTF-8

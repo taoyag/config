@@ -53,6 +53,7 @@ Bundle 'vcscommand.vim'
 Bundle 'remote-PHP-debugger'
 Bundle 'quickhl.vim'
 Bundle 'vim-scala'
+Bundle 'sudo.vim'
 
 " non github repos
 Bundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -237,8 +238,8 @@ else
     endif
     if has("gui_mac") || has("gui_macvim")
         set antialias
-        set guifont=Ricty:h10
-        " set guifont=Monaco:h10
+        " set guifont=Ricty:h10
+        set guifont=Monaco:h10
     endif
     if has("gui_macvim")
         autocmd GUIEnter * winsize 200 120

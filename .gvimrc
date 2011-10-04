@@ -16,7 +16,7 @@ if has('gui_macvim')
   set guioptions-=R
   set guioptions-=l  " 左スクロールバー非表示
   set guioptions-=L
-"        set guifont=Osaka-Mono:h14
+  set guifont=Osaka-Mono:h13
 
   set imdisable    " IMを無効化
   
