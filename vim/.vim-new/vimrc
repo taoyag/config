@@ -552,6 +552,12 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " qfixhowm
 "------------------------------------
+if has("win32") || has("win64")
+    set runtimepath+=~/vimfiles/qfixapp
+else
+    set runtimepath+=~/.vim/qfixapp
+endif
+
 let QfixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/howm'
 let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
