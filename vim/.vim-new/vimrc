@@ -802,8 +802,10 @@ nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
+nnoremap <silent> [unite]a  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]P :<C-u>call <SID>unite_project('-start-insert')<CR>
+noremap [unite]t :<C-u>Unite tag:<C-r>=expand('<cword>')<CR><CR>
 
 nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
@@ -811,15 +813,10 @@ nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
 
 function! s:unite_project(...)
   let opts = (a:0 ? join(a:000, ' ') : '')
-  let dir = unite#util#path2project_directory(expand('%'))
-  if has('win32')
-      let dir = dir[2:]
-  endif
-
+  let dir = escape(unite#util#path2project_directory(expand('%')), ':')
   execute 'Unite' opts 'file_rec:' . dir
 endfunction
 
-" noremap tt :<C-u>Unite tags:<C-r>=expand('<cword>')<CR><CR>
 " nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
 command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
 function! s:grep(args)
@@ -850,7 +847,11 @@ call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 
-call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
+if has('win32') || has('win64')
+    call unite#set_substitute_pattern('files', '^;v', '~/vimfiles/*')
+else
+    call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
+endif
 call unite#set_substitute_pattern('files', '^;r', '\=$VIMRUNTIME."/*"')
 call unite#set_substitute_pattern('files', '^;w', '~/Documents/workspace*')
 if has('win32') || has('win64')
@@ -899,9 +900,10 @@ nnoremap gb :<C-u>GrepBuffer<Space><C-r><C-w><CR>
 "------------------------------------
 " open-browser.vim
 "------------------------------------
-" カーソル下の単語でGoogle検索
+" カーソル下のURLをブラウザで開く
 nmap Fu <Plug>(openbrowser-open)
 vmap Fu <Plug>(openbrowser-open)
+" カーソル下の単語でGoogle検索
 nnoremap fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
 
 " XMLの閉タグを自動挿入
