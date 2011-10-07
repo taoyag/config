@@ -572,9 +572,10 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let $CYGWIN='nodosfilewarning'
-    let mygrepprg = '/cygwin/bin/grep'
-    let MyGrepcmd_useropt = '--exclude-dir=.svn'
+    " let $CYGWIN='nodosfilewarning'
+    " let mygrepprg = '/cygwin/bin/grep'
+    " let MyGrepcmd_useropt = '--exclude-dir=.svn'
+    let mygrepprg = 'c:/bin/UnxUtils/usr/local/wbin/grep'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 
@@ -1069,4 +1070,7 @@ nmap <Space>M <Plug>(quickhl-reset)
 xmap <Space>M <Plug>(quickhl-reset)
 nmap <Space>j <Plug>(quickhl-match)
 xmap <Space>J :QuickhlMatchClear<CR>
+
+" easymotion
+let g:EasyMotion_leader_key = '<Leader>,'
 
