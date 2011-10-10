@@ -23,6 +23,7 @@ Bundle "thinca/vim-ref"
 Bundle "thinca/vim-qfreplace"
 Bundle "thinca/vim-tabrecent"
 Bundle "thinca/vim-unite-history"
+Bundle "thinca/vim-poslist"
 Bundle "romanroe/codefellow"
 Bundle "kana/vim-smartchr"
 Bundle "tpope/vim-surround"
@@ -42,6 +43,8 @@ Bundle "kakkyz81/evervim"
 Bundle "h1mesuke/ref-dicts-en"
 Bundle "mattn/gist-vim"
 Bundle "Lokaltog/vim-easymotion"
+Bundle "mattn/vimtweak"
+Bundle "mattn/transparency-windows-vim"
 
 " vim-scripts repos
 Bundle "rails.vim"
@@ -803,6 +806,8 @@ nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 nnoremap <silent> [unite]a  :<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]/  :<C-u>Unite line<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep -no-quit<CR>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]P :<C-u>call <SID>unite_project('-start-insert')<CR>
 noremap [unite]t :<C-u>Unite tag:<C-r>=expand('<cword>')<CR><CR>
@@ -878,6 +883,7 @@ nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
 nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
 nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+nnoremap <silent> [TABCMD]t :<c-u>Unite -immediately tab:no-current<cr>
 
 "------------------------------------
 " tabrecent.vim
@@ -1080,3 +1086,9 @@ xmap <Space>J :QuickhlMatchClear<CR>
 " easymotion
 let g:EasyMotion_leader_key = '<Leader>,'
 
+" smartchr
+autocmd FileType php inoremap <buffer> <expr> . smartchr#one_of('.', '->')
+
+" vim-poslist
+map <C-o> <Plug>(poslist-prev-pos)
+map <C-i> <Plug>(poslist-next-pos)

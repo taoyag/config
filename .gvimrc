@@ -22,6 +22,13 @@ if has('gui_macvim')
   
   "フルスクリーンモード  
   set fuoptions=maxvert,maxhorz
-    autocmd GUIEnter * set fullscreen 
+    " autocmd GUIEnter * set fullscreen 
 endif
 
+augroup hack234
+  autocmd!
+  if has('mac')
+    autocmd FocusGained * set transparency=10
+    autocmd FocusLost * set transparency=50
+  endif
+augroup END
