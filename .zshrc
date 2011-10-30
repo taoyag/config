@@ -67,7 +67,8 @@ darwin*)
 #   alias screen="/usr/bin/screen"
   #alias screen="/usr/local/bin/screen"
   alias screen="/Users/taoyag/bin/screen"
-  alias less="/usr/share/vim/vim72/macros/less.sh"
+  # alias less="/usr/share/vim/vim72/macros/less.sh"
+  alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
   alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
   alias ls='ls -vG'
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'

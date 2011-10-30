@@ -1,5 +1,5 @@
 " for use Japanese
-set termencoding=japan
+" set termencoding=japan
 set gfw=Osaka-Mono:h10
 colorscheme vibrantink
 
