@@ -3,64 +3,66 @@
 "------------------------------------
 filetype off
 if has("win32") || has("win64")
-    set rtp+=~/vimfiles/vundle/
-    call vundle#rc("~/vimfiles/bundle/")
+    set rtp+=~/vimfiles/neobundle.vim.git/
+    " set rtp+=~/vimfiles/vundle/
+    call neobundle#rc("~/vimfiles/bundle/")
 else
-    set rtp+=~/.vim/vundle/
-    call vundle#rc()
+    set rtp+=~/.vim/neobundle.vim.git/
+    " set rtp+=~/.vim/vundle/
+    call neobundle#rc()
 endif
 
 " github repos
-Bundle "msanders/cocoa.vim"
-Bundle "Shougo/neocomplcache"
-Bundle "Shougo/unite.vim"
-Bundle "Shougo/vimfiler"
-Bundle "Shougo/vimshell"
-Bundle "Shougo/vimproc"
-Bundle "Shougo/unite-help"
-Bundle "thinca/vim-quickrun"
-Bundle "thinca/vim-ref"
-Bundle "thinca/vim-qfreplace"
-Bundle "thinca/vim-tabrecent"
-Bundle "thinca/vim-unite-history"
-Bundle "thinca/vim-poslist"
-Bundle "romanroe/codefellow"
-Bundle "kana/vim-smartchr"
-Bundle "tpope/vim-surround"
-Bundle "tyru/open-browser.vim"
-Bundle "motemen/git-vim"
-Bundle "ujihisa/unite-font"
-Bundle "ujihisa/unite-colorscheme"
-Bundle "ujihisa/unite-locate"
-Bundle "h1mesuke/unite-outline"
-Bundle "sgur/unite-qf"
-Bundle "hakobe/unite-script"
-Bundle "kmnk/vim-unite-svn"
-Bundle "tsukkee/unite-tag"
-Bundle "t9md/vim-textmanip"
-Bundle "soh335/vim-ref-jquery"
-Bundle "kakkyz81/evervim"
-Bundle "h1mesuke/ref-dicts-en"
-Bundle "mattn/gist-vim"
-Bundle "Lokaltog/vim-easymotion"
-Bundle "mattn/vimtweak"
-Bundle "mattn/transparency-windows-vim"
+NeoBundle "msanders/cocoa.vim"
+NeoBundle "Shougo/neocomplcache"
+NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/vimfiler"
+NeoBundle "Shougo/vimshell"
+NeoBundle "Shougo/vimproc"
+NeoBundle "Shougo/unite-help"
+NeoBundle "thinca/vim-quickrun"
+NeoBundle "thinca/vim-ref"
+NeoBundle "thinca/vim-qfreplace"
+NeoBundle "thinca/vim-tabrecent"
+NeoBundle "thinca/vim-unite-history"
+NeoBundle "thinca/vim-poslist"
+NeoBundle "romanroe/codefellow"
+NeoBundle "kana/vim-smartchr"
+NeoBundle "tpope/vim-surround"
+NeoBundle "tyru/open-browser.vim"
+NeoBundle "motemen/git-vim"
+NeoBundle "ujihisa/unite-font"
+NeoBundle "ujihisa/unite-colorscheme"
+NeoBundle "ujihisa/unite-locate"
+NeoBundle "h1mesuke/unite-outline"
+NeoBundle "sgur/unite-qf"
+NeoBundle "hakobe/unite-script"
+NeoBundle "kmnk/vim-unite-svn"
+NeoBundle "tsukkee/unite-tag"
+NeoBundle "t9md/vim-textmanip"
+NeoBundle "soh335/vim-ref-jquery"
+NeoBundle "kakkyz81/evervim"
+NeoBundle "h1mesuke/ref-dicts-en"
+NeoBundle "mattn/gist-vim"
+NeoBundle "Lokaltog/vim-easymotion"
+NeoBundle "mattn/vimtweak"
+NeoBundle "mattn/transparency-windows-vim"
 
 " vim-scripts repos
-Bundle "rails.vim"
-Bundle 'neco-look'
-Bundle 'grep.vim'
-Bundle 'The-NERD-Commenter'
-Bundle 'copypath.vim'
-Bundle 'eregex.vim'
-Bundle 'vcscommand.vim'
-Bundle 'remote-PHP-debugger'
-Bundle 'quickhl.vim'
-Bundle 'vim-scala'
-Bundle 'sudo.vim'
+NeoBundle "rails.vim"
+NeoBundle 'neco-look'
+NeoBundle 'grep.vim'
+NeoBundle 'The-NERD-Commenter'
+NeoBundle 'copypath.vim'
+NeoBundle 'eregex.vim'
+NeoBundle 'vcscommand.vim'
+NeoBundle 'remote-PHP-debugger'
+NeoBundle 'quickhl.vim'
+NeoBundle 'vim-scala'
+NeoBundle 'sudo.vim'
 
 " non github repos
-Bundle "http://git.symlink.me/pub/romain/blogit.git"
+NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
 
 filetype plugin indent on
 
