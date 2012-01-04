@@ -34,6 +34,7 @@ NeoBundle "motemen/git-vim"
 NeoBundle "ujihisa/unite-font"
 NeoBundle "ujihisa/unite-colorscheme"
 NeoBundle "ujihisa/unite-locate"
+NeoBundle "ujihisa/vimshell-ssh"
 NeoBundle "h1mesuke/unite-outline"
 NeoBundle "sgur/unite-qf"
 NeoBundle "hakobe/unite-script"
@@ -1094,3 +1095,4 @@ autocmd FileType php inoremap <buffer> <expr> . smartchr#one_of('.', '->')
 " vim-poslist
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
+
