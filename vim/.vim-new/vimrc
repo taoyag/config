@@ -13,7 +13,7 @@ else
 endif
 
 " github repos
-NeoBundle "msanders/cocoa.vim"
+""NeoBundle "msanders/cocoa.vim"
 NeoBundle "Shougo/neocomplcache"
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/vimfiler"
@@ -26,43 +26,43 @@ NeoBundle "thinca/vim-qfreplace"
 NeoBundle "thinca/vim-tabrecent"
 NeoBundle "thinca/vim-unite-history"
 NeoBundle "thinca/vim-poslist"
-NeoBundle "romanroe/codefellow"
+""NeoBundle "romanroe/codefellow"
 NeoBundle "kana/vim-smartchr"
 NeoBundle "tpope/vim-surround"
 NeoBundle "tyru/open-browser.vim"
 NeoBundle "motemen/git-vim"
-NeoBundle "ujihisa/unite-font"
-NeoBundle "ujihisa/unite-colorscheme"
+"NeoBundle "ujihisa/unite-font"
+"NeoBundle "ujihisa/unite-colorscheme"
 NeoBundle "ujihisa/unite-locate"
 NeoBundle "h1mesuke/unite-outline"
 NeoBundle "sgur/unite-qf"
-NeoBundle "hakobe/unite-script"
-NeoBundle "kmnk/vim-unite-svn"
+""NeoBundle "hakobe/unite-script"
+""NeoBundle "kmnk/vim-unite-svn"
 NeoBundle "tsukkee/unite-tag"
 NeoBundle "t9md/vim-textmanip"
 NeoBundle "soh335/vim-ref-jquery"
 NeoBundle "kakkyz81/evervim"
 NeoBundle "h1mesuke/ref-dicts-en"
 NeoBundle "mattn/gist-vim"
-NeoBundle "Lokaltog/vim-easymotion"
+""NeoBundle "Lokaltog/vim-easymotion"
 NeoBundle "mattn/vimtweak"
-NeoBundle "mattn/transparency-windows-vim"
+"NeoBundle "mattn/transparency-windows-vim"
 
-" vim-scripts repos
-NeoBundle "rails.vim"
-NeoBundle 'neco-look'
+""" vim-scripts repos
+""NeoBundle "rails.vim"
+""NeoBundle 'neco-look'
 NeoBundle 'grep.vim'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'copypath.vim'
-NeoBundle 'eregex.vim'
+""NeoBundle 'eregex.vim'
 NeoBundle 'vcscommand.vim'
-NeoBundle 'remote-PHP-debugger'
-NeoBundle 'quickhl.vim'
-NeoBundle 'vim-scala'
-NeoBundle 'sudo.vim'
-
-" non github repos
-NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
+"""NeoBundle 'remote-PHP-debugger'
+""NeoBundle 'quickhl.vim'
+""NeoBundle 'vim-scala'
+""NeoBundle 'sudo.vim'
+""
+""" non github repos
+""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
 
 filetype plugin indent on
 
@@ -772,7 +772,7 @@ nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 1
 
-call vimfiler#set_execute_file('vim', 'vim')
+"call vimfiler#set_execute_file('vim', 'vim')
 let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
 let g:vimfiler_external_copy_file_command = 'cp $src $dest'
 let g:vimfiler_external_delete_command = 'rm -r $srcs'
@@ -1094,3 +1094,6 @@ autocmd FileType php inoremap <buffer> <expr> . smartchr#one_of('.', '->')
 " vim-poslist
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
+
+" for parallels
+inoremap <C-@> <ESC>
