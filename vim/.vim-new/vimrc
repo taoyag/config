@@ -48,6 +48,7 @@ NeoBundle "mattn/gist-vim"
 ""NeoBundle "Lokaltog/vim-easymotion"
 NeoBundle "mattn/vimtweak"
 "NeoBundle "mattn/transparency-windows-vim"
+NeoBundle "scooloose/syntastic"
 
 """ vim-scripts repos
 ""NeoBundle "rails.vim"
