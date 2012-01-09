@@ -1,0 +1,20 @@
+noremap <Space>w ;w<CR>
+noremap <Space>q ;q<CR>
+noremap <Space>f <C-f>
+noremap <Space>b <C-b>
+
+" ;でExコマンド入力( ;と:を入替)
+noremap ; :
+noremap : ;
+
+" move cursor
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+noremap! <C-d> <Del>
+
+" 0, 9で行頭、行末へ
+nmap 1 0
+nmap 0 ^
+nmap 9 $
