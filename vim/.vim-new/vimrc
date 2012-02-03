@@ -873,6 +873,8 @@ call unite#set_substitute_pattern('files', '^\~', escape($HOME, '\'), -2)
 call unite#set_substitute_pattern('files', '\\\@<! ', '\\ ', -20)
 call unite#set_substitute_pattern('files', '\\ \@!', '/', -30)
 
+call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+
 "------------------------------------
 " tab‚ÉŠÖ‚·‚éÝ’è
 "------------------------------------
