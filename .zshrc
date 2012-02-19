@@ -87,17 +87,17 @@ linux*)
   export LANG=ja_JP.UTF-8
   export PATH=/usr/local/bin/:$PATH
   export SVN_EDITOR=vi
-  export JAVA_HOME=/usr/lib/jvm/java-6-sun
+#  export JAVA_HOME=/usr/lib/jvm/java-6-sun
   export PATH=$HOME/bin:$PATH
   # vim
-  export PATH=/usr/local/vim/bin:$PATH
-  export VIMRUNTIME=/usr/local/vim/share/vim/vim72
+#  export PATH=/usr/local/vim/bin:$PATH
+#  export VIMRUNTIME=/usr/local/vim/share/vim/vim72
   # maven2
-  export M2_HOME=/usr/local/apache-maven
-  export M2=$M2_HOME/bin
-  export PATH=$M2:$PATH
+#  export M2_HOME=/usr/local/apache-maven
+#  export M2=$M2_HOME/bin
+#  export PATH=$M2:$PATH
   # scala
-  export PATH=/usr/local/scala/bin:$PATH
+#  export PATH=/usr/local/scala/bin:$PATH
 
   alias vi='vim'
   alias ls='ls -vG'

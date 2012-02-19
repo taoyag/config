@@ -61,7 +61,7 @@ NeoBundle 'vcscommand.vim'
 """NeoBundle 'remote-PHP-debugger'
 ""NeoBundle 'quickhl.vim'
 ""NeoBundle 'vim-scala'
-""NeoBundle 'sudo.vim'
+NeoBundle 'sudo.vim'
 ""
 """ non github repos
 ""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -291,7 +291,9 @@ set number
 "バックアップファイルを作るディレクトリ
 set backupdir=$HOME/vimbackup
 " migemo
-set migemo
+if has("migemo")
+    set migemo
+endif
 "スワップファイル用のディレクトリ
 set directory=$HOME/vimbackup
 
