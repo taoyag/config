@@ -231,7 +231,7 @@ function mvi() {
 if [[ -f ~/.nvm/nvm.sh ]]; then
     source ~/.nvm/nvm.sh > /dev/null 2>&1
     if which nvm > /dev/null 2>&1 ; then
-        _nodejs_use_version="v0.4.3"
+        _nodejs_use_version="v0.6.11"
         if nvm ls | grep "${_nodejs_use_version}" > /dev/null 2>&1 ; then
             nvm use "${_nodejs_use_version}" > /dev/null 2>&1
         fi
@@ -272,3 +272,5 @@ if ! is_screen_or_tmux_running && shell_has_started_interactively; then
         fi
     done
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
