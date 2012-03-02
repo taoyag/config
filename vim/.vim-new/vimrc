@@ -204,9 +204,13 @@ if has("gui_mac") || has("gui_macvim")
     vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
-endif
-if has("gui_win32") || has("gui_win32s")
+elseif has("gui_win32") || has("gui_win32s")
     set clipboard=unnamed
+else
+    let os=system('uname')
+    if os ==? "linux\n"
+        set clipboard=unnamed
+    endif
 endif
 
 "some stuff to get the mouse going in term
