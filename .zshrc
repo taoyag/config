@@ -63,6 +63,9 @@ darwin*)
   # cabal
   export PATH=$HOME/.cabal/bin:$PATH
 
+  # JsTestDriver
+  export JSTESTDRIVER_HOME=$HOME/bin
+
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #   alias screen="/usr/bin/screen"
   #alias screen="/usr/local/bin/screen"
