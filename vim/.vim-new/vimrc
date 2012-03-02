@@ -50,6 +50,7 @@ NeoBundle "mattn/vimtweak"
 "NeoBundle "mattn/transparency-windows-vim"
 NeoBundle "scooloose/syntastic"
 NeoBundle "fuenor/qfixhowm"
+NeoBundle "kana/vim-fakeclip"
 
 """ vim-scripts repos
 ""NeoBundle "rails.vim"
