@@ -1,6 +1,8 @@
 .vimperator/info
 vim/.vim/tmp
 .DS_Store
+doc/tags
+doc/tags-ja
 tags
 tags-ja
 *log
@@ -10,3 +12,4 @@ vim/.vim/snippets/_.snip
 vim/.vim-new/.netrwhist
 vim/.vim-new/bundle
 vim/.vim-new/vundle/doc/tags
+vim/.vim-new/vundle
