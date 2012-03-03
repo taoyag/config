@@ -82,7 +82,7 @@ darwin*)
       eval `ssh-agent -a $SSH_AUTH_SOCK`
       echo $SSH_AGENT_PID > /tmp/ssh_agent_pid
       ssh-add
-  else
+  elif [ -f /tmp/ssh_agent_pid ]; then
       export SSH_AGENT_PID=`cat /tmp/ssh_agent_pid`
   fi
   ;;
@@ -106,6 +106,8 @@ linux*)
   alias ls='ls -vG'
   ;;
 esac
+
+export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
@@ -275,5 +277,11 @@ if ! is_screen_or_tmux_running && shell_has_started_interactively; then
         fi
     done
 fi
+
+# autojump
+if [ -e $HOME/local/etc/profile.d/autojump.zsh ]; then
+    source $HOME/local/etc/profile.d/autojump.zsh
+fi
+fpath=($fpath $HOME/local/functions(N))
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
