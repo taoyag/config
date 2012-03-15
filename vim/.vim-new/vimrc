@@ -53,6 +53,9 @@ NeoBundle "scooloose/syntastic"
 NeoBundle "fuenor/qfixhowm"
 NeoBundle "kana/vim-fakeclip"
 
+NeoBundle "mattn/webapi-vim"
+NeoBundle "mattn/vdbi-vim"
+
 """ vim-scripts repos
 ""NeoBundle "rails.vim"
 ""NeoBundle 'neco-look'
@@ -589,10 +592,10 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
-    " let $CYGWIN='nodosfilewarning'
-    " let mygrepprg = '/cygwin/bin/grep'
+    let $CYGWIN='nodosfilewarning'
+    let mygrepprg = '/cygwin/bin/grep'
     " let MyGrepcmd_useropt = '--exclude-dir=.svn'
-    let mygrepprg = 'c:/bin/UnxUtils/usr/local/wbin/grep'
+    "let mygrepprg = 'c:/bin/UnxUtils/usr/local/wbin/grep'
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 
@@ -619,6 +622,8 @@ let QFixHowm_QuickMemoFile = hostname().'-00-%Y-%m-00-000000.howm'
 let QFixHowm_UseAutoLinkTags = 1
 "行頭にQFixHowm_Titleがあってもタイトルとして自動整形しない
 let QFixHowm_Autoformat_TitleMode = 0
+" ファイルの強制エンコーディングを行わない
+"let QFixHowm_ForceEncoding = 0
 
 nnoremap <silent> g,. :<C-u>call HatenaSuperPreHighlight()<CR>
 "Hatena super pre highlight
