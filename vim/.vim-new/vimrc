@@ -624,6 +624,8 @@ let QFixHowm_UseAutoLinkTags = 1
 let QFixHowm_Autoformat_TitleMode = 0
 " ファイルの強制エンコーディングを行わない
 "let QFixHowm_ForceEncoding = 0
+let QFixHowm_Title = '#'
+let HowmHtml_ConvertFunc = '<SID>MarkdownStr2HTML'
 
 nnoremap <silent> g,. :<C-u>call HatenaSuperPreHighlight()<CR>
 "Hatena super pre highlight
