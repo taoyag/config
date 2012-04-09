@@ -424,12 +424,12 @@ nmap 1 0
 nmap 0 ^
 nmap 9 $
 
-" F2で前のバッファ
-map <F2> <ESC>;bp<CR>
-" F3で次のバッファ
-map <F3> <ESC>;bn<CR>
-" F4でバッファを削除する
-map <F4> <ESC>;bw<CR>
+""" F2で前のバッファ
+""map <F2> <ESC>;bp<CR>
+""" F3で次のバッファ
+""map <F3> <ESC>;bn<CR>
+""" F4でバッファを削除する
+""map <F4> <ESC>;bw<CR>
 
 "閉じ括弧を自動的に挿入
 inoremap [ []<LEFT>
@@ -573,12 +573,6 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " qfixhowm
 "------------------------------------
-" if has("win32") || has("win64")
-    " set runtimepath+=~/vimfiles/qfixapp
-" else
-    " set runtimepath+=~/.vim/qfixapp
-" endif
-
 let QfixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
 let howm_filename     = '%Y/%m/%d/%Y-%m-%d-%H%M%S.howm'
@@ -795,6 +789,8 @@ let g:vimfiler_external_copy_file_command = 'cp $src $dest'
 let g:vimfiler_external_delete_command = 'rm -r $srcs'
 let g:vimfiler_external_move_command = 'mv $srcs $dest'
 
+" open vimfiler like explorer
+nnoremap <F3> :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle<CR>
 
 "------------------------------------
 " unit.vim
