@@ -2,14 +2,11 @@ case "$OSTYPE" in
 darwin*)
   export LANG=ja_JP.UTF-8
   
-  export PATH=/opt/local/bin:/opt/local/sbin/:/usr/X11/bin:/usr/local/mysql/bin:/usr/local/bin/:$PATH
-  export MANPATH=/opt/local/man:$MANPATH
-  export MITSCHEME_LIBRARY_PATH=~/mit-scheme
+  export PATH=/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
   export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
-  # export TERM=xterm-256color
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -18,12 +15,6 @@ darwin*)
   
   export PATH=$HOME/bin:$PATH
   
-  # git
-#  export PATH=/usr/local/git/bin:$PATH
-#  export MANPATH=/usr/local/git/man:$MANPATH
-  # jruby
-  #export JRUBY=/usr/local/app/jruby/bin
-  #export PATH=$PATH:$JRUBY
   # scala
   export PATH=$HOME/local/scala/bin:$PATH
   # maven2
@@ -37,46 +28,38 @@ darwin*)
   export PATH=$ORACLE_HOME/bin:$PATH
   export NLS_LANG=japanese_japan.UTF8
   export SQLPATH=$HOME/sql
-  # rubygems
-  #export RUBYLIB=/usr/local/app/ruby/lib:/usr/local/app/rubygems/lib
-  #export GEM_HOME=/usr/local/app/ruby/lib/ruby/gems/1.8
-  #export PATH=/usr/local/app/ruby/lib/ruby/gems/1.8/bin:$PATH
-  #export RUBYLIB=/opt/local/lib
-  #export GEM_HOME=/opt/local/lib/ruby/gems/1.8
   # Adobe Flex SDK
-  export FLEX3_HOME=/usr/local/flex_sdk_3
-  export FLEX3=$FLEX3_HOME/bin
-  export PATH=$FLEX3:$PATH
+  # export FLEX3_HOME=/usr/local/flex_sdk_3
+  # export FLEX3=$FLEX3_HOME/bin
+  # export PATH=$FLEX3:$PATH
   # Adobe Air SDK
-  export AIR_HOME=/usr/local/air.5.2
-  export AIR=$AIR_HOME/bin
-  export PATH=$AIR:$PATH
+  # export AIR_HOME=/usr/local/air.5.2
+  # export AIR=$AIR_HOME/bin
+  # export PATH=$AIR:$PATH
   # scaladoc
-  export SCALA_DOC_HOME=~/scala/InteractiveHelp/scala-2.7.5-apidocs-fixed/
+  # export SCALA_DOC_HOME=~/scala/InteractiveHelp/scala-2.7.5-apidocs-fixed/
   # stax
-  export STAX_HOME=/usr/local/stax-sdk-0.3.6
-  export PATH=$STAX_HOME:$PATH
+  # export STAX_HOME=/usr/local/stax-sdk-0.3.6
+  # export PATH=$STAX_HOME:$PATH
 
   # play
-  export PLAY_HOME=~/java/play-1.1
-  export PATH=$PLAY_HOME:$PATH
+  # export PLAY_HOME=~/java/play-1.1
+  # export PATH=$PLAY_HOME:$PATH
   # cabal
-  export PATH=$HOME/.cabal/bin:$PATH
+  # export PATH=$HOME/.cabal/bin:$PATH
 
   # JsTestDriver
   export JSTESTDRIVER_HOME=$HOME/bin
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-#   alias screen="/usr/bin/screen"
-  #alias screen="/usr/local/bin/screen"
-  alias screen="/Users/taoyag/bin/screen"
+  # alias screen="/Users/taoyag/bin/screen"
   # alias less="/usr/share/vim/vim72/macros/less.sh"
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
-  alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
+  # alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
   alias ls='ls -vG'
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
-  alias firefox='open -a Firefox'
-  alias prev='open -a Preview'
+  # alias firefox='open -a Firefox'
+  # alias prev='open -a Preview'
 
   if [ ! -S $SSH_AUTH_SOCK ]; then
       eval `ssh-agent -a $SSH_AUTH_SOCK`
@@ -90,17 +73,7 @@ linux*)
   export LANG=ja_JP.UTF-8
   export PATH=/usr/local/bin/:$PATH
   export SVN_EDITOR=vi
-#  export JAVA_HOME=/usr/lib/jvm/java-6-sun
   export PATH=$HOME/bin:$PATH
-  # vim
-#  export PATH=/usr/local/vim/bin:$PATH
-#  export VIMRUNTIME=/usr/local/vim/share/vim/vim72
-  # maven2
-#  export M2_HOME=/usr/local/apache-maven
-#  export M2=$M2_HOME/bin
-#  export PATH=$M2:$PATH
-  # scala
-#  export PATH=/usr/local/scala/bin:$PATH
 
   alias vi='vim'
   alias ls='ls -vG'
@@ -111,14 +84,6 @@ export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
-# tscreen
-# if [ -x /usr/bin/tscreen -o ]; then
-    # alias screen="$HOME/bin/screen.sh"
-    # # alias screen="tscreen"
-# fi
-
-# fpath=(~/zsh-function $fpath)
-# autoload -U ~/zsh-function/*(:t)
 
 autoload -U compinit
 compinit
