@@ -7,10 +7,11 @@ if has("win32") || has("win64")
     " set rtp+=~/vimfiles/vundle/
     call neobundle#rc("~/vimfiles/bundle/")
 else
-    set rtp+=~/.vim/neobundle.vim.git/
+    set rtp+=~/.vim/neobundle.vim/
     " set rtp+=~/.vim/vundle/
     call neobundle#rc()
 endif
+let g:neobundle_default_git_protocol="https"
 
 " github repos
 ""NeoBundle "msanders/cocoa.vim"

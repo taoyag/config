@@ -143,6 +143,12 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
  
+# cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
 
 # git
 autoload -U colors; colors
@@ -196,6 +202,14 @@ function mvi() {
     fi
   fi
 }
+
+# zaw
+if [[ -f ~/zaw/zaw.zsh ]]; then
+    source ~/zaw/zaw.zsh
+    bindkey '^R' zaw-history
+    zstyle ':filter-select' case-insensitive yes
+    bindkey '^@' zaw-cdr
+fi
 
 # auto-fu.zsh
 if [[ -f ~/.zsh/auto-fu.zsh ]]; then
