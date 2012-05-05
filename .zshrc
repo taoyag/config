@@ -266,6 +266,7 @@ resolve_alias() {
         # fi
     # done
 # fi
+# fi
 if [ $SHLVL = 1 ]; then
     tmux attach || tmux
 fi
