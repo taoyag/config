@@ -1,0 +1,6 @@
+keycode 132 = backslash bar
+keycode 51 = grave asciitilde
+keycode 49 = Escape NoSymbol
+keycode 66 = Control_L
+clear Lock
+add Control = Control_L
