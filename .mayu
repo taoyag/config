@@ -1,0 +1,21 @@
+include "linux109.mayu"
+keymap Global
+
+# CapsLock(英数)をControlに
+mod control += Eisuu
+key *Eisuu = *LeftControl
+
+# Sticky Shift (Semicolon)
+# 変換キーでLockをOnに、無変換キーでLockをOffに
+key Henkan = &Toggle(Lock0 on) Henkan
+key Muhenkan = &Toggle(Lock0 off) Muhenkan
+# Lock0がOnの場合のみセミコロンをShiftとして扱う
+key L0-*IC-Semicolon = &EditNextModifier(M0-S-)
+# 以下は試したけど期待通り動作せず…
+#key *IC-Semicolon = &EditNextModifier(M0-S-)
+#key IL-*IC-Semicolon = &EditNextModifier(M0-S-)
+key M0-S-Semicolon = ~S-Semicolon
+
+key C-M = Return
+key C-H = BackSpace
+
