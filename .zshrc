@@ -2,7 +2,8 @@ case "$OSTYPE" in
 darwin*)
   export LANG=ja_JP.UTF-8
   
-  export PATH=/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
+  export TERM=xterm-256color
+  export PATH=/usr/local/share/python:/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
   export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -212,14 +213,14 @@ if [[ -f ~/zaw/zaw.zsh ]]; then
 fi
 
 # auto-fu.zsh
-if [[ -f ~/.zsh/auto-fu.zsh ]]; then
-    source ~/.zsh/auto-fu.zsh
-    function zle-line-init() {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete
-fi
+# if [[ -f ~/.zsh/auto-fu.zsh ]]; then
+    # source ~/.zsh/auto-fu.zsh
+    # function zle-line-init() {
+        # auto-fu-init
+    # }
+    # zle -N zle-line-init
+    # zstyle ':completion:*' completer _oldlist _complete
+# fi
 
 # nvm (for node.js)
 if [[ -f ~/.nvm/nvm.sh ]]; then

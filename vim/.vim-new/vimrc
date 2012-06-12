@@ -204,6 +204,14 @@ filetype indent on
 "turn on syntax highlighting
 syntax on
 
+" python
+if has("mac")
+    let $PYTHON_DLL = "/usr/local/Cellar/python/2.6.5/lib/libpython2.6.dylib"
+endif
+
+" SKK
+inoremap <silent> <C-j> <C-^>
+
 " clipboard
 if has("gui_mac") || has("gui_macvim")
     nnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
