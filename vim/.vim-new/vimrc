@@ -803,7 +803,7 @@ nnoremap    [unite]   <Nop>
 nmap    f [unite]
 
 nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files buffer_tab<CR>
-nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
+nnoremap <silent> <C-p>  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru file/new<CR>
 nnoremap <silent> <C-b>  :<C-u>Unite -buffer-name=files bookmark<CR>
 nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 " nnoremap <silent> <C-n>  :<C-u>Unite -buffer-name=files -start-insert buffer<CR>
@@ -815,8 +815,8 @@ nnoremap <silent> [unite];  :<C-u>Unite history/command command<CR>
 nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
 nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
 nnoremap <silent> [unite]n  :<C-u>Unite -buffer-name=files buffer_tab<CR>
-nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru file/new<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file file/new<CR>
 nnoremap <silent> [unite]j  :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
@@ -827,7 +827,7 @@ nnoremap <silent> [unite]a  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]/  :<C-u>Unite line<CR>
 nnoremap <silent> [unite]g  :<C-u>Unite grep -no-quit<CR>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
-nnoremap <silent> [unite]P :<C-u>call <SID>unite_project('-start-insert')<CR>
+nnoremap <silent> [unite]P :<C-u>call <SID>unite_project('-start-insert', 'file/new')<CR>
 noremap [unite]t :<C-u>Unite tag:<C-r>=expand('<cword>')<CR><CR>
 
 nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
