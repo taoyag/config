@@ -73,6 +73,7 @@ darwin*)
 linux*)
   export LANG=ja_JP.UTF-8
   export PATH=/usr/local/bin/:$PATH
+  export PATH=/usr/local/firefox/:$PATH
   export SVN_EDITOR=vi
   export PATH=$HOME/bin:$PATH
 
