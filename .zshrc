@@ -269,7 +269,7 @@ resolve_alias() {
     # done
 # fi
 if [ $SHLVL = 1 ]; then
-    tmux attach || ssh-agent tmux
+    tmux attach || tmux
 fi
 
 # autojump
