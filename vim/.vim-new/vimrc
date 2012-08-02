@@ -786,12 +786,36 @@ endfunction
 "------------------------------------
 " vim-ref
 "------------------------------------
+let g:ref_source_webdict_sites = {
+            \    'je': {
+            \        'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+            \    },
+            \    'ej': {
+            \        'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+            \    },
+            \    'wiki': {
+            \        'url': 'http://ja.wikipedia.org/wiki/%s',
+            \    },
+            \}
+let g:ref_source_webdict_sites.default = 'ej'
+
+function! g:ref_source_webdict_sites.je.filter(output)
+    return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.ej.filter(output)
+    return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.wiki.filter(output)
+    return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+
 let g:ref_alc_encoding = 'Shift-JIS'
 let g:ref_jquery_path = $HOME . '/Documents/jqapi-latest/docs'
 let g:ref_phpmanual_path = $HOME . '/Documents/phpmanual'
 
-nnoremap <silent> <Space>a :Ref alc <C-r><C-w><C-m><C-w>_
-nnoremap <silent> <Space>e :Ref hyperdict <C-r><C-w><C-m><C-w>_
+nnoremap <silent> <Space>je :Ref webdict je <C-r><C-w><C-m><C-w>_
+nnoremap <silent> <Space>ej :Ref webdict ej <C-r><C-w><C-m><C-w>_
+nnoremap <silent> <Space>ee :Ref hyperdict <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>s :Ref synonym <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 
