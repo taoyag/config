@@ -475,8 +475,8 @@ cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
 if has("gui_win32") || has("gui_win32s")
-    " nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
-    nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
+    nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
+    " nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
 else
     nnoremap <space>v :edit $HOME/.vimrc<CR>
 endif
@@ -595,6 +595,8 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
+    " let mygrepprg = '/PortableGit-1.7.10-preview20120409/bin/grep'
+    " let mygrepprg = '/mingw/msys/1.0//bin/grep'
     let $CYGWIN='nodosfilewarning'
     let mygrepprg = '/cygwin/bin/grep'
     " let MyGrepcmd_useropt = '--exclude-dir=.svn'
@@ -656,7 +658,12 @@ endfunction
 " ruby tags
 autocmd FileType ruby,eruby setlocal tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
-autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
+
+if has("gui_win32") || has("gui_win32s")
+    autocmd FileType ruby,eruby setlocal dictionary=~/vimfiles/dict/ruby_snippets.dict
+else
+    autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
+endif
 
 "------------------------------------
 "neocomplcache
@@ -757,10 +764,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 if has("unix") || has("gui_mac") || has("gui_macvim")
-    let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+    let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets,' . $HOME . '/.vimlocal/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets'
+    let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets,' . $HOME . '/vimlocal/snippets'
 endif
 
 "------------------------------------
@@ -792,7 +799,7 @@ nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 " vimfiler.vim
 "------------------------------------
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 1
+let g:vimfiler_safe_mode_by_default = 0
 
 "call vimfiler#set_execute_file('vim', 'vim')
 let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
@@ -800,8 +807,9 @@ let g:vimfiler_external_copy_file_command = 'cp $src $dest'
 let g:vimfiler_external_delete_command = 'rm -r $srcs'
 let g:vimfiler_external_move_command = 'mv $srcs $dest'
 
+nnoremap <silent> <F2> :<C-u>VimFilerBufferDir -quit<CR>
 " open vimfiler like explorer
-nnoremap <F3> :<C-u>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle<CR>
+nnoremap <silent> <F3> :<C-u>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -no-quit<CR>
 
 "------------------------------------
 " unit.vim
@@ -868,6 +876,7 @@ function! s:unite_my_settings()"{{{
 endfunction"}}}
 
 let g:unite_source_file_mru_limit = 200
+let g:unite_source_file_mru_filename_format = ''
 
 call unite#set_substitute_pattern('files', '\$\w\+', '\=eval(submatch(0))', 200)
 
@@ -950,7 +959,7 @@ augroup END
 " YankRing.vim
 "------------------------------------
 " YankÇÃóöóéQè∆
-nmap ,y ;YRShow<CR>
+" nmap ,y ;YRShow<CR>
 
 "for surround.vim
 " [key map]
