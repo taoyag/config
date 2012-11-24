@@ -77,6 +77,9 @@ linux*)
   export SVN_EDITOR=vi
   export PATH=$HOME/bin:$PATH
 
+  # JsTestDriver
+  export JSTESTDRIVER_HOME=$HOME/bin
+
   alias vi='vim'
   alias ls='ls -vG'
   ;;
