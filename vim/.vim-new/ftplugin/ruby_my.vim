@@ -10,3 +10,4 @@ nmap <silent> <buffer> ,t :!(cd %:p:h;ctags -R *.rb)&<CR>
 " smartchr
 inoremap <expr> <buffer> { smartchr#loop('{', '#{', '{{{')
 inoremap <expr> <buffer> = smartchr#one_of(' = ', ' == ', '=')
+

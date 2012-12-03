@@ -1,36 +1,23 @@
-" for use Japanese
-" set termencoding=japan
-""""set gfw=Osaka-Mono:h10
 colorscheme vibrantink
-""""
+"colorscheme zenburn
+"“ü—Íƒ‚[ƒhAƒXƒe[ƒ^ƒXƒ‰ƒCƒ“‚ÌƒJƒ‰[‚ğ•ÏX
+augroup InsertHook
+autocmd!
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+augroup END
+
+if has("gui_win32")
+    set guifont=Consolas:h10:cSHIFTJIS
+    set printfont=M+2VM+IPAG_circle:h10:cSHIFTJIS
+    " winsize‚Ì‘O‚É‰¡•‚ğw’è‚µ‚È‚¢‚ÆƒJ[ƒ\ƒ‹‚ªo‚È‚¢
+    set columns=170
+    autocmd GUIEnter * winpos 180 100
+    autocmd GUIEnter * winsize 170 48
+endif
+
 highlight Pmenu guibg=#666666
 highlight PmenuSel guibg=#006800
 highlight PmenuSbar guibg=#001800
 highlight PmenuThumb guifg=#006000
 
-if has('gui_macvim')
-  set transparency=10  " é€æ˜åº¦ã‚’æŒ‡å®š
-  set antialias
-  set guioptions-=t  " ãƒ„ãƒ¼ãƒ«ãƒãƒ¼éè¡¨ç¤º
-  set guioptions-=r  " å³ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼éè¡¨ç¤º
-  set guioptions-=R
-  set guioptions-=l  " å·¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼éè¡¨ç¤º
-  set guioptions-=L
-  set guifont=Osaka-Mono:h13
-
-  set imdisable    " IMã‚’ç„¡åŠ¹åŒ–
-  
-  "ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒ¢ãƒ¼ãƒ‰  
-  set fuoptions=maxvert,maxhorz
-    " autocmd GUIEnter * set fullscreen 
-else
-    set guifont=Consolas:h10
-endif
-
-augroup hack234
-  autocmd!
-  if has('mac')
-    autocmd FocusGained * set transparency=10
-    autocmd FocusLost * set transparency=50
-  endif
-augroup END

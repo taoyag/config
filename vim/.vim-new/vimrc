@@ -11,12 +11,15 @@ else
     " set rtp+=~/.vim/vundle/
     call neobundle#rc()
 endif
-let g:neobundle_default_git_protocol="https"
+let g:neobundle#types#git#default_protocol="http"
+" let g:neobundle_default_git_protocol="https"
 
 " github repos
 ""NeoBundle "msanders/cocoa.vim"
-NeoBundle "Shougo/neocomplcache"
-NeoBundle "Shougo/neocomplcache-snippets-complete"
+NeoBundle "Shougo/neocomplcache.git"
+NeoBundle "Shougo/neosnippet.git"
+NeoBundle "Shougo/neosnippet.git"
+NeoBundle "honza/snipmate-snippets.git"
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/vimfiler"
 NeoBundle "Shougo/vimshell"
@@ -40,17 +43,17 @@ NeoBundle "ujihisa/vimshell-ssh"
 NeoBundle "h1mesuke/unite-outline"
 NeoBundle "sgur/unite-qf"
 ""NeoBundle "hakobe/unite-script"
-""NeoBundle "kmnk/vim-unite-svn"
+NeoBundle "kmnk/vim-unite-svn"
 NeoBundle "tsukkee/unite-tag"
 NeoBundle "t9md/vim-textmanip"
 NeoBundle "soh335/vim-ref-jquery"
-NeoBundle "kakkyz81/evervim"
+" NeoBundle "kakkyz81/evervim"
 NeoBundle "h1mesuke/ref-dicts-en"
 NeoBundle "mattn/gist-vim"
 ""NeoBundle "Lokaltog/vim-easymotion"
 NeoBundle "mattn/vimtweak"
 "NeoBundle "mattn/transparency-windows-vim"
-NeoBundle "scooloose/syntastic"
+NeoBundle "scrooloose/syntastic"
 NeoBundle "fuenor/qfixhowm"
 NeoBundle "kana/vim-fakeclip"
 
@@ -58,7 +61,7 @@ NeoBundle "mattn/webapi-vim"
 NeoBundle "mattn/vdbi-vim"
 
 """ vim-scripts repos
-""NeoBundle "rails.vim"
+NeoBundle "rails.vim"
 ""NeoBundle 'neco-look'
 NeoBundle 'grep.vim'
 NeoBundle 'The-NERD-Commenter'
@@ -69,6 +72,15 @@ NeoBundle 'vcscommand.vim'
 ""NeoBundle 'quickhl.vim'
 ""NeoBundle 'vim-scala'
 NeoBundle 'sudo.vim'
+
+" for Ruby development
+NeoBundle 'tpope/vim-endwise.git'
+NeoBundle 'taichouchou2/vim-rsense'
+NeoBundle 'taichouchou2/vim-ref-ri'
+NeoBundle 'taq/vim-rspec'
+NeoBundle 'tpope/vim-cucumber.git'
+
+
 ""
 """ non github repos
 ""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
@@ -408,6 +420,16 @@ highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
+if has('gui_win32') || has('gui_win32s')
+    let $PATH="c:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\bin;".$PATH
+    let $RUBY_DLL="C:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\lib\\libmsvcrt-ruby191.dll.a"
+endif
+if has('kaoriya')
+  let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
+  if filereadable(s:ruby_libruby)
+    let $RUBY_DLL = s:ruby_libruby
+  endif
+endif
 "-------------------------------------------------------------------------------
 " キーマッピング
 "-------------------------------------------------------------------------------
@@ -720,14 +742,20 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+" imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+" smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -764,10 +792,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 if has("unix") || has("gui_mac") || has("gui_macvim")
-    let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets,' . $HOME . '/.vimlocal/snippets'
+    let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets,' . $HOME . '~/.vim/bundle/snipmate-snippets/snippets,' . $HOME . '/.vimlocal/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let g:neocomplcache_snippets_dir = $HOME . '/vimfiles/snippets,' . $HOME . '/vimlocal/snippets'
+    let g:neosnippet#snippets_directory = $HOME . '/vimfiles/snippets,' . $HOME . '~/vimfiles/bundle/snipmate-snippets/snippets,' . $HOME . '/vimlocal/snippets'
 endif
 
 "------------------------------------
@@ -833,10 +861,10 @@ let g:vimfiler_external_move_command = 'mv $srcs $dest'
 
 nnoremap <silent> <F2> :<C-u>VimFilerBufferDir -quit<CR>
 " open vimfiler like explorer
-nnoremap <silent> <F3> :<C-u>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <F3> :<C-u>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -no-quit -toggle<CR>
 
 "------------------------------------
-" unit.vim
+" unite.vim
 "------------------------------------
 " The prefix key.
 nnoremap    [unite]   <Nop>
@@ -929,6 +957,10 @@ call unite#set_substitute_pattern('files', '\\ \@!', '/', -30)
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
+call unite#custom_filters('line', ['matcher_migemo', 'sorter_default', 'converter_default'])
+" call unite#custom_filters('file,file/new,buffer,file_rec',
+                " \ ['matcher_migemo', 'sorter_default', 'converter_default'])
+		" " \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 "------------------------------------
 " tabに関する設定
 "------------------------------------
@@ -1156,3 +1188,55 @@ map <C-i> <Plug>(poslist-next-pos)
 
 " for parallels
 inoremap <C-@> <ESC>
+
+" template
+if has("win32") || has("win64")
+    autocmd BufNewFile *.rb 0r ~/vimfiles/templates/rb.tpl
+    autocmd BufNewFile *.feature 0r ~/vimfiles/templates/feature.tpl
+else
+    autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
+    autocmd BufNewFile *.feature 0r ~/.vim/templates/feature.tpl
+end
+
+" rcodetools.vim
+" plain annotations
+map <silent> <F10> !xmpfilter -a<cr>
+nmap <silent> <F10> V<F10>
+imap <silent> <F10> <ESC><F10>a
+
+" Test::Unit assertions; use -s to generate RSpec expectations instead
+map <silent> <S-F10> !xmpfilter -s<cr>
+nmap <silent> <S-F10> V<S-F10>
+imap <silent> <S-F10> <ESC><S-F10>a
+
+" Annotate the full buffer
+" I actually prefer ggVG to %; it's a sort of poor man's visual bell 
+nmap <silent> <F11> mzggVG!xmpfilter -a<cr>'z
+imap <silent> <F11> <ESC><F11>
+
+" assertions
+nmap <silent> <S-F11> mzggVG!xmpfilter -u<cr>'z
+imap <silent> <S-F11> <ESC><S-F11>a
+
+" Add # => markers
+vmap <silent> <F12> !xmpfilter -m<cr>
+nmap <silent> <F12> V<F12>
+imap <silent> <F12> <ESC><F12>a
+
+" Remove # => markers
+vmap <silent> <S-F12> ms:call RemoveRubyEval()<CR>
+nmap <silent> <S-F12> V<S-F12>
+imap <silent> <S-F12> <ESC><S-F12>a
+
+
+function! RemoveRubyEval() range
+  let begv = a:firstline
+  let endv = a:lastline
+  normal Hmt
+  set lz
+  execute ":" . begv . "," . endv . 's/\s*# \(=>\|!!\).*$//e'
+  normal 'tzt`s
+  set nolz
+  redraw
+endfunction
+
