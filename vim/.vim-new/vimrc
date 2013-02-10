@@ -422,6 +422,9 @@ highlight PMenuSbar ctermbg=4
 if has('gui_win32') || has('gui_win32s')
     let $PATH="c:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\bin;".$PATH
     let $RUBY_DLL="C:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\lib\\libmsvcrt-ruby191.dll.a"
+    let $PATH="c:\\strawberry\\perl\\bin;".$PATH
+    let $PATH="c:\\strawberry\\perl\\site\\bin;".$PATH
+    let $PATH="c:\\strawberry\\perl\\site\\lib\\auto\\DBD\\mysql;".$PATH
 endif
 if has('kaoriya')
   let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
@@ -1238,4 +1241,3 @@ function! RemoveRubyEval() range
   set nolz
   redraw
 endfunction
-
