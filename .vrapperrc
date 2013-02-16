@@ -1,44 +1,70 @@
+set smartindent
+set autoindent
 set ignorecase
 set smartcase
+set saney
+set clipboard=unnamed
+
+" insert modeを抜けるとIME OFF
+set imd
 
 " 保存・終了
 noremap <Space>w :w<CR>
 noremap <Space>q :q<CR>
 noremap <Space>Q :q!<CR>
 
-" カーソル移動
+" カーソル移動等
 inoremap <C-o> <Esc>o
 inoremap <C-h> <BS>
 inoremap <C-a> <Esc>0i
 inoremap <C-e> <Esc>$a
 inoremap <C-f> <Esc><Right>a
 inoremap <C-b> <Esc>i
+inoremap <C-n> <Esc>ja
+inoremap <C-p> <Esc>ka
+
 inoremap <C-d> <Esc><Right>xi
+inoremap <C-k> <Esc><Right>v$xi
+
 
 noremap ; :
 noremap : ;
 
-""nnoremap <C-a> 0
-""nnoremap <C-e> :LineEnd<CR>
-""nnoremap <C-f> <Right>
-""nnoremap <C-b> <Left>
-""nnoremap <C-u> 20<Up>
-""nnoremap <C-d> 20<Down>
-""inoremap <C-a> <C-[>0i
-""inoremap <C-e> <C-[>$a
-""inoremap <C-f> <C-[>la
-""inoremap <C-b> <C-[>hi
-
-" insert modeで単語単位/行単位の削除をアンドゥ可能にする
-""inoremap <C-u> <C-g>u<C-u>
-""inoremap <C-w> <C-g>u<C-w>
+noremap <C-t> <C-o>
 
 " 移動
 noremap <Space>f <C-f>
 noremap <Space>b <C-b>
 
+" タブ移動
+"noremap <S-l> :bn<CR>
+"noremap <S-h> :bp<CR>
+
 " 行選択
-""noremap vv v$
+noremap vv v$
+
+" コメントアウト
+nnoremap ,x<Space> :ToggleComment<CR>
+" 呼出階層を開く
+nnoremap ,xc :OpenCallHierarchy<CR>
+
+" 選択範囲をフォーマット
+vnoremap = :Format<CR>
+
+" ワーキングセットから参照を検索
+nnoremap ,xs :SearchReferencesInWorkingSet<C-m>
+
+
+"definition ID of the source -> toggle comment action
+eclipseaction ToggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment
+"definition ID of the source -> format action
+eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
+"definition ID of the navigate -> open call hierarchy action
+eclipseaction OpenCallHierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
+"definition ID of the search -> references in working set action
+eclipseaction SearchReferencesInWorkingSet org.eclipse.jdt.ui.edit.text.java.search.references.in.working.set
+
+
 
 """次/前のメンバ(フィールド,メソッド)
 ""nnoremap mn :GoNextMember<C-m>
@@ -131,9 +157,6 @@ noremap <Space>b <C-b>
 """definition id of the collapse members action
 ""eclipseaction FoldingCollapseMembers "org.eclipse.jdt.ui.edit.text.java.folding.collapseMembers
 ""
-"""definition ID of the source -> format action
-""eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
-""
 """definition ID of the source ->generate constructor using fields action
 ""eclipseaction GenerateConstructorUsingFields org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields
 ""
@@ -179,8 +202,6 @@ noremap <Space>b <C-b>
 """definition ID of the refactor -> move inner type to top level action
 ""eclipseaction MoveInnerToTop org.eclipse.jdt.ui.edit.text.java.move.inner.to.top.level
 ""
-"""definition ID of the navigate -> open call hierarchy action
-""eclipseaction OpenCallHierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
 ""
 """definition ID of the navigate -> open action
 ""eclipseaction OpenEditor org.eclipse.jdt.ui.edit.text.java.open.editor
@@ -287,8 +308,6 @@ noremap <Space>b <C-b>
 """definition ID of the search -> references in project action
 ""eclipseaction SearchReferencesInProject org.eclipse.jdt.ui.edit.text.java.search.references.in.project
 ""
-"""definition ID of the search -> references in working set action
-""eclipseaction SearchReferencesInWorkingSet org.eclipse.jdt.ui.edit.text.java.search.references.in.working.set
 ""
 """definition ID of the search -> references in workspace action
 ""eclipseaction SearchReferencesInWorkspace org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
@@ -341,8 +360,6 @@ noremap <Space>b <C-b>
 """definition id of toggle breadcrumb action
 ""eclipseaction ToggleBreadcrumb "org.eclipse.jdt.ui.edit.text.java.toggleBreadcrumb
 ""
-"""definition ID of the source -> toggle comment action
-""eclipseaction ToggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment
 ""
 """definition id of toggle mark occurrences action
 ""eclipseaction ToggleMarkOccurrences "org.eclipse.jdt.ui.edit.text.java.toggleMarkOccurrences

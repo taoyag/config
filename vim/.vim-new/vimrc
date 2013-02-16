@@ -71,6 +71,7 @@ NeoBundle 'vcscommand.vim'
 ""NeoBundle 'quickhl.vim'
 ""NeoBundle 'vim-scala'
 NeoBundle 'sudo.vim'
+NeoBundle 'tanabe/ToggleCase-vim'
 
 " for Ruby development
 NeoBundle 'tpope/vim-endwise.git'
