@@ -52,7 +52,7 @@ nnoremap ,xc :OpenCallHierarchy<CR>
 vnoremap = :Format<CR>
 
 " ワーキングセットから参照を検索
-nnoremap ,xs :SearchReferencesInWorkingSet<C-m>
+nnoremap ,xs :SearchReferencesInWorkingSet<CR>
 
 
 "definition ID of the source -> toggle comment action
