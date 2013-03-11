@@ -620,12 +620,8 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if has("gui_win32") || has("gui_win32s")
-    " let mygrepprg = '/PortableGit-1.7.10-preview20120409/bin/grep'
-    " let mygrepprg = '/mingw/msys/1.0//bin/grep'
-    let $CYGWIN='nodosfilewarning'
-    let mygrepprg = '/cygwin/bin/grep'
-    " let MyGrepcmd_useropt = '--exclude-dir=.svn'
-    "let mygrepprg = 'c:/bin/UnxUtils/usr/local/wbin/grep'
+    let mygrepprg = $HOME . '/bin/grep'
+    let MyGrep_cygwin17 = 1
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 
