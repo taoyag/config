@@ -21,3 +21,5 @@
     cam = commit -a --amend
     co = checkout
 
+[github]
+	user = taoyag
