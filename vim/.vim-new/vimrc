@@ -7,7 +7,8 @@ if has("win32") || has("win64")
     " set rtp+=~/vimfiles/vundle/
     call neobundle#rc("~/vimfiles/bundle/")
 else
-    set rtp+=~/.vim/neobundle.vim/
+    set rtp+=~/.vim/neobundle.vim.git/
+    ""set rtp+=~/.vim/neobundle.vim/
     " set rtp+=~/.vim/vundle/
     call neobundle#rc()
 endif
@@ -800,10 +801,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 if has("unix") || has("gui_mac") || has("gui_macvim")
-    let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets,' . $HOME . '~/.vim/bundle/snipmate-snippets/snippets,' . $HOME . '/.vimlocal/snippets'
+    let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets,' . $HOME . '/.vim/bundle/snipmate-snippets/snippets,' . $HOME . '/.vimlocal/snippets'
 endif
 if has("gui_win32") || has("gui_win32s")
-    let g:neosnippet#snippets_directory = $HOME . '/vimfiles/snippets,' . $HOME . '~/vimfiles/bundle/snipmate-snippets/snippets,' . $HOME . '/vimlocal/snippets'
+    let g:neosnippet#snippets_directory = $HOME . '/vimfiles/snippets,' . $HOME . '/vimfiles/bundle/snipmate-snippets/snippets,' . $HOME . '/vimlocal/snippets'
 endif
 
 "------------------------------------
