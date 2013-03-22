@@ -48,6 +48,10 @@ nnoremap ,x<Space> :ToggleComment<CR>
 " 呼出階層を開く
 nnoremap ,xc :OpenCallHierarchy<CR>
 
+" 型階層を開く
+nnoremap ,xt :OpenTypeHierarchy<CR>
+nnoremap <C-p>:OpenTypeHierarchy<CR>
+
 " 選択範囲をフォーマット
 vnoremap = :Format<CR>
 
@@ -63,6 +67,8 @@ eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
 eclipseaction OpenCallHierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
 "definition ID of the search -> references in working set action
 eclipseaction SearchReferencesInWorkingSet org.eclipse.jdt.ui.edit.text.java.search.references.in.working.set
+""definition ID of the navigate -> open type hierarchy action
+eclipseaction OpenTypeHierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.type.hierarchy
 
 
 
