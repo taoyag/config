@@ -81,7 +81,7 @@ linux*)
   export JSTESTDRIVER_HOME=$HOME/bin
 
   alias vi='vim'
-  alias ls='ls -vG'
+  # alias ls='ls -vG'
   ;;
 esac
 
