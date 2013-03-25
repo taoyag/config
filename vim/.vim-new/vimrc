@@ -66,6 +66,7 @@ NeoBundle "kana/vim-fakeclip"
 
 NeoBundle "mattn/webapi-vim"
 NeoBundle "mattn/vdbi-vim"
+NeoBundle 'mattn/qiita-vim'
 
 """ vim-scripts repos
 NeoBundle "rails.vim"
@@ -90,6 +91,9 @@ NeoBundle 'tpope/vim-cucumber.git'
 
 NeoBundle 'hrsh7th/vim-versions.git'
 NeoBundle 'majutsushi/tagbar'
+
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'chreekat/vim-instant-markdown'
 
 ""
 """ non github repos
@@ -292,7 +296,7 @@ else
         set guifont=Monaco:h10
     endif
     if has("gui_macvim")
-        autocmd GUIEnter * winsize 200 120
+        autocmd GUIEnter * winsize 130 120
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h10
