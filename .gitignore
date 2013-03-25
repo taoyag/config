@@ -13,3 +13,5 @@ vim/.vim-new/.netrwhist
 vim/.vim-new/bundle
 vim/.vim-new/vundle/doc/tags
 vim/.vim-new/vundle/*
+vim/.vim-new/vundle
+vim/.vim-new/neobundle.vim
