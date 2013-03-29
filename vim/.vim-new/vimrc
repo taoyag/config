@@ -93,7 +93,7 @@ NeoBundle 'hrsh7th/vim-versions.git'
 NeoBundle 'majutsushi/tagbar'
 
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'chreekat/vim-instant-markdown'
+" NeoBundle 'chreekat/vim-instant-markdown'
 
 ""
 """ non github repos
