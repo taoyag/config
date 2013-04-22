@@ -1,9 +1,10 @@
 set shiftwidth=4
-set softtabstop=4
+" set softtabstop=4
 set expandtab
 set tabstop=4
 
-noremap <Space>w :w<CR>
+noremap <Space>w :update<CR>
+" noremap <Space>w :w<CR>
 noremap <Space>q :q<CR>
 noremap <Space>f <C-f>
 noremap <Space>b <C-b>
@@ -22,6 +23,8 @@ inoremap <C-b> <right>
 ""inoremap <C-f> <C-O>:vsc Edit.CharLeft<CR>
 ""inoremap <C-b> <C-O>:vsc Edit.CharRight<CR>
 "noremap! <C-d> :vsc Edit.LineStart<CR>
+
+" noremap ff  :vsc Edit.NavigateTo<CR>
 
 noremap <C-]> :vsc Edit.GoToDefinition<CR>
 noremap <C-t> :vsc View.NavigateBackward<CR>

@@ -81,6 +81,7 @@ NeoBundle 'vcscommand.vim'
 ""NeoBundle 'vim-scala'
 NeoBundle 'sudo.vim'
 NeoBundle 'tanabe/ToggleCase-vim'
+NeoBundle 'tail-3.0.vba'
 
 " for Ruby development
 NeoBundle 'tpope/vim-endwise.git'
@@ -944,6 +945,7 @@ endfunction"}}}
 let g:unite_source_file_mru_limit = 200
 let g:unite_source_file_mru_filename_format = ''
 
+let g:unite_source_grep_recursive_opt = '-r'
 call unite#set_substitute_pattern('files', '\$\w\+', '\=eval(submatch(0))', 200)
 
 call unite#set_substitute_pattern('files', '[^~.]\zs/', '*/*', 20)
@@ -1259,3 +1261,19 @@ set guioptions+=a
 nnoremap <RightMouse> "*p
 
 nmap <F8> ;TagbarToggle<CR>
+
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
