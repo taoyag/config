@@ -96,6 +96,8 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mileszs/ack.vim'
 " NeoBundle 'chreekat/vim-instant-markdown'
 
+NeoBundle 'terryma/vim-multiple-cursors'
+
 ""
 """ non github repos
 ""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
