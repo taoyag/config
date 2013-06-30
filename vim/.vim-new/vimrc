@@ -799,6 +799,8 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+let g:neocomplcache#sources#rsense#home_directory = expand('~/local/rsense-0.3')
+
 " Define dictionary.
 if has("gui_win32") || has("gui_win32s")
     let g:neocomplcache_dictionary_filetype_lists = {
@@ -1361,3 +1363,4 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 if has("win32") || has("win64")
     call singleton#enable()
 endif
+
