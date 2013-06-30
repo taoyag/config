@@ -282,3 +282,6 @@ fi
 fpath=($fpath $HOME/local/functions(N))
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+unset LD_LIBRARY_PATH
+unset DYLD_LIBRARY_PATH
