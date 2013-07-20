@@ -162,7 +162,7 @@ NeoBundleLazy 'ruby-matchit', {
 
 " }}}
 "}}}
-NeoBundle 'taichouchou2/vim-rsense'
+" NeoBundle 'taichouchou2/vim-rsense'
 "NeoBundle 'taichouchou2/vim-ref-ri'
 "NeoBundle 'taq/vim-rspec'
 NeoBundle 'tpope/vim-cucumber.git'
