@@ -20,6 +20,11 @@ if has("gui_gnome")
     autocmd GUIEnter * winsize 130 40
     set guifont=Ricty\ 10
 endif
+
+if has("gui_mac") || has("gui_macvim")
+    set guifont=Monaco:h11
+    autocmd GUIEnter * winsize 130 120
+endif
 highlight Pmenu guibg=#666666
 highlight PmenuSel guibg=#006800
 highlight PmenuSbar guibg=#001800
