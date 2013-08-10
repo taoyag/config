@@ -16,6 +16,10 @@ if has("gui_win32")
     autocmd GUIEnter * winsize 170 48
 endif
 
+if has("gui_gnome")
+    autocmd GUIEnter * winsize 130 40
+    set guifont=Ricty\ 10
+endif
 highlight Pmenu guibg=#666666
 highlight PmenuSel guibg=#006800
 highlight PmenuSbar guibg=#001800
