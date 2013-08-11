@@ -285,3 +285,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 unset LD_LIBRARY_PATH
 unset DYLD_LIBRARY_PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
