@@ -1054,11 +1054,12 @@ call unite#custom#substitute('files', '\\\@<! ', '\\ ', -20)
 call unite#custom#substitute('files', '\\ \@!', '/', -30)
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+autocmd FileType vimfiler call unite#custom_default_action('directory', 'lcd')
 
 call unite#custom_filters('line', ['matcher_migemo', 'sorter_default', 'converter_default'])
 " call unite#custom_filters('file,file/new,buffer,file_rec',
                 " \ ['matcher_migemo', 'sorter_default', 'converter_default'])
-		" " \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
+                " \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 "------------------------------------
 " tab‚ÉŠÖ‚·‚éÝ’è
 "------------------------------------
@@ -1160,6 +1161,7 @@ if !exists('g:quickrun_config')
     let g:quickrun_config.markdown = {'exec' : ['Markdown.pl --html4tags %s > /tmp/markdown.html', 'open -g /tmp/markdown.html', 'cat /tmp/markdown.html']}
     " let g:quickrun_config.markdown = {'exec' : ['pandoc -f markdown -t html -o /tmp/markdown.html %s', 'open /tmp/markdown.html', 'cat /tmp/markdown.html']}
 endif
+let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
 
 "------------------------------------
 " reading-memo
