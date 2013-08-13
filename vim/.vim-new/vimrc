@@ -17,22 +17,24 @@ let g:neobundle#types#git#default_protocol="http"
 
 " github repos
 ""NeoBundle "msanders/cocoa.vim"
-"NeoBundle "Shougo/neocomplcache.git"
-"NeoBundle "Shougo/neosnippet.git"
-NeoBundleLazy "Shougo/neocomplcache", {
-            \ 'autoload' : {
-            \  'insert' : 1,
-            \}}
-NeoBundleLazy "Shougo/neosnippet", {
-            \ 'autoload' : {
-            \  'insert' : 1,
-            \}}
-NeoBundleLazy "Shougo/neocomplcache-rsense", {
+NeoBundle "Shougo/neocomplcache.git"
+NeoBundle "Shougo/neosnippet.git"
+" NeoBundleLazy "Shougo/neocomplcache", {
+            " \ 'autoload' : {
+            " \  'insert' : 1,
+            " \}}
+" NeoBundleLazy "Shougo/neosnippet", {
+            " \ 'autoload' : {
+            " \  'insert' : 1,
+            " \}}
+" NeoBundleLazy "Shougo/neocomplcache-rsense", {
+NeoBundle "Shougo/neocomplcache-rsense", {
             \ 'depends': 'Shougo/neocomplcache',
             \ 'autoload' : {
             \  'filetype' : 'ruby',
             \}}
-NeoBundleLazy 'taichouchou2/rsense-0.3', {
+" NeoBundleLazy 'taichouchou2/rsense-0.3', {
+NeoBundle 'taichouchou2/rsense-0.3', {
             \ 'build' : {
             \  'mac' : 'ruby etc/config.rb > ~/.rsense',
             \  'unix' : 'ruby etc/config.rb > ~/.rsense',
@@ -103,7 +105,8 @@ NeoBundle 'tanabe/ToggleCase-vim'
 " NeoBundle 'tail-3.0.vba'
 
 " for Ruby development
-NeoBundleLazy 'taichouchou2/vim-endwise.git', {
+" NeoBundleLazy 'taichouchou2/vim-endwise.git', {
+NeoBundle 'taichouchou2/vim-endwise.git', {
             \ 'autoload' : {
             \  'insert' : 1,
             \ } }
@@ -111,25 +114,30 @@ NeoBundleLazy 'taichouchou2/vim-endwise.git', {
 "
 " ruby / railsサポート {{{
 NeoBundle 'tpope/vim-rails'
-NeoBundleLazy 'ujihisa/unite-rake', {
+" NeoBundleLazy 'ujihisa/unite-rake', {
+NeoBundle 'ujihisa/unite-rake', {
       \ 'depends' : 'Shougo/unite.vim' }
-NeoBundleLazy 'basyura/unite-rails', {
+" NeoBundleLazy 'basyura/unite-rails', {
+NeoBundle 'basyura/unite-rails', {
       \ 'depends' : 'Shjkougo/unite.vim' }
-NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
+" NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
+NeoBundle 'taichouchou2/unite-rails_best_practices', {
       \ 'depends' : 'Shougo/unite.vim',
       \ 'build' : {
       \    'mac': 'gem install rails_best_practices',
       \    'unix': 'gem install rails_best_practices',
       \   }
       \ }
-NeoBundleLazy 'taichouchou2/unite-reek', {
+" NeoBundleLazy 'taichouchou2/unite-reek', {
+NeoBundle 'taichouchou2/unite-reek', {
       \ 'build' : {
       \    'mac': 'gem install reek',
       \    'unix': 'gem install reek',
       \ },
       \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
       \ 'depends' : 'Shougo/unite.vim' }
-NeoBundleLazy 'taichouchou2/alpaca_complete', {
+" NeoBundleLazy 'taichouchou2/alpaca_complete', {
+NeoBundle 'taichouchou2/alpaca_complete', {
       \ 'depends' : 'tpope/vim-rails',
       \ 'build' : {
       \    'mac':  'gem install alpaca_complete',
@@ -149,20 +157,24 @@ aug RailsLazyPlugins
 aug END
 
 " reference環境
-NeoBundleLazy 'vim-ruby/vim-ruby', {
+" NeoBundleLazy 'vim-ruby/vim-ruby', {
+NeoBundle 'vim-ruby/vim-ruby', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'taka84u9/vim-ref-ri', {
+" NeoBundleLazy 'taka84u9/vim-ref-ri', {
+NeoBundle 'taka84u9/vim-ref-ri', {
       \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
       \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'skwp/vim-rspec', {
+" NeoBundleLazy 'skwp/vim-rspec', {
+NeoBundle 'skwp/vim-rspec', {
       \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'ruby-matchit', {
+" NeoBundleLazy 'ruby-matchit', {
+NeoBundle 'ruby-matchit', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " }}}
 
 " }}}
 "}}}
-NeoBundle 'taichouchou2/vim-rsense'
+" NeoBundle 'taichouchou2/vim-rsense'
 "NeoBundle 'taichouchou2/vim-ref-ri'
 "NeoBundle 'taq/vim-rspec'
 NeoBundle 'tpope/vim-cucumber.git'
