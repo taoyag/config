@@ -526,19 +526,19 @@ highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
-if has('gui_win32') || has('gui_win32s')
-    let $PATH="c:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\bin;".$PATH
-    let $RUBY_DLL="C:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\lib\\libmsvcrt-ruby191.dll.a"
-    let $PATH="c:\\strawberry\\perl\\bin;".$PATH
-    let $PATH="c:\\strawberry\\perl\\site\\bin;".$PATH
-    let $PATH="c:\\strawberry\\perl\\site\\lib\\auto\\DBD\\mysql;".$PATH
-endif
-if has('kaoriya')
-  let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
-  if filereadable(s:ruby_libruby)
-    let $RUBY_DLL = s:ruby_libruby
-  endif
-endif
+" if has('gui_win32') || has('gui_win32s')
+    " let $PATH="c:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\bin;".$PATH
+    " let $RUBY_DLL="C:\\Users\\t-aoyagi\\.pik\\rubies\\Ruby-193-p194\\lib\\libmsvcrt-ruby191.dll.a"
+    " let $PATH="c:\\strawberry\\perl\\bin;".$PATH
+    " let $PATH="c:\\strawberry\\perl\\site\\bin;".$PATH
+    " let $PATH="c:\\strawberry\\perl\\site\\lib\\auto\\DBD\\mysql;".$PATH
+" endif
+" if has('kaoriya')
+  " let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
+  " if filereadable(s:ruby_libruby)
+    " let $RUBY_DLL = s:ruby_libruby
+  " endif
+" endif
 "-------------------------------------------------------------------------------
 " キーマッピング
 "-------------------------------------------------------------------------------
@@ -791,6 +791,7 @@ if has("gui_win32") || has("gui_win32s")
 else
     autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
 endif
+let g:ruby_path=$HOME . "/.pik\rubies/Ruby-200-p195/bin"
 
 "------------------------------------
 "neocomplcache
@@ -1009,6 +1010,16 @@ noremap [unite]t :<C-u>Unite tag:<C-r>=expand('<cword>')<CR><CR>
 nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
 
+" unite-rails
+nnoremap <silent> [unite],c  :<C-u>Unite rails/controller<CR>
+nnoremap <silent> [unite],m  :<C-u>Unite rails/model<CR>
+nnoremap <silent> [unite],v  :<C-u>Unite rails/view<CR>
+nnoremap <silent> [unite],h  :<C-u>Unite rails/helper<CR>
+nnoremap <silent> [unite],s  :<C-u>Unite rails/stylesheets<CR>
+nnoremap <silent> [unite],j  :<C-u>Unite rails/javascripts<CR>
+nnoremap <silent> [unite],r  :<C-u>Unite rails/route<CR>
+nnoremap <silent> [unite],g  :<C-u>Unite rails/gemfile<CR>
+nnoremap <silent> [unite],t  :<C-u>Unite rails/spec<CR>
 
 function! s:unite_project(...)
   let opts = (a:0 ? join(a:000, ' ') : '')
