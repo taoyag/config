@@ -1,7 +1,8 @@
-set shiftwidth=4
-" set softtabstop=4
+set vsvim_useeditordefaults
+""set shiftwidth=4
+""" set softtabstop=4
 set expandtab
-set tabstop=4
+""set tabstop=4
 
 noremap <Space>w :update<CR>
 " noremap <Space>w :w<CR>
@@ -25,6 +26,7 @@ inoremap <C-b> <right>
 "noremap! <C-d> :vsc Edit.LineStart<CR>
 
 " noremap ff  :vsc Edit.NavigateTo<CR>
+noremap ff <C-3>
 
 noremap <C-]> :vsc Edit.GoToDefinition<CR>
 noremap <C-t> :vsc View.NavigateBackward<CR>
