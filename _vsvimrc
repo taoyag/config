@@ -4,21 +4,17 @@ set vsvim_useeditordefaults
 set expandtab
 ""set tabstop=4
 
-noremap <Space>w :update<CR>
+noremap <Space>w :w<CR>
 " noremap <Space>w :w<CR>
 noremap <Space>q :q<CR>
 noremap <Space>f <C-f>
 noremap <Space>b <C-b>
 
-" ;でExコマンド入力( ;と:を入替)
-noremap ; :
-noremap : ;
-
 " move cursor
-inoremap <C-a> <home>
-inoremap <C-e> <end>
-inoremap <C-f> <left>
-inoremap <C-b> <right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-f> <Left>
+inoremap <C-b> <Right>
 ""inoremap <C-a> <C-O>:vsc Edit.LineStart<CR>
 ""inoremap <C-e> <C-O>:vsc Edit.LineEnd<CR>
 ""inoremap <C-f> <C-O>:vsc Edit.CharLeft<CR>
@@ -35,6 +31,19 @@ noremap <C-t> :vsc View.NavigateBackward<CR>
 nmap 1 0
 nmap 0 ^
 nmap 9 $
+
+" 閉じ括弧を自動的に挿入
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
+" vvでカーソル位置から行末まで選択
+vnoremap v $h
+
+" ;でExコマンド入力( ;と:を入替)
+noremap ; :
+noremap : ;
 
 
 "Build.BuildPage	ビルド.ページのビルド
