@@ -151,13 +151,13 @@ NeoBundle 'ujihisa/unite-rake', {
       " \   }
       " \ }
 " NeoBundleLazy 'taichouchou2/unite-reek', {
-NeoBundle 'taichouchou2/unite-reek', {
-      \ 'build' : {
-      \    'mac': 'gem install reek',
-      \    'unix': 'gem install reek',
-      \ },
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
-      \ 'depends' : 'Shougo/unite.vim' }
+" NeoBundle 'taichouchou2/unite-reek', {
+      " \ 'build' : {
+      " \    'mac': 'gem install reek',
+      " \    'unix': 'gem install reek',
+      " \ },
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
+      " \ 'depends' : 'Shougo/unite.vim' }
 " NeoBundleLazy 'taichouchou2/alpaca_complete', {
 " NeoBundle 'taichouchou2/alpaca_complete', {
       " \ 'depends' : 'tpope/vim-rails',
@@ -183,12 +183,12 @@ endfunction"}}}
 NeoBundle 'vim-ruby/vim-ruby', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'taka84u9/vim-ref-ri', {
-NeoBundle 'taka84u9/vim-ref-ri', {
-      \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+" NeoBundle 'taka84u9/vim-ref-ri', {
+      " \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'skwp/vim-rspec', {
-NeoBundle 'skwp/vim-rspec', {
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+" NeoBundle 'skwp/vim-rspec', {
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'ruby-matchit', {
 NeoBundle 'ruby-matchit', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
