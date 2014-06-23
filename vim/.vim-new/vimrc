@@ -143,21 +143,21 @@ NeoBundle 'basyura/unite-rails', {
 " NeoBundle 'basyura/unite-rails', {
       " \ 'depends' : 'Shjkougo/unite.vim' }
 " NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
-NeoBundle 'taichouchou2/unite-rails_best_practices', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'build' : {
-      \    'mac': 'gem install rails_best_practices',
-      \    'unix': 'gem install rails_best_practices',
-      \   }
-      \ }
+" NeoBundle 'taichouchou2/unite-rails_best_practices', {
+      " \ 'depends' : 'Shougo/unite.vim',
+      " \ 'build' : {
+      " \    'mac': 'gem install rails_best_practices',
+      " \    'unix': 'gem install rails_best_practices',
+      " \   }
+      " \ }
 " NeoBundleLazy 'taichouchou2/unite-reek', {
-NeoBundle 'taichouchou2/unite-reek', {
-      \ 'build' : {
-      \    'mac': 'gem install reek',
-      \    'unix': 'gem install reek',
-      \ },
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
-      \ 'depends' : 'Shougo/unite.vim' }
+" NeoBundle 'taichouchou2/unite-reek', {
+      " \ 'build' : {
+      " \    'mac': 'gem install reek',
+      " \    'unix': 'gem install reek',
+      " \ },
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
+      " \ 'depends' : 'Shougo/unite.vim' }
 " NeoBundleLazy 'taichouchou2/alpaca_complete', {
 NeoBundle 'taichouchou2/alpaca_complete', {
       \ 'depends' : 'tpope/vim-rails',
@@ -167,7 +167,8 @@ NeoBundle 'taichouchou2/alpaca_complete', {
       \   }
       \ }
 
-let s:bundle_rails = 'unite-rails unite-rails_best_practices unite-rake alpaca_complete'
+let s:bundle_rails = 'unite-rails unite-rake alpaca_complete'
+" let s:bundle_rails = 'unite-rails unite-rails_best_practices unite-rake alpaca_complete'
 
 function! s:bundleLoadDepends(bundle_names) "{{{
   " bundleの読み込み
@@ -183,12 +184,12 @@ aug END
 NeoBundle 'vim-ruby/vim-ruby', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'taka84u9/vim-ref-ri', {
-NeoBundle 'taka84u9/vim-ref-ri', {
-      \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+" NeoBundle 'taka84u9/vim-ref-ri', {
+      " \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'skwp/vim-rspec', {
-NeoBundle 'skwp/vim-rspec', {
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+" NeoBundle 'skwp/vim-rspec', {
+      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 " NeoBundleLazy 'ruby-matchit', {
 NeoBundle 'ruby-matchit', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
@@ -752,6 +753,8 @@ if has("gui_win32") || has("gui_win32s")
     let MyGrep_cygwin17 = 1
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
+"カレントディレクトリを起点にして検索する
+let MyGrep_CurrentDirMode = 0
 
 "howm専用MRUを基本に使用する
 let QFixHowm_SwapLcommand = 1
@@ -1095,7 +1098,8 @@ nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 nnoremap <silent> [unite]a  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]/  :<C-u>Unite line<CR>
-nnoremap <silent> [unite]g  :<C-u>Unite grep -no-quit<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:<CR><CR><C-W>
 nnoremap <silent> <Leader>b  :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]P :<C-u>call <SID>unite_project('-start-insert', 'file/new')<CR>
 noremap [unite]t :<C-u>Unite tag:<C-r>=expand('<cword>')<CR><CR>
@@ -1120,13 +1124,19 @@ function! s:unite_project(...)
   execute 'Unite' opts 'file_rec:' . dir
 endfunction
 
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 " nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=Grep\ 
-command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
-function! s:grep(args)
-    let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
-    execute 'vimgrep' '/' . a:args[0] . '/j ' . target
-    " if len(getqflist()) != 0 | copen | endif
-endfunction
+" command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
+" function! s:grep(args)
+    " let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
+    " execute 'vimgrep' '/' . a:args[0] . '/j ' . target
+    " " if len(getqflist()) != 0 | copen | endif
+" endfunction
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
