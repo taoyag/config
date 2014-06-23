@@ -100,7 +100,7 @@ NeoBundle "mattn/vdbi-vim"
 NeoBundle 'mattn/qiita-vim'
 
 """ vim-scripts repos
-NeoBundle "rails.vim"
+" NeoBundle "rails.vim"
 ""NeoBundle 'neco-look'
 NeoBundle 'grep.vim'
 NeoBundle 'The-NERD-Commenter'
@@ -123,23 +123,23 @@ NeoBundle 'taichouchou2/vim-endwise.git', {
 "NeoBundle 'tpope/vim-endwise.git'
 "
 " ruby / railsサポート {{{
-NeoBundle 'tpope/vim-rails'
+" NeoBundle 'tpope/vim-rails'
 " NeoBundleLazy 'ujihisa/unite-rake', {
 NeoBundle 'ujihisa/unite-rake', {
       \ 'depends' : 'Shougo/unite.vim' }
 " NeoBundleLazy 'basyura/unite-rails', {
-NeoBundle 'basyura/unite-rails', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'autoload' : {
-      \   'unite_sources' : [
-      \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
-      \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
-      \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
-      \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
-      \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
-      \     'rails/stylesheet', 'rails/view'
-      \   ]
-      \ }}
+" NeoBundle 'basyura/unite-rails', {
+      " \ 'depends' : 'Shougo/unite.vim',
+      " \ 'autoload' : {
+      " \   'unite_sources' : [
+      " \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
+      " \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
+      " \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
+      " \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
+      " \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
+      " \     'rails/stylesheet', 'rails/view'
+      " \   ]
+      " \ }}
 " NeoBundle 'basyura/unite-rails', {
       " \ 'depends' : 'Shjkougo/unite.vim' }
 " NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
@@ -159,15 +159,14 @@ NeoBundle 'basyura/unite-rails', {
       " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
       " \ 'depends' : 'Shougo/unite.vim' }
 " NeoBundleLazy 'taichouchou2/alpaca_complete', {
-NeoBundle 'taichouchou2/alpaca_complete', {
-      \ 'depends' : 'tpope/vim-rails',
-      \ 'build' : {
-      \    'mac':  'gem install alpaca_complete',
-      \    'unix': 'gem install alpaca_complete',
-      \   }
-      \ }
+" NeoBundle 'taichouchou2/alpaca_complete', {
+      " \ 'depends' : 'tpope/vim-rails',
+      " \ 'build' : {
+      " \    'mac':  'gem install alpaca_complete',
+      " \    'unix': 'gem install alpaca_complete',
+      " \   }
+      " \ }
 
-let s:bundle_rails = 'unite-rails unite-rake alpaca_complete'
 " let s:bundle_rails = 'unite-rails unite-rails_best_practices unite-rake alpaca_complete'
 
 function! s:bundleLoadDepends(bundle_names) "{{{
@@ -175,9 +174,9 @@ function! s:bundleLoadDepends(bundle_names) "{{{
   execute 'NeoBundleSource '.a:bundle_names
   au! RailsLazyPlugins
 endfunction"}}}
-aug RailsLazyPlugins
-  au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
-aug END
+" aug RailsLazyPlugins
+  " au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
+" aug END
 
 " reference環境
 " NeoBundleLazy 'vim-ruby/vim-ruby', {
@@ -1108,15 +1107,15 @@ nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 nnoremap <silent> g<C-h>  :<C-u>UniteWithkursorWord help<CR>
 
 " unite-rails
-nnoremap <silent> [unite],c  :<C-u>Unite rails/controller<CR>
-nnoremap <silent> [unite],m  :<C-u>Unite rails/model<CR>
-nnoremap <silent> [unite],v  :<C-u>Unite rails/view<CR>
-nnoremap <silent> [unite],h  :<C-u>Unite rails/helper<CR>
-nnoremap <silent> [unite],s  :<C-u>Unite rails/stylesheets<CR>
-nnoremap <silent> [unite],j  :<C-u>Unite rails/javascripts<CR>
-nnoremap <silent> [unite],r  :<C-u>Unite rails/route<CR>
-nnoremap <silent> [unite],g  :<C-u>Unite rails/gemfile<CR>
-nnoremap <silent> [unite],t  :<C-u>Unite rails/spec<CR>
+" nnoremap <silent> [unite],c  :<C-u>Unite rails/controller<CR>
+" nnoremap <silent> [unite],m  :<C-u>Unite rails/model<CR>
+" nnoremap <silent> [unite],v  :<C-u>Unite rails/view<CR>
+" nnoremap <silent> [unite],h  :<C-u>Unite rails/helper<CR>
+" nnoremap <silent> [unite],s  :<C-u>Unite rails/stylesheets<CR>
+" nnoremap <silent> [unite],j  :<C-u>Unite rails/javascripts<CR>
+" nnoremap <silent> [unite],r  :<C-u>Unite rails/route<CR>
+" nnoremap <silent> [unite],g  :<C-u>Unite rails/gemfile<CR>
+" nnoremap <silent> [unite],t  :<C-u>Unite rails/spec<CR>
 
 function! s:unite_project(...)
   let opts = (a:0 ? join(a:000, ' ') : '')
