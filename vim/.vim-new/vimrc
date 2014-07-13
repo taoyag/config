@@ -15,6 +15,11 @@ endif
 let g:neobundle#types#git#default_protocol="http"
 " let g:neobundle_default_git_protocol="https"
 
+if has("win32") || has("win64")
+    let $PATH = 'C:\Program Files (x86)\Git\bin;' . $PATH
+    " let $PATH = 'C:\Program Files (x86)\Git\binc:\cygwin\bin;' . $PATH
+endif
+
 " github repos
 ""NeoBundle "msanders/cocoa.vim"
 NeoBundle 'Shougo/neocomplete', { 'autoload' : {
