@@ -1,5 +1,5 @@
-noremap <silent> <buffer> <expr> j <SID>jk(v:count1)
-noremap <silent> <buffer> <expr> k <SID>jk(-v:count1)
+" noremap <silent> <buffer> <expr> j <SID>jk(v:count1)
+" noremap <silent> <buffer> <expr> k <SID>jk(-v:count1)
 
 noremap <buffer> p  <CR>zz<C-w>p
 
