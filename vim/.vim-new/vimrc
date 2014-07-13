@@ -63,7 +63,7 @@ NeoBundle "Shougo/vimproc", {
     \   },
     \ }
 NeoBundle "Shougo/unite-help"
-NeoBundle "Shougo/unite-neomru"
+NeoBundle "Shougo/neomru.vim"
 NeoBundle "thinca/vim-quickrun"
 NeoBundle "thinca/vim-ref"
 NeoBundle "thinca/vim-qfreplace"
@@ -124,7 +124,7 @@ NeoBundle 'taichouchou2/vim-endwise.git', {
             \ } }
 "NeoBundle 'tpope/vim-endwise.git'
 "
-" ruby / railsƒTƒ|[ƒg {{{
+" ruby / railsã‚µãƒãƒ¼ãƒˆ {{{
 " NeoBundle 'tpope/vim-rails'
 " NeoBundleLazy 'ujihisa/unite-rake', {
 NeoBundle 'ujihisa/unite-rake', {
@@ -172,7 +172,7 @@ NeoBundle 'ujihisa/unite-rake', {
 " let s:bundle_rails = 'unite-rails unite-rails_best_practices unite-rake alpaca_complete'
 
 function! s:bundleLoadDepends(bundle_names) "{{{
-  " bundle‚Ì“Ç‚İ‚İ
+  " bundleã®èª­ã¿è¾¼ã¿
   execute 'NeoBundleSource '.a:bundle_names
   au! RailsLazyPlugins
 endfunction"}}}
@@ -180,7 +180,7 @@ endfunction"}}}
   " au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
 " aug END
 
-" referenceŠÂ‹«
+" referenceç’°å¢ƒ
 " NeoBundleLazy 'vim-ruby/vim-ruby', {
 NeoBundle 'vim-ruby/vim-ruby', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
@@ -222,8 +222,8 @@ filetype plugin indent on
 "------------------------------------
 set runtimepath+=~/vimlocal
 
-set nocompatible                  " viŒİŠ·–³‚µ
-set backspace=indent,eol,start    " backspace‚Åíœ‚Å‚«‚é‚æ‚¤‚É‚·‚é
+set nocompatible                  " viäº’æ›ç„¡ã—
+set backspace=indent,eol,start    " backspaceã§å‰Šé™¤ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 set history=1000
 set showcmd                       "show incomplete cmds down the bottom
 set showmode                      "show current mode down the bottom
@@ -373,7 +373,7 @@ endif
 set mouse=a
 set ttymouse=xterm2
 
-"‚‘¬ƒ^[ƒ~ƒiƒ‹Ú‘±
+"é«˜é€Ÿã‚¿ãƒ¼ãƒŸãƒŠãƒ«æ¥ç¶š
 set ttyfast
 
 "tell the term has 256 colors
@@ -384,12 +384,12 @@ set hidden
 
 scriptencoding utf-8
 
-" •s‰Â‹•¶š‚ğƒnƒCƒ‰ƒCƒg‚·‚é
+" ä¸å¯è¦–æ–‡å­—ã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆã™ã‚‹
 augroup highlightIdegraphicSpace
     autocmd!
     autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-    " ‘SŠp‹ó”’Aƒ^ƒu
-    autocmd VimEnter,WinEnter * match IdeographicSpace /[@\t]/
+    " å…¨è§’ç©ºç™½ã€ã‚¿ãƒ–
+    autocmd VimEnter,WinEnter * match IdeographicSpace /[ã€€\t]/
 augroup END
 
 "colorscheme YourFavoriteColorscheme
@@ -447,15 +447,15 @@ function! s:HighlightExcessColumns(width)
     endif
 endfunction
 
-"s”Ô†‚ğ•\¦‚·‚é
+"è¡Œç•ªå·ã‚’è¡¨ç¤ºã™ã‚‹
 set number
-"ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ğì‚éƒfƒBƒŒƒNƒgƒŠ
+"ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
 set backupdir=$HOME/vimbackup
 " migemo
 if has("migemo")
     set migemo
 endif
-"ƒXƒƒbƒvƒtƒ@ƒCƒ‹—p‚ÌƒfƒBƒŒƒNƒgƒŠ
+"ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ç”¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
 set directory=$HOME/vimbackup
 
 function! GetB()
@@ -486,7 +486,7 @@ func! String2Hex(str)
     return out
 endfunc
 
-" •¶šƒR[ƒh‚Ì©“®”F¯
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 if &encoding !=# 'utf-8'
     set encoding=japan
     set fileencoding=japan
@@ -494,16 +494,16 @@ endif
 if has('iconv')
     let s:enc_euc = 'euc-jp'
     let s:enc_jis = 'iso-2022-jp'
-    " iconv‚ªeucJP-ms‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+    " iconvãŒeucJP-msã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
     if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
         let s:enc_euc = 'eucjp-ms'
         let s:enc_jis = 'iso-2022-jp-3'
-        " iconv‚ªJISX0213‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+        " iconvãŒJISX0213ã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
     elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
         let s:enc_euc = 'euc-jisx0213'
         let s:enc_jis = 'iso-2022-jp-3'
     endif
-    " fileencodings‚ğ\’z
+    " fileencodingsã‚’æ§‹ç¯‰
     if &encoding ==# 'utf-8'
         let s:fileencodings_default = &fileencodings
         let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
@@ -523,11 +523,11 @@ if has('iconv')
             let &fileencodings = &fileencodings .','. s:enc_euc
         endif
     endif
-    " ’è”‚ğˆ•ª
+    " å®šæ•°ã‚’å‡¦åˆ†
     unlet s:enc_euc
     unlet s:enc_jis
 endif
-" “ú–{Œê‚ğŠÜ‚Ü‚È‚¢ê‡‚Í fileencoding ‚É encoding ‚ğg‚¤‚æ‚¤‚É‚·‚é
+" æ—¥æœ¬èªã‚’å«ã¾ãªã„å ´åˆã¯ fileencoding ã« encoding ã‚’ä½¿ã†ã‚ˆã†ã«ã™ã‚‹
 if has('autocmd')
     function! AU_ReCheck_FENC()
         if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -536,7 +536,7 @@ if has('autocmd')
     endfunction
     autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
-" ‰üsƒR[ƒh‚Ì©“®”F¯
+" æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 set fileformats=unix,dos,mac
 
 
@@ -564,38 +564,38 @@ highlight PMenuSbar ctermbg=4
   " endif
 " endif
 "-------------------------------------------------------------------------------
-" ƒL[ƒ}ƒbƒsƒ“ƒO
+" ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
 "-------------------------------------------------------------------------------
 
-"tags-and-searches‚ğg‚¢ˆÕ‚­‚·‚é
+"tags-and-searchesã‚’ä½¿ã„æ˜“ãã™ã‚‹
 nnoremap t <Nop>
-"u”ò‚Ôv
+"ã€Œé£›ã¶ã€
 nnoremap tt <C-]>
-"ui‚Şv
+"ã€Œé€²ã‚€ã€
 nnoremap tj :<C-u>tag<CR>
-"u–ß‚év
+"ã€Œæˆ»ã‚‹ã€
 nnoremap tk :<C-u>pop<CR>
-"—š—ğˆê——
+"å±¥æ­´ä¸€è¦§
 nnoremap tl :<C-u>tags<CR>
 
-" Ctrl-e‚Åƒwƒ‹ƒv
+" Ctrl-eã§ãƒ˜ãƒ«ãƒ—
 nnoremap <C-e> :<C-u>help<Space>
-" ƒJ[ƒ\ƒ‹‰º‚ÌƒL[ƒ[ƒh‚ğƒwƒ‹ƒv‚Å‚Ğ‚­
+" ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒ˜ãƒ«ãƒ—ã§ã²ã
 nnoremap <C-e><C-e> :<C-u>help<Space><C-r><C-w><Enter>
 
-" 0, 9‚Ås“ªAs––‚Ö
+" 0, 9ã§è¡Œé ­ã€è¡Œæœ«ã¸
 nmap 1 0
 nmap 0 ^
 nmap 9 $
 
-""" F2‚Å‘O‚Ìƒoƒbƒtƒ@
+""" F2ã§å‰ã®ãƒãƒƒãƒ•ã‚¡
 ""map <F2> <ESC>;bp<CR>
-""" F3‚ÅŸ‚Ìƒoƒbƒtƒ@
+""" F3ã§æ¬¡ã®ãƒãƒƒãƒ•ã‚¡
 ""map <F3> <ESC>;bn<CR>
-""" F4‚Åƒoƒbƒtƒ@‚ğíœ‚·‚é
+""" F4ã§ãƒãƒƒãƒ•ã‚¡ã‚’å‰Šé™¤ã™ã‚‹
 ""map <F4> <ESC>;bw<CR>
 
-"•Â‚¶Š‡ŒÊ‚ğ©“®“I‚É‘}“ü
+"é–‰ã˜æ‹¬å¼§ã‚’è‡ªå‹•çš„ã«æŒ¿å…¥
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
@@ -638,7 +638,7 @@ endif
 
 " QuickFix
 "au QuickFixCmdPost vimgrep cw 
-" make‚È‚Ç‚Å©“®“I‚ÉQuickFix‚ğŠJ‚­
+" makeãªã©ã§è‡ªå‹•çš„ã«QuickFixã‚’é–‹ã
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 nnoremap <space>n :cn<CR>
 nnoremap <space>p :cp<CR>
@@ -656,12 +656,12 @@ noremap! <C-d> <Del>
 " close buffler
 nnoremap ,q :bd<CR>
 
-" ƒEƒCƒ“ƒhƒE‚Ì“§‰ß(MacVim)
+" ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®é€é(MacVim)
 nnoremap ,t :set transparency=20<CR>
 nnoremap ,T :set transparency=0<CR>
 
 
-" insertƒ‚[ƒh‚ğ”²‚¯‚é‚ÆIMEƒIƒt
+" insertãƒ¢ãƒ¼ãƒ‰ã‚’æŠœã‘ã‚‹ã¨IMEã‚ªãƒ•
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
@@ -669,35 +669,35 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 
 "-------------------------------------------------------------------------------
-" ‚»‚Ì‘¼ Misc
+" ãã®ä»– Misc
 "-------------------------------------------------------------------------------
 
-" “ú‚Ì©“®“ü—Í
+" æ—¥æ™‚ã®è‡ªå‹•å…¥åŠ›
 inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
 inoremap <expr> ,dd strftime('%Y/%m/%d')
 inoremap <expr> ,dt strftime('%H:%M:%S')
 
-" ƒpƒXEƒtƒ@ƒCƒ‹–¼‚Ì‘}“ü
+" ãƒ‘ã‚¹ãƒ»ãƒ•ã‚¡ã‚¤ãƒ«åã®æŒ¿å…¥
 inoremap ,f <C-R>%
 inoremap ,p <C-R>=expand('%:p')<CR>
 
-" ;‚ÅExƒRƒ}ƒ“ƒh“ü—Í( ;‚Æ:‚ğ“ü‘Ö)
+" ;ã§Exã‚³ãƒãƒ³ãƒ‰å…¥åŠ›( ;ã¨:ã‚’å…¥æ›¿)
 noremap ; :
 noremap : ;
 
 "-------------------------------------------------------------------------------
-" Šeíƒvƒ‰ƒOƒCƒ“‚Ìİ’è
+" å„ç¨®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®è¨­å®š
 "-------------------------------------------------------------------------------
 "------------------------------------
 " NERD_commenter.vim
 "------------------------------------
-" ƒfƒtƒHƒ‹ƒgƒL[ƒ}ƒbƒsƒ“ƒO‚ğOFF‚É‚·‚é
+" ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’OFFã«ã™ã‚‹
 let g:NERDCreateDefaultMappings = 0
-" ƒRƒƒ“ƒg‚ÌŠÔ‚ÉƒXƒy[ƒX‚ğ‹ó‚¯‚é
+" ã‚³ãƒ¡ãƒ³ãƒˆã®é–“ã«ã‚¹ãƒšãƒ¼ã‚¹ã‚’ç©ºã‘ã‚‹
 let NERDSpaceDelims = 1
-"<Leader>x‚ÅƒRƒƒ“ƒg‚ğƒgƒOƒ‹(NERD_commenter.vim)
+"<Leader>xã§ã‚³ãƒ¡ãƒ³ãƒˆã‚’ãƒˆã‚°ãƒ«(NERD_commenter.vim)
 " map <Leader>x /c<space>
-""–¢‘Î‰ƒtƒ@ƒCƒ‹ƒ^ƒCƒv‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦‚µ‚È‚¢
+""æœªå¯¾å¿œãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ãªã„
 let NERDShutUp=1
 
 nmap <leader>xc         <plug>NERDCommenterComment
@@ -730,7 +730,7 @@ vmap <leader>xA         <plug>NERDCommenterAppend
 "------------------------------------
 " grep.vim
 "------------------------------------
-" ŒŸõŠO‚ÌƒfƒBƒŒƒNƒgƒŠAƒtƒ@ƒCƒ‹ƒpƒ^[ƒ“
+" æ¤œç´¢å¤–ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¿ãƒ¼ãƒ³
 let Grep_Skip_Dirs = '.svn'
 let Grep_Skip_Files = '*.bak *~'
 
@@ -754,33 +754,33 @@ if has("gui_win32") || has("gui_win32s")
     let MyGrep_cygwin17 = 1
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
-"ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚ğ‹N“_‚É‚µ‚ÄŒŸõ‚·‚é
+"ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’èµ·ç‚¹ã«ã—ã¦æ¤œç´¢ã™ã‚‹
 let MyGrep_CurrentDirMode = 0
 
-"howmê—pMRU‚ğŠî–{‚Ég—p‚·‚é
+"howmå°‚ç”¨MRUã‚’åŸºæœ¬ã«ä½¿ç”¨ã™ã‚‹
 let QFixHowm_SwapLcommand = 1
 let QFixHowm_MruFileMax = 30
 let QFixHowm_FileType = 'howm_memo.markdown'
 
-"howmƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğXVŠÔ‚Æ‚µ‚Äˆµ‚¤
+"howmã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’æ›´æ–°æ™‚é–“ã¨ã—ã¦æ‰±ã†
 let QFixHowm_RecentMode = 2
 let QFixHowm_RecentDays = 10
 let QFixHowm_HowmTimeStampSort = 1
-"vim‚ÅŠJ‚­ƒtƒ@ƒCƒ‹‚Ìw’è
+"vimã§é–‹ããƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®š
 let QFixHowm_OpenVimExtReg = '\.txt$\|\.vim$\|\.h$\|\.c$\|\.cpp$'
-"ƒI[ƒgƒŠƒ“ƒN‚Ìƒ^ƒOƒWƒƒƒ“ƒvƒtƒ@ƒCƒ‹ì¬
+"ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯ã®ã‚¿ã‚°ã‚¸ãƒ£ãƒ³ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆ
 let QFixHowm_UseAutoLinkTags = 1
-"ƒJƒeƒSƒŠƒ^ƒO
+"ã‚«ãƒ†ã‚´ãƒªã‚¿ã‚°
 nnoremap <silent> g,ht :call QFixHowmCreateNewFileWithTag('[ ]')<CR>
 let QFixHowm_UserSwActionLock = ['[ ]', '[:private]', '[:vim]', '[:ot]']
 
-"ƒNƒCƒbƒNƒƒ‚‚Ìƒtƒ@ƒCƒ‹–¼
+"ã‚¯ã‚¤ãƒƒã‚¯ãƒ¡ãƒ¢ã®ãƒ•ã‚¡ã‚¤ãƒ«å
 let QFixHowm_QuickMemoFile = hostname().'-00-%Y-%m-00-000000.howm'
-"ƒI[ƒgƒŠƒ“ƒNã‚Ìƒ^ƒOƒWƒƒƒ“ƒv‚ğg—p‚·‚é
+"ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯ä¸Šã®ã‚¿ã‚°ã‚¸ãƒ£ãƒ³ãƒ—ã‚’ä½¿ç”¨ã™ã‚‹
 let QFixHowm_UseAutoLinkTags = 1
-"s“ª‚ÉQFixHowm_Title‚ª‚ ‚Á‚Ä‚àƒ^ƒCƒgƒ‹‚Æ‚µ‚Ä©“®®Œ`‚µ‚È‚¢
+"è¡Œé ­ã«QFixHowm_TitleãŒã‚ã£ã¦ã‚‚ã‚¿ã‚¤ãƒˆãƒ«ã¨ã—ã¦è‡ªå‹•æ•´å½¢ã—ãªã„
 let QFixHowm_Autoformat_TitleMode = 0
-" ƒtƒ@ƒCƒ‹‚Ì‹­§ƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğs‚í‚È‚¢
+" ãƒ•ã‚¡ã‚¤ãƒ«ã®å¼·åˆ¶ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã‚ãªã„
 "let QFixHowm_ForceEncoding = 0
 let QFixHowm_Title = '#'
 let HowmHtml_ConvertFunc = '<SID>MarkdownStr2HTML'
@@ -966,7 +966,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 ""inoremap <expr><C-y>  neocomplcache#close_popup()
 """inoremap <expr><C-e>  neocomplcache#cancel_popup()
 ""
-""" FileType–ˆ‚ÌOmni•âŠ®‚ğİ’è
+""" FileTypeæ¯ã®Omniè£œå®Œã‚’è¨­å®š
 ""autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 ""autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 ""autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -1125,7 +1125,7 @@ function! s:unite_project(...)
   execute 'Unite' opts 'file_rec:' . dir
 endfunction
 
-" unite grep ‚É ag(The Silver Searcher) ‚ğg‚¤
+" unite grep ã« ag(The Silver Searcher) ã‚’ä½¿ã†
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
@@ -1188,7 +1188,7 @@ call unite#custom_filters('line', ['matcher_migemo', 'sorter_default', 'converte
                 " \ ['matcher_migemo', 'sorter_default', 'converter_default'])
                 " \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 "------------------------------------
-" tab‚ÉŠÖ‚·‚éİ’è
+" tabã«é–¢ã™ã‚‹è¨­å®š
 "------------------------------------
 nnoremap [TABCMD]  <nop>
 nmap     <leader>t [TABCMD]
@@ -1218,20 +1218,20 @@ nmap ss <Plug>Yssurround
 "------------------------------------
 " grep.vim
 "------------------------------------
-" ƒJ[ƒ\ƒ‹‰º‚Ì’PŒê‚ÅGrepBuffer
+" ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®å˜èªã§GrepBuffer
 nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><CR>
 nnoremap gb :<C-u>GrepBuffer<Space><C-r><C-w><CR>
 
 "------------------------------------
 " open-browser.vim
 "------------------------------------
-" ƒJ[ƒ\ƒ‹‰º‚ÌURL‚ğƒuƒ‰ƒEƒU‚ÅŠJ‚­
+" ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®URLã‚’ãƒ–ãƒ©ã‚¦ã‚¶ã§é–‹ã
 nmap Fu <Plug>(openbrowser-open)
 vmap Fu <Plug>(openbrowser-open)
-" ƒJ[ƒ\ƒ‹‰º‚Ì’PŒê‚ÅGoogleŒŸõ
+" ã‚«ãƒ¼ã‚½ãƒ«ä¸‹ã®å˜èªã§Googleæ¤œç´¢
 nnoremap fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><CR>
 
-" XML‚Ì•Âƒ^ƒO‚ğ©“®‘}“ü
+" XMLã®é–‰ã‚¿ã‚°ã‚’è‡ªå‹•æŒ¿å…¥
 augroup MyXML
   autocmd!
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
@@ -1240,7 +1240,7 @@ augroup END
 "------------------------------------
 " YankRing.vim
 "------------------------------------
-" Yank‚Ì—š—ğQÆ
+" Yankã®å±¥æ­´å‚ç…§
 " nmap ,y ;YRShow<CR>
 
 "for surround.vim
@@ -1327,17 +1327,17 @@ nnoremap [copypath]f :<C-u>CopyFileName<CR>
 "------------------------------------
 " vim-textmanip 
 "------------------------------------
-" ‘I‘ğ‚µ‚½ƒeƒLƒXƒg‚ÌˆÚ“®
+" é¸æŠã—ãŸãƒ†ã‚­ã‚¹ãƒˆã®ç§»å‹•
 vmap <C-j> <Plug>(Textmanip.move_selection_down)
 vmap <C-k> <Plug>(Textmanip.move_selection_up)
 vmap <C-h> <Plug>(Textmanip.move_selection_left)
 vmap <C-l> <Plug>(Textmanip.move_selection_right)
 
-" s‚Ì•¡»
+" è¡Œã®è¤‡è£½
 vmap <M-d> <Plug>(Textmanip.duplicate_selection_v)
 nmap <M-d> <Plug>(Textmanip.duplicate_selection_n)
 
-" ƒfƒBƒŒƒNƒgƒŠ‚ª–³‚¢ê‡‚Éì¬‚·‚é
+" ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒç„¡ã„å ´åˆã«ä½œæˆã™ã‚‹
 augroup vimrc-auto-mkdir  " {{{
   autocmd!
   autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -1467,7 +1467,7 @@ function! RemoveRubyEval() range
   redraw
 endfunction
 
-" •¶š—ñ‘I‘ğ‚ÅƒNƒŠƒbƒvƒ{[ƒh‚ÉƒRƒs[A‰EƒNƒŠƒbƒN‚Å“\‚è•t‚¯
+" æ–‡å­—åˆ—é¸æŠã§ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«ã‚³ãƒ”ãƒ¼ã€å³ã‚¯ãƒªãƒƒã‚¯ã§è²¼ã‚Šä»˜ã‘
 set guioptions+=a
 nnoremap <RightMouse> "*p
 
