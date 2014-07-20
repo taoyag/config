@@ -26,13 +26,14 @@ endif
 NeoBundle 'Shougo/neocomplete', { 'autoload' : {
         \   'insert' : 1,
         \ }}
-NeoBundle 'Shougo/neosnippet', {
-      \ 'autoload' : {
-      \   'commands' : ['NeoSnippetEdit', 'NeoSnippetSource'],
-      \   'filetypes' : 'snippet',
-      \   'insert' : 1,
-      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
-      \ }}
+NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet', {
+      " \ 'autoload' : {
+      " \   'commands' : ['NeoSnippetEdit', 'NeoSnippetSource'],
+      " \   'filetypes' : 'snippet',
+      " \   'insert' : 1,
+      " \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
+      " \ }}
 " NeoBundle "Shougo/neocomplcache.git"
 " NeoBundle "Shougo/neosnippet.git"
 " NeoBundleLazy "Shougo/neocomplcache", {
@@ -1392,9 +1393,9 @@ autocmd FileType vimshell
 \| call vimshell#altercmd#define('ll', 'ls -l')
 \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
 
-function! g:my_chpwd(args, context)
-  call vimshell#execute('ls')
-endfunction
+" function! g:my_chpwd(args, context)
+  " call vimshell#execute('ls')
+" endfunction
 
 autocmd FileType int-* call s:interactive_settings()
 function! s:interactive_settings()
@@ -1419,7 +1420,7 @@ map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
 
 " for parallels
-inoremap <C-@> <ESC>
+" inoremap <C-@> <ESC>
 
 " template
 if has("win32") || has("win64")
