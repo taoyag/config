@@ -15,3 +15,4 @@ vim/.vim-new/vundle/doc/tags
 vim/.vim-new/vundle/*
 vim/.vim-new/vundle
 vim/.vim-new/neobundle.vim
+.*.un~
