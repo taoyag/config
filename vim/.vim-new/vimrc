@@ -568,6 +568,9 @@ cnoremap <C-f> <Right>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
+" 編集中のファイルのディレクトリに移動
+nnoremap ,d :execute ":lcd" . expand("%:p:h")<CR>
+
 if has("gui_win32") || has("gui_win32s")
     nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
     " nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
