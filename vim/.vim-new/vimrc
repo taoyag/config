@@ -595,6 +595,7 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 noremap! <C-d> <Del>
 
+
 " close buffler
 nnoremap ,q :bd<CR>
 
