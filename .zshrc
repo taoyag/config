@@ -289,3 +289,10 @@ unset DYLD_LIBRARY_PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+operafunction print_known_hosts() {
+    if [ -f $HOME/.ssh/known_hosts ]; then
+        cat $HOME/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
+    fi
+}
+_cache_hosts=($( print_known_hosts ))
+$HOME/bin/edit-server/edit-server &
