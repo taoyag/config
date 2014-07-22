@@ -26,6 +26,7 @@ endif
 NeoBundle 'Shougo/neocomplete', { 'autoload' : {
         \   'insert' : 1,
         \ }}
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet', {
       \ 'autoload' : {
       \   'commands' : ['NeoSnippetEdit', 'NeoSnippetSource'],
