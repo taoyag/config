@@ -1024,8 +1024,35 @@ call unite#custom_filters('line', ['matcher_migemo', 'sorter_default', 'converte
 "------------------------------------
 " tabに関する設定
 "------------------------------------
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2 " 常にタブラインを表示
+
 nnoremap [TABCMD]  <nop>
-nmap     <leader>t [TABCMD]
+nmap     t [TABCMD]
 
 nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
 nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
@@ -1037,6 +1064,10 @@ nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
 nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
 nnoremap <silent> [TABCMD]t :<c-u>Unite -immediately tab:no-current<cr>
+
+for n in range(1, 9)
+  execute 'nnoremap <silent> [TABCMD]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
 
 "------------------------------------
 " tabrecent.vim
