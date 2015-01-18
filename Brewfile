@@ -37,5 +37,7 @@ cask install alfred
 cask install xtrafinder
 cask install opera
 cask install lastfm
+cask install hyperswitch
+cask install clipmenu
 #
 cleanup

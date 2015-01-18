@@ -8,7 +8,8 @@ darwin*)
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
-  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.7.0/Home
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
+  # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.7.0/Home
   # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -20,7 +21,7 @@ darwin*)
   # scala
   export PATH=$HOME/local/scala/bin:$PATH
   # maven2
-  export M2_HOME=~/java/apache-maven-2.0.9
+  export M2_HOME=~/local/apache-maven-3.2.3
   export M2=$M2_HOME/bin
   export PATH=$M2:$PATH
   # oracle client
@@ -239,6 +240,8 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
     fi
 fi
 
+source $(brew --prefix nvm)/nvm.sh
+
 is_screen_running() {
     # tscreen also uses this varariable.
     [ ! -z "$WINDOW" ]
@@ -296,3 +299,6 @@ operafunction print_known_hosts() {
 }
 _cache_hosts=($( print_known_hosts ))
 $HOME/bin/edit-server/edit-server &
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
