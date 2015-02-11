@@ -22,7 +22,11 @@ if has("gui_gnome")
 endif
 
 if has("gui_mac") || has("gui_macvim")
-    set guifont=Monaco:h11
+    " set guifont=Monaco:h11
+    set guifont=Ricty\ Diminished:h14
+    set guifontwide=Ricty\ Diminished:h14
+    " set guifont=Ricty\ Discord:h12
+    " set guifontwide=Ricty\ Discord:h12
     autocmd GUIEnter * winsize 130 120
 endif
 highlight Pmenu guibg=#666666

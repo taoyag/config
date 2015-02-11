@@ -31,25 +31,6 @@ darwin*)
   export PATH=$ORACLE_HOME/bin:$PATH
   export NLS_LANG=japanese_japan.UTF8
   export SQLPATH=$HOME/sql
-  # Adobe Flex SDK
-  # export FLEX3_HOME=/usr/local/flex_sdk_3
-  # export FLEX3=$FLEX3_HOME/bin
-  # export PATH=$FLEX3:$PATH
-  # Adobe Air SDK
-  # export AIR_HOME=/usr/local/air.5.2
-  # export AIR=$AIR_HOME/bin
-  # export PATH=$AIR:$PATH
-  # scaladoc
-  # export SCALA_DOC_HOME=~/scala/InteractiveHelp/scala-2.7.5-apidocs-fixed/
-  # stax
-  # export STAX_HOME=/usr/local/stax-sdk-0.3.6
-  # export PATH=$STAX_HOME:$PATH
-
-  # play
-  # export PLAY_HOME=~/java/play-1.1
-  # export PATH=$PLAY_HOME:$PATH
-  # cabal
-  # export PATH=$HOME/.cabal/bin:$PATH
 
   # JsTestDriver
   export JSTESTDRIVER_HOME=$HOME/bin
@@ -298,7 +279,9 @@ operafunction print_known_hosts() {
     fi
 }
 _cache_hosts=($( print_known_hosts ))
-$HOME/bin/edit-server/edit-server &
+# $HOME/bin/edit-server/edit-server &
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

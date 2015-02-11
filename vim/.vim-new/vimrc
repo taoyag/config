@@ -4,10 +4,11 @@
 filetype off
 if has("win32") || has("win64")
     set rtp+=~/vimfiles/neobundle.vim.git/
-    call neobundle#rc("~/vimfiles/bundle/")
+    call neobundle#begin("~/vimfiles/bundle/")
+    " call neobundle#rc("~/vimfiles/bundle/")
 else
     set rtp+=~/.vim/neobundle.vim.git/
-    call neobundle#rc()
+    call neobundle#begin()
 endif
 let g:neobundle_default_git_protocol="https"
 
@@ -16,7 +17,6 @@ if has("win32") || has("win64")
 endif
 
 " github repos
-""NeoBundle "msanders/cocoa.vim"
 NeoBundle 'Shougo/neocomplete', { 'autoload' : {
         \   'insert' : 1,
         \ }}
@@ -28,23 +28,6 @@ NeoBundle 'Shougo/neosnippet', {
       \   'insert' : 1,
       \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
       \ }}
-" NeoBundle "Shougo/neocomplcache.git"
-" NeoBundle "Shougo/neosnippet.git"
-" NeoBundleLazy "Shougo/neocomplcache", {
-            " \ 'autoload' : {
-            " \  'insert' : 1,
-            " \}}
-" NeoBundleLazy "Shougo/neosnippet", {
-            " \ 'autoload' : {
-            " \  'insert' : 1,
-            " \}}
-" NeoBundleLazy "Shougo/neocomplcache-rsense", {
-" NeoBundle "Shougo/neocomplcache-rsense", {
-            " \ 'depends': 'Shougo/neocomplcache',
-            " \ 'autoload' : {
-            " \  'filetype' : 'ruby',
-            " \}}
-" NeoBundleLazy 'taichouchou2/rsense-0.3', {
 NeoBundle 'taichouchou2/rsense-0.3', {
             \ 'build' : {
             \  'mac' : 'ruby etc/config.rb > ~/.rsense',
@@ -62,30 +45,26 @@ NeoBundle "Shougo/vimproc", {
     \   'unix'    : 'make -f make_unix.mak',
     \   },
     \ }
+NeoBundle "Shougo/neomru"
 NeoBundle "Shougo/unite-help"
 NeoBundle "Shougo/neomru.vim"
 NeoBundle "thinca/vim-quickrun"
 NeoBundle "thinca/vim-ref"
 NeoBundle "thinca/vim-qfreplace"
-NeoBundle "thinca/vim-tabrecent"
 NeoBundle "thinca/vim-unite-history"
-NeoBundle "thinca/vim-poslist"
 NeoBundle "thinca/vim-singleton"
-NeoBundle "kana/vim-smartchr"
 NeoBundle "tpope/vim-surround"
 NeoBundle "tyru/open-browser.vim"
 NeoBundle "motemen/git-vim"
 NeoBundle "ujihisa/unite-locate"
 NeoBundle "ujihisa/vimshell-ssh"
-NeoBundle "h1mesuke/unite-outline"
+NeoBundle "Shougo/unite-outline"
 NeoBundle "sgur/unite-qf"
 NeoBundle "kmnk/vim-unite-svn"
 NeoBundle "tsukkee/unite-tag"
 NeoBundle "t9md/vim-textmanip"
-NeoBundle "soh335/vim-ref-jquery"
 NeoBundle "h1mesuke/ref-dicts-en"
 NeoBundle "mattn/gist-vim"
-NeoBundle "mattn/vimtweak"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "fuenor/qfixhowm"
 NeoBundle "kana/vim-fakeclip"
@@ -95,107 +74,42 @@ NeoBundle "mattn/vdbi-vim"
 NeoBundle 'mattn/qiita-vim'
 
 NeoBundle 'grep.vim'
-NeoBundle 'The-NERD-Commenter'
 NeoBundle 'copypath.vim'
-NeoBundle 'vcscommand.vim'
 NeoBundle 'sudo.vim'
-NeoBundle 'tanabe/ToggleCase-vim'
+NeoBundle 'The-NERD-Commenter'
 
 " for Ruby development
 NeoBundle 'taichouchou2/vim-endwise.git', {
             \ 'autoload' : {
             \  'insert' : 1,
             \ } }
-"NeoBundle 'tpope/vim-endwise.git'
-"
-" ruby / railsサポート {{{
-" NeoBundle 'tpope/vim-rails'
-" NeoBundleLazy 'ujihisa/unite-rake', {
 NeoBundle 'ujihisa/unite-rake', {
       \ 'depends' : 'Shougo/unite.vim' }
-" NeoBundleLazy 'basyura/unite-rails', {
-" NeoBundle 'basyura/unite-rails', {
-      " \ 'depends' : 'Shougo/unite.vim',
-      " \ 'autoload' : {
-      " \   'unite_sources' : [
-      " \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
-      " \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
-      " \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
-      " \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
-      " \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
-      " \     'rails/stylesheet', 'rails/view'
-      " \   ]
-      " \ }}
-" NeoBundle 'basyura/unite-rails', {
-      " \ 'depends' : 'Shjkougo/unite.vim' }
-" NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
-" NeoBundle 'taichouchou2/unite-rails_best_practices', {
-      " \ 'depends' : 'Shougo/unite.vim',
-      " \ 'build' : {
-      " \    'mac': 'gem install rails_best_practices',
-      " \    'unix': 'gem install rails_best_practices',
-      " \   }
-      " \ }
-" NeoBundleLazy 'taichouchou2/unite-reek', {
-" NeoBundle 'taichouchou2/unite-reek', {
-      " \ 'build' : {
-      " \    'mac': 'gem install reek',
-      " \    'unix': 'gem install reek',
-      " \ },
-      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
-      " \ 'depends' : 'Shougo/unite.vim' }
-" NeoBundleLazy 'taichouchou2/alpaca_complete', {
-" NeoBundle 'taichouchou2/alpaca_complete', {
-      " \ 'depends' : 'tpope/vim-rails',
-      " \ 'build' : {
-      " \    'mac':  'gem install alpaca_complete',
-      " \    'unix': 'gem install alpaca_complete',
-      " \   }
-      " \ }
-
-" let s:bundle_rails = 'unite-rails unite-rails_best_practices unite-rake alpaca_complete'
 
 function! s:bundleLoadDepends(bundle_names) "{{{
   " bundleの読み込み
   execute 'NeoBundleSource '.a:bundle_names
   au! RailsLazyPlugins
 endfunction"}}}
-" aug RailsLazyPlugins
-  " au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
-" aug END
 
 " reference環境
 NeoBundle 'vim-ruby/vim-ruby', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-" NeoBundleLazy 'taka84u9/vim-ref-ri', {
-" NeoBundle 'taka84u9/vim-ref-ri', {
-      " \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-" NeoBundleLazy 'skwp/vim-rspec', {
-" NeoBundle 'skwp/vim-rspec', {
-      " \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-" NeoBundleLazy 'ruby-matchit', {
 NeoBundle 'ruby-matchit', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-" }}}
-
-" }}}
-"}}}
-" NeoBundle 'taichouchou2/vim-rsense'
-"NeoBundle 'taichouchou2/vim-ref-ri'
-"NeoBundle 'taq/vim-rspec'
 NeoBundle 'tpope/vim-cucumber.git'
 
 NeoBundle 'hrsh7th/vim-versions.git'
 NeoBundle 'majutsushi/tagbar'
 
 NeoBundle 'mileszs/ack.vim'
-" NeoBundle 'chreekat/vim-instant-markdown'
 
 NeoBundle 'terryma/vim-multiple-cursors'
 
 """ non github repos
 ""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
+
+call neobundle#end()
 
 filetype plugin indent on
 
@@ -391,8 +305,8 @@ else
     endif
     if has("gui_mac") || has("gui_macvim")
         set antialias
-        " set guifont=Ricty:h10
-        set guifont=Monaco:h10
+        set guifont=Ricty\ Diminished:h14
+        " set guifont=Monaco:h10
     endif
     if has("gui_macvim")
         autocmd GUIEnter * winsize 130 120
@@ -661,12 +575,11 @@ noremap : ;
 let g:NERDCreateDefaultMappings = 0
 " コメントの間にスペースを空ける
 let NERDSpaceDelims = 1
-"<Leader>xでコメントをトグル(NERD_commenter.vim)
-" map <Leader>x /c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
 let NERDShutUp=1
 
 nmap <leader>xc         <plug>NERDCommenterComment
+nmap <leader>,          <plug>NERDCommenterToggle
 nmap <leader>x<space>   <plug>NERDCommenterToggle
 nmap <leader>xm         <plug>NERDCommenterMinimal
 nmap <leader>xs         <plug>NERDCommenterSexy
@@ -679,7 +592,7 @@ nmap <leader>xu         <plug>NERDCommenterUncomment
 nmap <leader>x$         <plug>NERDCommenterToEOL
 nmap <leader>xA         <plug>NERDCommenterAppend
 
-" vmap <leader>/c         <plug>NERDCommenterComment
+vmap <leader>,          <plug>NERDCommenterToggle
 vmap <leader>x<space>   <plug>NERDCommenterToggle
 vmap <leader>xm         <plug>NERDCommenterMinimal
 vmap <leader>xs         <plug>NERDCommenterSexy
@@ -908,7 +821,6 @@ nnoremap <silent> <Space>je :Ref webdict je <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>ej :Ref webdict ej <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>ee :Ref hyperdict <C-r><C-w><C-m><C-w>_
 nnoremap <silent> <Space>s :Ref synonym <C-r><C-w><C-m><C-w>_
-nnoremap <silent> <Space>jq :Ref jquery <C-r><C-w><C-m><C-w>_
 
 "------------------------------------
 " vimfiler.vim
@@ -940,19 +852,19 @@ nnoremap <silent> <C-j>  :<C-u>Unite -buffer-name=files file_mru<CR>
 
 
 nnoremap [unite]u  :<C-u>Unite<Space>
-nnoremap <silent> [unite];  :<C-u>Unite history/command command<CR>
-nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
-nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
+nnoremap <silent> [unite];  :<C-u>Unite history/command<CR>
+nnoremap <silent> [unite]ma :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me :<C-u>Unite outline:message<CR>
 nnoremap <silent> [unite]n  :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> [unite]p  :<C-u>UniteWithBufferDir -buffer-name=files file file_mru file/new<CR>
 nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files buffer file_mru bookmark file file/new<CR>
 nnoremap <silent> [unite]j  :<C-u>Unite -buffer-name=files file_mru<CR>
-nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qf:ex=vimgrep\ <f-args>
 nnoremap <silent> [unite]a  :<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]l  :<C-u>Unite locate<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]/  :<C-u>Unite line<CR>
 nnoremap <silent> [unite]g  :<C-u>Unite grep:<CR>
 nnoremap <silent> [unite]g  :<C-u>Unite grep:<CR><CR><C-W>
@@ -1068,17 +980,6 @@ nnoremap <silent> [TABCMD]t :<c-u>Unite -immediately tab:no-current<cr>
 for n in range(1, 9)
   execute 'nnoremap <silent> [TABCMD]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-
-"------------------------------------
-" tabrecent.vim
-"------------------------------------
-nnoremap <silent> [TABCMD]r :<c-u>TabRecent<cr>
-
-"------------------------------------
-" surround.vim
-"------------------------------------
-nmap s <Plug>Ysurround
-nmap ss <Plug>Yssurround
 
 "------------------------------------
 " grep.vim
@@ -1230,13 +1131,6 @@ xmap <Space>J :QuickhlMatchClear<CR>
 " easymotion
 let g:EasyMotion_leader_key = '<Leader>,'
 
-" smartchr
-autocmd FileType php inoremap <buffer> <expr> . smartchr#one_of('.', '->')
-
-" vim-poslist
-map <C-o> <Plug>(poslist-prev-pos)
-map <C-i> <Plug>(poslist-next-pos)
-
 " for parallels
 " inoremap <C-@> <ESC>
 
@@ -1248,48 +1142,6 @@ else
     autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
     autocmd BufNewFile *.feature 0r ~/.vim/templates/feature.tpl
 end
-
-" rcodetools.vim
-" plain annotations
-map <silent> <F10> !xmpfilter -a<cr>
-nmap <silent> <F10> V<F10>
-imap <silent> <F10> <ESC><F10>a
-
-" Test::Unit assertions; use -s to generate RSpec expectations instead
-map <silent> <S-F10> !xmpfilter -s<cr>
-nmap <silent> <S-F10> V<S-F10>
-imap <silent> <S-F10> <ESC><S-F10>a
-
-" Annotate the full buffer
-" I actually prefer ggVG to %; it's a sort of poor man's visual bell 
-nmap <silent> <F11> mzggVG!xmpfilter -a<cr>'z
-imap <silent> <F11> <ESC><F11>
-
-" assertions
-nmap <silent> <S-F11> mzggVG!xmpfilter -u<cr>'z
-imap <silent> <S-F11> <ESC><S-F11>a
-
-" Add # => markers
-vmap <silent> <F12> !xmpfilter -m<cr>
-nmap <silent> <F12> V<F12>
-imap <silent> <F12> <ESC><F12>a
-
-" Remove # => markers
-vmap <silent> <S-F12> ms:call RemoveRubyEval()<CR>
-nmap <silent> <S-F12> V<S-F12>
-imap <silent> <S-F12> <ESC><S-F12>a
-
-
-function! RemoveRubyEval() range
-  let begv = a:firstline
-  let endv = a:lastline
-  normal Hmt
-  set lz
-  execute ":" . begv . "," . endv . 's/\s*# \(=>\|!!\).*$//e'
-  normal 'tzt`s
-  set nolz
-  redraw
-endfunction
 
 " 文字列選択でクリップボードにコピー、右クリックで貼り付け
 set guioptions+=a
