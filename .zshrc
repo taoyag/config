@@ -14,7 +14,7 @@ darwin*)
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
-  export SCREENDIR=/Users/taoyag/tmp/screen
+  # export SCREENDIR=/Users/taoyag/tmp/screen
   
   export PATH=$HOME/bin:$PATH
   
@@ -33,7 +33,7 @@ darwin*)
   export SQLPATH=$HOME/sql
 
   # JsTestDriver
-  export JSTESTDRIVER_HOME=$HOME/bin
+  # export JSTESTDRIVER_HOME=$HOME/bin
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   # alias screen="/Users/taoyag/bin/screen"
@@ -61,7 +61,7 @@ linux*)
   export PATH=$HOME/bin:$PATH
 
   # JsTestDriver
-  export JSTESTDRIVER_HOME=$HOME/bin
+  # export JSTESTDRIVER_HOME=$HOME/bin
 
   alias vi='vim'
   # alias ls='ls -vG'
@@ -70,8 +70,8 @@ esac
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^S' history-incremental-pattern-search-forward
+# bindkey '^R' history-incremental-pattern-search-backward
+# bindkey '^S' history-incremental-pattern-search-forward
 
 autoload -U compinit
 compinit
@@ -125,18 +125,26 @@ bindkey -e
  
 # historical backward/forward search with linehead string binded to ^P/^N
 #
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+# autoload history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+# bindkey "^P" history-beginning-search-backward-end
+# bindkey "^N" history-beginning-search-forward-end
  
 # cdr
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-max 5000
-zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':completion:*' recent-dirs-insert both
+autoload -Uz is-at-least
+if is-at-least 4.3.11; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    zstyle ':chpwd:*' recent-dirs-max 5000
+    zstyle ':chpwd:*' recent-dirs-default yes
+    zstyle ':completion:*' recent-dirs-insert both
+fi
+# autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+# add-zsh-hook chpwd chpwd_recent_dirs
+# zstyle ':chpwd:*' recent-dirs-max 5000
+# zstyle ':chpwd:*' recent-dirs-default yes
+# zstyle ':completion:*' recent-dirs-insert both
 
 # git
 autoload -U colors; colors
@@ -192,12 +200,12 @@ function mvi() {
 }
 
 # zaw
-if [[ -f ~/zaw/zaw.zsh ]]; then
-    source ~/zaw/zaw.zsh
-    bindkey '^R' zaw-history
-    zstyle ':filter-select' case-insensitive yes
-    bindkey '^@' zaw-cdr
-fi
+# if [[ -f ~/zaw/zaw.zsh ]]; then
+    # source ~/zaw/zaw.zsh
+    # bindkey '^R' zaw-history
+    # zstyle ':filter-select' case-insensitive yes
+    # bindkey '^@' zaw-cdr
+# fi
 
 # auto-fu.zsh
 # if [[ -f ~/.zsh/auto-fu.zsh ]]; then
@@ -281,7 +289,36 @@ operafunction print_known_hosts() {
 _cache_hosts=($( print_known_hosts ))
 # $HOME/bin/edit-server/edit-server &
 
+# peco settings
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+function peco-cdr() {
+    local selected_dir=$(cdr -l | awk '{print $2}' | peco)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-cdr
+bindkey '^xr' peco-cdr
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
