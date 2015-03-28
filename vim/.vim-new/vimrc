@@ -46,6 +46,7 @@ NeoBundle "Shougo/vimproc", {
     \   },
     \ }
 NeoBundle "Shougo/neomru"
+NeoBundle "Shougo/tabpagebuffer.vim"
 NeoBundle "Shougo/unite-help"
 NeoBundle "Shougo/neomru.vim"
 NeoBundle "thinca/vim-quickrun"
@@ -258,7 +259,7 @@ if has("gui_mac") || has("gui_macvim")
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
 elseif has("gui_win32") || has("gui_win32s")
-    set clipboard=unnamed
+    set clipboard+=unnamed
 else
     let os=system('uname')
     if os ==? "linux\n"
