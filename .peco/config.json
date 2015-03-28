@@ -1,5 +1,7 @@
 {
     "Keymap": {
-        "C-g": "peco.Cancel"
+        "C-g": "peco.Cancel",
+        "C-m": "peco.Finish",
+        "C-j": "peco.Finish"
     }
 }
