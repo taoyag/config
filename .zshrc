@@ -8,7 +8,8 @@ darwin*)
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+  # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
   # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.7.0/Home
   # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
   export PATH=$JAVA_HOME/bin:$PATH

@@ -1,0 +1,41 @@
+set smartindent
+set autoindent
+set ignorecase
+set smartcase
+set saney
+set clipboard=unnamed
+
+" insert modeを抜けるとIME OFF
+set imd
+
+" 保存・終了
+noremap <Space>w :w<CR>
+noremap <Space>q :q<CR>
+noremap <Space>Q :q!<CR>
+
+" カーソル移動等
+inoremap <C-o> <Esc>o
+inoremap <C-h> <BS>
+inoremap <C-a> <Esc>0i
+inoremap <C-e> <Esc>$a
+inoremap <C-f> <Esc><Right>a
+inoremap <C-b> <Esc>i
+inoremap <C-n> <Esc>ja
+inoremap <C-p> <Esc>ka
+
+inoremap <C-d> <Esc><Right>xi
+inoremap <C-k> <Esc><Right>v$xi
+
+
+noremap ; :
+noremap : ;
+
+noremap <C-t> <C-o>
+
+" 移動
+noremap <Space>f <C-f>
+noremap <Space>b <C-b>
+
+" 行選択
+noremap vv v$
+
