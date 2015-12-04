@@ -28,11 +28,11 @@ NeoBundle 'Shougo/neosnippet', {
       \   'insert' : 1,
       \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
       \ }}
-NeoBundle 'taichouchou2/rsense-0.3', {
-            \ 'build' : {
-            \  'mac' : 'ruby etc/config.rb > ~/.rsense',
-            \  'unix' : 'ruby etc/config.rb > ~/.rsense',
-            \ }}
+"NeoBundle 'taichouchou2/rsense-0.3', {
+"            \ 'build' : {
+"            \  'mac' : 'ruby etc/config.rb > ~/.rsense',
+"            \  'unix' : 'ruby etc/config.rb > ~/.rsense',
+"            \ }}
 NeoBundle "scrooloose/snipmate-snippets.git"
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/vimfiler"
@@ -45,7 +45,6 @@ NeoBundle "Shougo/vimproc", {
     \   'unix'    : 'make -f make_unix.mak',
     \   },
     \ }
-NeoBundle "Shougo/neomru"
 NeoBundle "Shougo/tabpagebuffer.vim"
 NeoBundle "Shougo/unite-help"
 NeoBundle "Shougo/neomru.vim"
@@ -99,6 +98,7 @@ NeoBundle 'vim-ruby/vim-ruby', {
 NeoBundle 'ruby-matchit', {
     \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 NeoBundle 'tpope/vim-cucumber.git'
+NeoBundle 'tpope/vim-dispatch.git'
 
 NeoBundle 'hrsh7th/vim-versions.git'
 NeoBundle 'majutsushi/tagbar'
@@ -109,6 +109,19 @@ NeoBundle 'terryma/vim-multiple-cursors'
 
 """ non github repos
 ""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
+
+NeoBundleLazy 'OmniSharp/omnisharp-vim', {
+\   'autoload': {'filetypes': ['cs']},
+\   'build': {
+\     'windows': 'msbuild server/OmniSharp.sln',
+\     'mac': 'xbuild server/OmniSharp.sln',
+\     'unix': 'xbuild server/OmniSharp.sln',
+\   }
+\ }
+
+NeoBundleLazy 'OrangeT/vim-csharp', {
+\   'autoload': {'filetypes': ['cs']},
+\ }
 
 call neobundle#end()
 
@@ -753,6 +766,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -761,6 +775,7 @@ endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
@@ -1174,3 +1189,13 @@ endif
 " very magic
 nnoremap / /\v
 nnoremap ? ?\v
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
