@@ -325,3 +325,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 source dnvm.sh
+
+HOMEBREW_CASK_OPTS="--appdir=/Applications"
