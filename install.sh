@@ -13,7 +13,6 @@ do
     echo "$src/$f"
     ln -sf "$src/$f" "$HOME/bin/"`basename "$f"`
 done
-echo '----'
 
 for f in .??*
 do
@@ -27,3 +26,6 @@ do
     echo "$src/$f"
     ln -sf "$src/$f" "$HOME/$f"
 done
+
+# misc
+ln -sf "$src/misc/Karabiner/private.xml" "$HOME/Library/Application Support/Karabiner/private.xml"
