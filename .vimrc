@@ -374,12 +374,12 @@ function! LightLineMode()
 endfunction
 
 " 不可視文字をハイライトする
-augroup highlightIdegraphicSpace
-    autocmd!
-    autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-    " 全角空白、タブ
-    autocmd VimEnter,WinEnter * match IdeographicSpace /[　\t]/
-augroup END
+" augroup highlightIdegraphicSpace
+    " autocmd!
+    " autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+    " " 全角空白、タブ
+    " autocmd VimEnter,WinEnter * match IdeographicSpace /[　\t]/
+" augroup END
 
 "colorscheme YourFavoriteColorscheme
 "dont load csapprox if we no gui support - silences an annoying warning
