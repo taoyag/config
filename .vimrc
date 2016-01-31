@@ -137,14 +137,14 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 
-NeoBundle 'altercation/vim-colors-solarized', { "base" : $HOME."/.vim/colors" }
-syntax enable
-set background=dark
-colorscheme solarized
-
 call neobundle#end()
 
 filetype plugin indent on
+
+" solarized
+syntax enable
+set background=dark
+colorscheme solarized
 
 "------------------------------------
 " set runtimepath for local scripts
