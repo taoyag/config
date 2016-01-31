@@ -16,7 +16,9 @@ inoremap <silent> <expr> <CR> IndentBraces()
 " OmniSharp
 nnoremap <silent> <buffer> <F5> :OmniSharpBuild<CR>
 if has("mac")
-    nnoremap <silent> <buffer> <S-D-F10> :OmniSharpGetCodeActions<CR>
+    nnoremap <silent> <buffer> <S-M-F10> :OmniSharpGetCodeActions<CR>
+    nnoremap <silent> <buffer> <M-1> :OmniSharpGetCodeActions<CR>
+    nnoremap <silent> <buffer> <C-1> :OmniSharpGetCodeActions<CR>
     nnoremap <silent> <buffer> <D-1> :OmniSharpGetCodeActions<CR>
 else
     nnoremap <silent> <buffer> <S-A-F10> :OmniSharpGetCodeActions<CR>
