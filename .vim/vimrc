@@ -1,21 +1,26 @@
-"------------------------------------
-" vundle
-"------------------------------------
-filetype off
-if has("win32") || has("win64")
-    set rtp+=~/vimfiles/neobundle.vim.git/
-    call neobundle#begin("~/vimfiles/bundle/")
-    " call neobundle#rc("~/vimfiles/bundle/")
-else
-    set runtimepath^=~/.vim/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/.vim/bundle'))
+" variables
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_mac = has('mac') || has('gui_mac') || has('gui_macvim')
+let s:vimrc = expand("<sfile>:p")
+let $MYVIMRC = s:vimrc
 
-"    set rtp+=~/.vim/neobundle.vim.git/
-"    call neobundle#begin()
+" NeoBundle path
+if s:is_windows
+  let $DOTVIM = expand('~/vimfiles')
+else
+  let $DOTVIM = expand('~/.vim')
 endif
+
+" NeoBundle
+filetype off
+let $VIMBUNDLE = $DOTVIM . '/bundle'
+let $NEOBUNDLEPATH = $VIMBUNDLE . '/neobundle.vim'
+
+set runtimepath+=$NEOBUNDLEPATH
+call neobundle#begin($VIMBUNDLE)
 let g:neobundle_default_git_protocol="https"
 
-if has("win32") || has("win64")
+if s:is_windows
     let $PATH = 'C:\Program Files (x86)\Git\bin;' . $PATH
 endif
 
@@ -270,12 +275,12 @@ endif
 inoremap <silent> <C-j> <C-^>
 
 " clipboard
-if has("gui_mac") || has("gui_macvim")
+if s:is_mac
     nnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
-elseif has("gui_win32") || has("gui_win32s")
+elseif s:is_windows
     set clipboard+=unnamed
 else
     let os=system('uname')
@@ -329,7 +334,7 @@ else
     if has("gui_macvim")
         autocmd GUIEnter * winsize 130 120
     endif
-    if has("gui_win32") || has("gui_win32s")
+    if s:is_windows
         set guifont=Consolas:h10
     endif
 endif
@@ -709,12 +714,7 @@ endfunction
 autocmd FileType ruby,eruby setlocal tags+=~/.tags-ruby,~/.tags-rubygems
 " ruby dictionary
 
-if has("gui_win32") || has("gui_win32s")
-    autocmd FileType ruby,eruby setlocal dictionary=~/vimfiles/dict/ruby_snippets.dict
-else
-    autocmd FileType ruby,eruby setlocal dictionary=~/.vim/dict/ruby_snippets.dict
-endif
-let g:ruby_path=$HOME . "/.pik\rubies/Ruby-200-p195/bin"
+autocmd FileType ruby,eruby setlocal dictionary=$DOTVIM/dict/ruby_snippets.dict
 
 
 "------------------------------------
@@ -787,12 +787,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
-if has("unix") || has("gui_mac") || has("gui_macvim")
-    let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets,' . $HOME . '/.vim/bundle/snipmate-snippets/snippets,' . $HOME . '/.vimlocal/snippets'
-endif
-if has("gui_win32") || has("gui_win32s")
-    let g:neosnippet#snippets_directory = $HOME . '/vimfiles/snippets,' . $HOME . '/vimfiles/bundle/snipmate-snippets/snippets,' . $HOME . '/vimlocal/snippets'
-endif
+let g:neosnippet#snippets_directory = expand($DOTVIM . '/snippets') . ',' . expand($VIMBUNDLE . '/snipmate-snippets/snippets') . ',' . expand($HOME . '/.vimlocal/snippets')
 
 "------------------------------------
 " template.vim
@@ -933,14 +928,10 @@ call unite#custom#substitute('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")
 call unite#custom#substitute('files', '^@', '\=getcwd()."/*"', 1)
 call unite#custom#substitute('files', '^\\', '~/*')
 
-if has('win32') || has('win64')
-    call unite#custom#substitute('files', '^;v', '~/vimfiles/*')
-else
-    call unite#custom#substitute('files', '^;v', '~/.vim/*')
-endif
+call unite#custom#substitute('files', '^;v', $DOTVIM . '/*')
 call unite#custom#substitute('files', '^;r', '\=$VIMRUNTIME."/*"')
 call unite#custom#substitute('files', '^;w', '~/Documents/workspace*')
-if has('win32') || has('win64')
+if s:is_windows
   call unite#custom#substitute('files', '^;p', 'C:/Program Files/*')
 endif
 
@@ -1110,7 +1101,7 @@ nnoremap ,en :<C-u>EvervimCreateNote<Cr>
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_enable_smart_case = 1
 
-if has('win32') || has('win64')
+if s:is_windows
   " Display user name on Windows.
   let g:vimshell_prompt = $USERNAME."% "
   let g:vimshell_use_ckw = 1
@@ -1155,13 +1146,8 @@ let g:EasyMotion_leader_key = '<Leader>,'
 " inoremap <C-@> <ESC>
 
 " template
-if has("win32") || has("win64")
-    autocmd BufNewFile *.rb 0r ~/vimfiles/templates/rb.tpl
-    autocmd BufNewFile *.feature 0r ~/vimfiles/templates/feature.tpl
-else
-    autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
-    autocmd BufNewFile *.feature 0r ~/.vim/templates/feature.tpl
-end
+autocmd BufNewFile *.rb 0r $DOTVIM/templates/rb.tpl
+autocmd BufNewFile *.feature 0r $DOTVIM/templates/feature.tpl
 
 " 文字列選択でクリップボードにコピー、右クリックで貼り付け
 set guioptions+=a
@@ -1186,7 +1172,7 @@ endfunction
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " vim-singleton
-if has("win32") || has("win64")
+if s:is_windows
     call singleton#enable()
 endif
 
