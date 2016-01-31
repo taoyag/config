@@ -1,4 +1,7 @@
+syntax enable
+set background=dark
 colorscheme solarized
+
 "colorscheme zenburn
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
