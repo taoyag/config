@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root>
+  <list>
+    <item>
+      <name>Swap Backslash and Backquote</name>
+      <appendix>Swap backslash to backquote</appendix>
+      <identifier>private.swap_backslash_to_backquote</identifier>
+      <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BACKQUOTE</autogen>
+      <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::BACKSLASH</autogen>
+    </item>
+    <item>
+      <name>JIS Underscore to Backslash</name>
+      <appendix>JIS underscore to backslash</appendix>
+      <identifier>private.jis_underscore_to_backslash</identifier>
+      <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH</autogen>
+    </item>
+  </list>
+</root>
