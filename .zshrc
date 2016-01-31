@@ -9,14 +9,9 @@ darwin*)
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
-  # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
-  # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.7.0/Home
-  # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
-  # export SCREENDIR=/Users/taoyag/tmp/screen
-  
   export PATH=$HOME/bin:$PATH
   
   # scala
@@ -33,18 +28,10 @@ darwin*)
   export NLS_LANG=japanese_japan.UTF8
   export SQLPATH=$HOME/sql
 
-  # JsTestDriver
-  # export JSTESTDRIVER_HOME=$HOME/bin
-
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  # alias screen="/Users/taoyag/bin/screen"
-  # alias less="/usr/share/vim/vim72/macros/less.sh"
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
-  # alias scaladoc="scala -i ~/scala/InteractiveHelp/import.scala -cp ~/scala/InteractiveHelp/interactive-help-1.0.jar"
   alias ls='ls -vG'
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
-  # alias firefox='open -a Firefox'
-  # alias prev='open -a Preview'
 
   if [ ! -S $SSH_AUTH_SOCK ]; then
       eval `ssh-agent -a $SSH_AUTH_SOCK`
@@ -61,18 +48,11 @@ linux*)
   export SVN_EDITOR=vi
   export PATH=$HOME/bin:$PATH
 
-  # JsTestDriver
-  # export JSTESTDRIVER_HOME=$HOME/bin
-
   alias vi='vim'
-  # alias ls='ls -vG'
   ;;
 esac
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
-
-# bindkey '^R' history-incremental-pattern-search-backward
-# bindkey '^S' history-incremental-pattern-search-forward
 
 autoload -U compinit
 compinit
@@ -150,7 +130,6 @@ fi
 
 # git
 autoload -U colors; colors
-
 function rprompt-git-current-branch {
     local name st color
     name=`git branch 2> /dev/null | grep '^\*' | cut -b 3-`
@@ -176,7 +155,6 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
-# [ ${STY} ] || screen -rx || screen -D -RR
 
 # mvn completion
 function listMavenCompletions {
@@ -201,24 +179,6 @@ function mvi() {
   fi
 }
 
-# zaw
-# if [[ -f ~/zaw/zaw.zsh ]]; then
-    # source ~/zaw/zaw.zsh
-    # bindkey '^R' zaw-history
-    # zstyle ':filter-select' case-insensitive yes
-    # bindkey '^@' zaw-cdr
-# fi
-
-# auto-fu.zsh
-# if [[ -f ~/.zsh/auto-fu.zsh ]]; then
-    # source ~/.zsh/auto-fu.zsh
-    # function zle-line-init() {
-        # auto-fu-init
-    # }
-    # zle -N zle-line-init
-    # zstyle ':completion:*' completer _oldlist _complete
-# fi
-
 # nvm (for node.js)
 if [[ -f ~/.nvm/nvm.sh ]]; then
     source ~/.nvm/nvm.sh > /dev/null 2>&1
@@ -232,43 +192,6 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
 fi
 
 source $(brew --prefix nvm)/nvm.sh
-
-is_screen_running() {
-    # tscreen also uses this varariable.
-    [ ! -z "$WINDOW" ]
-}
-is_tmux_runnning() {
-    [ ! -z "$TMUX" ]
-}
-is_screen_or_tmux_running() {
-    is_screen_running || is_tmux_runnning
-}
-shell_has_started_interactively() {
-    [ ! -z "$PS1" ]
-}
-resolve_alias() {
-    cmd="$1"
-    while \
-        whence "$cmd" >/dev/null 2>/dev/null \
-        && [ "$(whence "$cmd")" != "$cmd" ]
-    do
-        cmd=$(whence "$cmd")
-    done
-    echo "$cmd"
-}
-
-
-# if ! is_screen_or_tmux_running && shell_has_started_interactively; then
-    # for cmd in tmux tscreen screen; do
-        # if whence $cmd >/dev/null 2>/dev/null; then
-            # $(resolve_alias "$cmd")
-            # break
-        # fi
-    # done
-# fi
-if [ $SHLVL = 1 ]; then
-    tmux attach || tmux
-fi
 
 # autojump
 if [ -e $HOME/local/etc/profile.d/autojump.zsh ]; then
@@ -289,7 +212,6 @@ operafunction print_known_hosts() {
     fi
 }
 _cache_hosts=($( print_known_hosts ))
-# $HOME/bin/edit-server/edit-server &
 
 # peco settings
 function peco-select-history() {
@@ -319,11 +241,72 @@ function peco-cdr() {
 zle -N peco-cdr
 bindkey '^xr' peco-cdr
 
+function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
+function is_osx() { [[ $OSTYPE == darwin* ]]; }
+function is_screen_running() { [ ! -z "$STY" ]; }
+function is_tmux_runnning() { [ ! -z "$TMUX" ]; }
+function is_screen_or_tmux_running() { is_screen_running || is_tmux_runnning; }
+function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
+function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
+
+function tmux_automatically_attach_session()
+{
+    if is_screen_or_tmux_running; then
+        ! is_exists 'tmux' && return 1
+
+        if is_tmux_runnning; then
+            echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
+            echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
+            echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
+            echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
+            echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
+        elif is_screen_running; then
+            echo "This is on screen."
+        fi
+    else
+        if shell_has_started_interactively && ! is_ssh_running; then
+            if ! is_exists 'tmux'; then
+                echo 'Error: tmux command not found' 2>&1
+                return 1
+            fi
+
+            if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
+                # detached session exists
+                tmux list-sessions
+                echo -n "Tmux: attach? (y/N/num) "
+                read
+                if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+                    tmux attach-session
+                    if [ $? -eq 0 ]; then
+                        echo "$(tmux -V) attached session"
+                        return 0
+                    fi
+                elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+                    tmux attach -t "$REPLY"
+                    if [ $? -eq 0 ]; then
+                        echo "$(tmux -V) attached session"
+                        return 0
+                    fi
+                fi
+            fi
+
+            if is_osx && is_exists 'reattach-to-user-namespace'; then
+                # on OS X force tmux's default command
+                # to spawn a shell in the user's namespace
+                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+            else
+                tmux new-session && echo "tmux created new session"
+            fi
+        fi
+    fi
+}
+tmux_automatically_attach_session
+
+source dnvm.sh
+HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-source dnvm.sh
-
-HOMEBREW_CASK_OPTS="--appdir=/Applications"

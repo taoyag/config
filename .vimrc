@@ -132,6 +132,13 @@ NeoBundleLazy 'OrangeT/vim-csharp', {
 \   'autoload': {'filetypes': ['cs']},
 \ }
 
+NeoBundle 'itchyny/lightline.vim'
+
+NeoBundle 'altercation/vim-colors-solarized', { "base" : $HOME."/.vim/colors" }
+syntax enable
+set background=dark
+colorscheme solarized
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -304,6 +311,68 @@ set hidden
 
 scriptencoding utf-8
 
+" solarized
+let g:lightline = {
+        \ 'colorscheme': 'solarized',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'LightLineModified',
+        \   'readonly': 'LightLineReadonly',
+        \   'fugitive': 'LightLineFugitive',
+        \   'filename': 'LightLineFilename',
+        \   'fileformat': 'LightLineFileformat',
+        \   'filetype': 'LightLineFiletype',
+        \   'fileencoding': 'LightLineFileencoding',
+        \   'mode': 'LightLineMode'
+        \ }
+        \ }
+
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 " 不可視文字をハイライトする
 augroup highlightIdegraphicSpace
     autocmd!
@@ -316,14 +385,14 @@ augroup END
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
     let g:CSApprox_loaded = 1
-    colorscheme vibrantink
+    " colorscheme vibrantink
 else
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme desert
+        " colorscheme desert
     else
         set t_Co=256
-        colorscheme vibrantink
+        " colorscheme vibrantink
         set guitablabel=%M%t
     endif
     if has("gui_mac") || has("gui_macvim")
@@ -533,8 +602,7 @@ cnoremap <C-p> <Up>
 nnoremap ,d :execute ":lcd" . expand("%:p:h")<CR>
 
 if has("gui_win32") || has("gui_win32s")
-    nnoremap <space>v :edit $HOME/config/vim/.vim-new/vimrc<CR>
-    " nnoremap <space>v :edit $HOME/config.20110728/vim/.vim-new/vimrc<CR>
+    nnoremap <space>v :edit $HOME/config/.vimrc<CR>
 else
     nnoremap <space>v :edit $HOME/.vimrc<CR>
 endif
