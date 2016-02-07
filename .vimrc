@@ -787,7 +787,7 @@ endif
 if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
-if has("gui_win32") || has("gui_win32s")
+if s:is_windows
     let mygrepprg = $HOME . '/bin/grep'
     let MyGrep_cygwin17 = 1
 endif
