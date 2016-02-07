@@ -310,3 +310,4 @@ HOMEBREW_CASK_OPTS="--appdir=/Applications"
 [[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PGDATA=/usr/local/var/postgres
