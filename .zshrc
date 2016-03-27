@@ -11,8 +11,6 @@ darwin*)
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
-
-  export PATH=$HOME/bin:$PATH
   
   # scala
   export PATH=$HOME/local/scala/bin:$PATH
@@ -21,12 +19,11 @@ darwin*)
   export M2=$M2_HOME/bin
   export PATH=$M2:$PATH
   # oracle client
-  export ORACLE_HOME=/Users/Shared/ohome
-  export ORACLE_SID=XE
-  export DYLD_LIBRARY_PATH=/usr/local/hyperestraier/lib:$ORACLE_HOME/lib:$DYLD_LIBRARY_PATH
-  export PATH=$ORACLE_HOME/bin:$PATH
-  export NLS_LANG=japanese_japan.UTF8
   export SQLPATH=$HOME/sql
+  export ORACLE_HOME=~/bin/sqlplus/instantclient_11_2
+  export PATH=$ORACLE_HOME:$PATH
+  export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
+  export NLS_LANG=japanese_japan.UTF8
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
