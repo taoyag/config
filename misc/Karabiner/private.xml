@@ -14,5 +14,12 @@
       <identifier>private.jis_underscore_to_backslash</identifier>
       <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH</autogen>
     </item>
+    <item>
+      <name>Swap Command and Option (NOT Parallels)</name>
+      <identifier>private.app_parallels_swap_command_and_option</identifier>
+      <not>VIRTUALMACHINE</not>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    </item>
   </list>
 </root>
