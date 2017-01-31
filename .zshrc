@@ -303,8 +303,13 @@ tmux_automatically_attach_session
 source dnvm.sh
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if [ -d $HOME/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+   # tmuxÂÐ±þ
+    for D in `\ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
 export PGDATA=/usr/local/var/postgres
