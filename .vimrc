@@ -22,6 +22,7 @@ let g:neobundle_default_git_protocol="https"
 
 if s:is_windows
     let $PATH = 'C:\Program Files (x86)\Git\bin;' . $PATH
+    let $PATH = $HOME . '\bin;' . $PATH
 endif
 
 " github repos
@@ -788,12 +789,15 @@ if has("gui_mac") || has("gui_macvim")
     let mygrepprg = '/usr/bin/grep'
 endif
 if s:is_windows
+    " let mygrepprg = 'ag'
+    " let MyGrep_Encoding = 'utf-8'
     let mygrepprg = $HOME . '/bin/grep'
     let MyGrep_cygwin17 = 1
 endif
 let MyGrep_ExcludeReg = '[/\\].svn[/\\]'
 "カレントディレクトリを起点にして検索する
 let MyGrep_CurrentDirMode = 0
+let MyGrep_DefaultSearchWord = 1
 
 "howm専用MRUを基本に使用する
 let QFixHowm_SwapLcommand = 1
@@ -1323,6 +1327,7 @@ nnoremap ? ?\v
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
