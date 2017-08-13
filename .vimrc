@@ -145,7 +145,7 @@ filetype plugin indent on
 " solarized
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 "------------------------------------
 " set runtimepath for local scripts

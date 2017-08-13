@@ -1,6 +1,6 @@
 [user]
-    name = taoyag
-    email = taoyag@gmail.com
+	name = 
+	email = 
 [core]
 	excludesfile = /Users/taoyag/.gitignore_global
 [color]
