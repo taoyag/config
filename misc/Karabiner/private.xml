@@ -1,5 +1,22 @@
 <?xml version="1.0"?>
 <root>
+  <appdef>
+      <appname>MicrosoftRDC</appname>
+      <equal>com.microsoft.rdc.mac</equal>
+  </appdef>
+  <devicevendordef>
+      <vendorname>TOPRE</vendorname>
+      <vendorid>0x0853</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+      <productname>RealForce</productname>
+      <productid>0x0200</productid>
+  </deviceproductdef>
+
+  <symbol_map type="KeyCode" name="PC_MUHENKAN" value="0x1c"/>
+  <symbol_map type="KeyCode" name="PC_HENKAN" value="0x1d"/>
+  <!-- <symbol_map type="KeyCode" name="PC_MUHENKAN" value="0x7b"/> -->
+  <!-- <symbol_map type="KeyCode" name="PC_HENKAN" value="0x79"/> -->
   <list>
     <item>
       <name>Swap Backslash and Backquote</name>
@@ -17,9 +34,49 @@
     <item>
       <name>Swap Command and Option (NOT Parallels)</name>
       <identifier>private.app_parallels_swap_command_and_option</identifier>
-      <not>VIRTUALMACHINE</not>
+      <device_only>DeviceVendor::TOPRE, DeviceProduct::RealForce</device_only>
+      <!-- <not>VIRTUALMACHINE</not> -->
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Swap Command and Option (ONLY Parallels)</name>
+      <identifier>private.app_parallels_swap_command_and_option_only</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Swap Command and Option (Microsoft RDC)</name>
+      <identifier>private.app_rdc_swap_command_and_option_only</identifier>
+      <!-- <only>MicrosoftRDC</only> -->
+      <only>REMOTEDESKTOPCONNECTION</only>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Use Henkan/Muhenkan (Microsoft RDC)</name>
+      <identifier>private.app_rdc_use_henkan_muhenkan_only</identifier>
+      <only>MicrosoftRDC</only>
+      <!-- <only>REMOTEDESKTOPCONNECTION</only> -->
+      <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::ESCAPE, ModifierFlag::OPTION_L</autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::PC_HENKAN</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::PC_MUHENKAN</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::F19</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::F18</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen> -->
+      <!-- <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen> -->
+    </item>
+    <item>
+        <name>Use Right Command as EISUU KANA toggle in Microsoft Remote Desktop</name>
+        <identifier>private.rdc_eisuu_kana</identifier>
+        <only>REMOTEDESKTOPCONNECTION</only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::COMMAND_R,
+            KeyCode::JIS_PC_HAN_ZEN
+        </autogen>
     </item>
   </list>
 </root>

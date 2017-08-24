@@ -317,3 +317,15 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 export PATH=/Applications/XAMPP/bin:$HOME/.nodebrew/current/bin:$PATH
+# if [ -d $HOME/.anyenv ] ; then
+    # export PATH="$HOME/.anyenv/bin:$PATH"
+    # eval "$(anyenv init -)"
+   # # tmuxÂÐ±þ
+    # for D in `\ls $HOME/.anyenv/envs`
+    # do
+        # export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    # done
+# fi
+export PGDATA=/usr/local/var/postgres
+
+export PATH=/Applications/XAMPP/bin:$PATH
