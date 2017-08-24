@@ -3,12 +3,13 @@ darwin*)
   export LANG=ja_JP.UTF-8
   
   export TERM=xterm-256color
-  export PATH=/usr/local/share/python:/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
+  export PATH=/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
+  # export PATH=/usr/local/share/python:/usr/local/bin:/usr/X11/bin:/usr/local/mysql/bin:$PATH
   export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_72.jdk/Contents/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
   
@@ -49,7 +50,7 @@ linux*)
   ;;
 esac
 
-export PATH=$HOME/bin:$HOME/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/local/bin:$HOME/.composer/vendor/bin:$PATH
 
 autoload -U compinit
 compinit
@@ -198,8 +199,8 @@ fpath=($fpath $HOME/local/functions(N))
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-unset LD_LIBRARY_PATH
-unset DYLD_LIBRARY_PATH
+# unset LD_LIBRARY_PATH
+# unset DYLD_LIBRARY_PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -303,8 +304,16 @@ tmux_automatically_attach_session
 source dnvm.sh
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# export PATH=/usr/local/opt/openssl/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
+# export CPATH=/usr/local/opt/openssl/include:$LD_LIBRARY_PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/taoyag/.gvm/bin/gvm-init.sh" ]] && source "/Users/taoyag/.gvm/bin/gvm-init.sh"
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PGDATA=/usr/local/var/postgres
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+export PATH=/Applications/XAMPP/bin:$HOME/.nodebrew/current/bin:$PATH
