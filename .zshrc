@@ -178,18 +178,18 @@ function mvi() {
 }
 
 # nvm (for node.js)
-if [[ -f ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh > /dev/null 2>&1
-    if which nvm > /dev/null 2>&1 ; then
-        _nodejs_use_version="v0.6.11"
-        if nvm ls | grep "${_nodejs_use_version}" > /dev/null 2>&1 ; then
-            nvm use "${_nodejs_use_version}" > /dev/null 2>&1
-        fi
-        unset _nodejs_use_version
-    fi
-fi
+# if [[ -f ~/.nvm/nvm.sh ]]; then
+    # source ~/.nvm/nvm.sh > /dev/null 2>&1
+    # if which nvm > /dev/null 2>&1 ; then
+        # _nodejs_use_version="v0.6.11"
+        # if nvm ls | grep "${_nodejs_use_version}" > /dev/null 2>&1 ; then
+            # nvm use "${_nodejs_use_version}" > /dev/null 2>&1
+        # fi
+        # unset _nodejs_use_version
+    # fi
+# fi
 
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
 
 # autojump
 if [ -e $HOME/local/etc/profile.d/autojump.zsh ]; then
