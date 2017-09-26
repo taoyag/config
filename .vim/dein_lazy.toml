@@ -1,0 +1,18 @@
+# インサートモードに入ったら読み込む
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_ft = ['ruby', 'eruby', 'haml']
+[[plugins]]
+repo = 'vim-scripts/ruby-matchit'
+on_ft = ['ruby', 'eruby', 'haml']
+
