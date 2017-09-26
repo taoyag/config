@@ -9,7 +9,6 @@ darwin*)
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
   export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_72.jdk/Contents/Home
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
   
@@ -329,3 +328,5 @@ export PATH=/Applications/XAMPP/bin:$HOME/.nodebrew/current/bin:$PATH
 export PGDATA=/usr/local/var/postgres
 
 export PATH=/Applications/XAMPP/bin:$PATH
+
+[ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
