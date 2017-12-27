@@ -24,7 +24,7 @@ inoremap <C-b> <Right>
 " noremap ff  :vsc Edit.NavigateTo<CR>
 noremap ff <C-3>
 
-noremap <C-]> :vsc Edit.GoToDefinition<CR>
+" noremap <C-]> :vsc Edit.GoToDefinition<CR>
 noremap <C-t> :vsc View.NavigateBackward<CR>
 
 " 0, 9Ç≈çsì™ÅAçsññÇ÷

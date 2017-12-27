@@ -13,7 +13,8 @@ augroup END
 if has("gui_win32")
     " set guifont=Ricty\ Diminished:h11
     " set guifontwide=Ricty\ Diminished:h11
-    set guifont=Consolas:h10:cSHIFTJIS
+    " set guifont=Consolas:h10:cSHIFTJIS
+    set guifont=MyricaM\ M:h10:cSHIFTJIS
     " set printfont=M+2VM+IPAG_circle:h10:cSHIFTJIS
     " winsizeの前に横幅を指定しないとカーソルが出ない
     set columns=170

@@ -21,7 +21,12 @@ if &compatible
 endif
 
 let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if s:is_windows
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim/'
+else
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+endif
+
 
 " Required:
 execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
