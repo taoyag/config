@@ -391,6 +391,8 @@ endfunction
 set number
 "バックアップファイルを作るディレクトリ
 set backupdir=$HOME/vimbackup
+set backupskip=/tmp/*,/private/tmp/*
+
 " migemo
 if has("migemo")
     set migemo

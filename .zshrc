@@ -20,9 +20,11 @@ darwin*)
   export PATH=$M2:$PATH
   # oracle client
   export SQLPATH=$HOME/sql
-  export ORACLE_HOME=~/bin/sqlplus/instantclient_11_2
+  export ORACLE_HOME=~/bin/sqlplus/instantclient_12_1
+  # export ORACLE_HOME=~/bin/sqlplus/instantclient_11_2
   export PATH=$ORACLE_HOME:$PATH
-  export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
+  export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_12_1
+  # export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
   export NLS_LANG=japanese_japan.UTF8
 
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
