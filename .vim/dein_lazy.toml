@@ -16,3 +16,24 @@ on_ft = ['ruby', 'eruby', 'haml']
 repo = 'vim-scripts/ruby-matchit'
 on_ft = ['ruby', 'eruby', 'haml']
 
+################
+### Markdown ###
+################
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown','mkd', 'howm']
+
+# quote内のプログラムをシンタックスハイライトする
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_ft = ['markdown','mkd', 'howm']
+
+# 編集中のMarkdownファイルのプレビューを作成する
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = ['markdown','mkd', 'howm']
+
+# プレビューをブラウザで開いてくれる
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = ['markdown','mkd', 'howm']
