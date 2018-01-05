@@ -178,6 +178,7 @@ if s:is_mac
     vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+    set clipboard+=unnamed,autoselect
 elseif s:is_windows
     set clipboard+=unnamed
 else

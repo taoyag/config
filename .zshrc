@@ -27,7 +27,7 @@ darwin*)
   # export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
   export NLS_LANG=japanese_japan.UTF8
 
-  alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias vi='env LANG=ja_JP.UTF-8 reattach-to-user-namespace /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
   alias ls='ls -vG'
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
