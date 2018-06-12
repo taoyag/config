@@ -33,11 +33,12 @@ cask install coteditor
 cask install istat-menus
 cask install bartender
 cask install skype
-cask install alfred
+# cask install alfred
 cask install xtrafinder
 cask install opera
-cask install lastfm
+# cask install lastfm
 cask install hyperswitch
-cask install clipmenu
+# cask install clipmenu
+cask install clipy
 #
 cleanup
