@@ -51,6 +51,7 @@ linux*)
   ;;
 esac
 
+alias g='git'
 export PATH=$HOME/bin:$HOME/local/bin:$HOME/.composer/vendor/bin:$PATH
 
 autoload -U compinit
@@ -289,20 +290,30 @@ function tmux_automatically_attach_session()
                 fi
             fi
 
-            if is_osx && is_exists 'reattach-to-user-namespace'; then
-                # on OS X force tmux's default command
-                # to spawn a shell in the user's namespace
-                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
-            else
-                tmux new-session && echo "tmux created new session"
-            fi
+            # if is_osx && is_exists 'reattach-to-user-namespace'; then
+                # # on OS X force tmux's default command
+                # # to spawn a shell in the user's namespace
+                # tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+                # tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+            # else
+                # tmux new-session && echo "tmux created new session"
+            # fi
+            tmux new-session && echo "tmux created new session"
         fi
     fi
 }
-tmux_automatically_attach_session
+# tmux_automatically_attach_session
 
-source dnvm.sh
+function tm()
+{
+    if [ -n "${1}" ]; then
+        tmux attach-session -t ${1} || tmux new-session -s ${1}
+    else
+        tmux attach-session || tmux new-session
+    fi
+}
+
+# source dnvm.sh
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # export PATH=/usr/local/opt/openssl/bin:$PATH
