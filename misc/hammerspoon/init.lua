@@ -8,3 +8,4 @@ end
 
 -- global
 remap({'ctrl'}, 'm', keyStroke({}, 'return'))
+remap({'ctrl'}, 'h', keyStroke({}, 'delete'))

@@ -4,141 +4,56 @@ let s:is_mac = has('mac') || has('gui_mac') || has('gui_macvim')
 let s:vimrc = expand("<sfile>:p")
 let $MYVIMRC = s:vimrc
 
-" NeoBundle path
 if s:is_windows
   let $DOTVIM = expand('~/vimfiles')
 else
   let $DOTVIM = expand('~/.vim')
 endif
 
-" NeoBundle
-filetype off
-let $VIMBUNDLE = $DOTVIM . '/bundle'
-let $NEOBUNDLEPATH = $VIMBUNDLE . '/neobundle.vim'
+" "if s:is_windows
+" "    let $PATH = 'C:\Program Files (x86)\Git\bin;' . $PATH
+" "    let $PATH = $HOME . '\bin;' . $PATH
+" "endif
 
-set runtimepath+=$NEOBUNDLEPATH
-call neobundle#begin($VIMBUNDLE)
-let g:neobundle_default_git_protocol="https"
-
-if s:is_windows
-    let $PATH = 'C:\Program Files (x86)\Git\bin;' . $PATH
-    let $PATH = $HOME . '\bin;' . $PATH
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-" github repos
-NeoBundle 'Shougo/neocomplete', { 'autoload' : {
-        \   'insert' : 1,
-        \ }}
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neosnippet', {
-      \ 'autoload' : {
-      \   'commands' : ['NeoSnippetEdit', 'NeoSnippetSource'],
-      \   'filetypes' : 'snippet',
-      \   'insert' : 1,
-      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
-      \ }}
-"NeoBundle 'taichouchou2/rsense-0.3', {
-"            \ 'build' : {
-"            \  'mac' : 'ruby etc/config.rb > ~/.rsense',
-"            \  'unix' : 'ruby etc/config.rb > ~/.rsense',
-"            \ }}
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle "scrooloose/snipmate-snippets.git"
-NeoBundle "Shougo/unite.vim"
-NeoBundle "Shougo/vimfiler"
-NeoBundle "Shougo/vimshell"
-NeoBundle "Shougo/vimproc", {
-    \ 'build' : {
-    \   'windows' : 'echo "Cannnot update vimproc binary in Windows."',
-    \   'cygwin'  : 'make -f make_cygwin.mak',
-    \   'mac'     : 'make -f make_mac.mak',
-    \   'unix'    : 'make -f make_unix.mak',
-    \   },
-    \ }
-NeoBundle "Shougo/tabpagebuffer.vim"
-NeoBundle "Shougo/unite-help"
-NeoBundle "Shougo/neomru.vim"
-NeoBundle "thinca/vim-quickrun"
-NeoBundle "thinca/vim-ref"
-NeoBundle "thinca/vim-qfreplace"
-NeoBundle "thinca/vim-unite-history"
-NeoBundle "thinca/vim-singleton"
-NeoBundle "tpope/vim-surround"
-NeoBundle "tyru/open-browser.vim"
-NeoBundle "motemen/git-vim"
-NeoBundle "ujihisa/unite-locate"
-NeoBundle "ujihisa/vimshell-ssh"
-NeoBundle "Shougo/unite-outline"
-NeoBundle "sgur/unite-qf"
-NeoBundle "kmnk/vim-unite-svn"
-NeoBundle "tsukkee/unite-tag"
-NeoBundle "t9md/vim-textmanip"
-NeoBundle "h1mesuke/ref-dicts-en"
-NeoBundle "mattn/gist-vim"
-NeoBundle "scrooloose/syntastic"
-NeoBundle "fuenor/qfixhowm"
-NeoBundle "kana/vim-fakeclip"
+let s:dein_dir = expand('~/.cache/dein')
+if s:is_windows
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim/'
+else
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+endif
 
-NeoBundle "mattn/webapi-vim"
-NeoBundle "mattn/vdbi-vim"
-NeoBundle 'mattn/qiita-vim'
 
-NeoBundle 'grep.vim'
-NeoBundle 'copypath.vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'rking/ag.vim'
+" Required:
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 
-" for Ruby development
-NeoBundle 'taichouchou2/vim-endwise.git', {
-            \ 'autoload' : {
-            \  'insert' : 1,
-            \ } }
-NeoBundle 'ujihisa/unite-rake', {
-      \ 'depends' : 'Shougo/unite.vim' }
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-function! s:bundleLoadDepends(bundle_names) "{{{
-  " bundleの読み込み
-  execute 'NeoBundleSource '.a:bundle_names
-  au! RailsLazyPlugins
-endfunction"}}}
+  let s:toml = expand($DOTVIM . '/dein.toml')
+  let s:lazy_toml = expand($DOTVIM . '/dein_lazy.toml')
 
-" reference環境
-NeoBundle 'vim-ruby/vim-ruby', {
-    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundle 'ruby-matchit', {
-    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundle 'tpope/vim-cucumber.git'
-NeoBundle 'tpope/vim-dispatch.git'
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-NeoBundle 'hrsh7th/vim-versions.git'
-NeoBundle 'majutsushi/tagbar'
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
-NeoBundle 'mileszs/ack.vim'
+" Required:
+filetype plugin indent on
+syntax enable
 
-NeoBundle 'terryma/vim-multiple-cursors'
-
-""" non github repos
-""NeoBundle "http://git.symlink.me/pub/romain/blogit.git"
-
-NeoBundleLazy 'OmniSharp/omnisharp-vim', {
-\   'autoload': {'filetypes': ['cs']},
-\   'build': {
-\     'windows': 'msbuild server/OmniSharp.sln',
-\     'mac': 'xbuild server/OmniSharp.sln',
-\     'unix': 'xbuild server/OmniSharp.sln',
-\   }
-\ }
-
-NeoBundleLazy 'OrangeT/vim-csharp', {
-\   'autoload': {'filetypes': ['cs']},
-\ }
-
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-
-call neobundle#end()
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
 filetype plugin indent on
 
@@ -161,34 +76,6 @@ set incsearch                     "find the next match as we type the search
 set hlsearch                      "hilight searches by default
 set nowrap                        "dont wrap lines
 set linebreak                     "wrap lines at convenient points
-""statusline setup
-"set statusline=%f                 "tail of the filename
-""display a warning if fileformat isnt unix
-"set statusline+=%#warningmsg#
-"set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-"set statusline+=%*
-""display a warning if file encoding isnt utf-8
-"set statusline+=%#warningmsg#
-"set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-"set statusline+=%*
-"set statusline+=%h                "help file flag
-"set statusline+=%y                "filetype
-"set statusline+=%r                "read only flag
-"set statusline+=%m                "modified flag
-""display a warning if &et is wrong, or we have mixed-indenting
-"set statusline+=%#error#
-"set statusline+=%{StatuslineTabWarning()}
-"set statusline+=%*
-"set statusline+=%{StatuslineTrailingSpaceWarning()}
-""display a warning if &paste is set
-"set statusline+=%#error#
-"set statusline+=%{&paste?'[paste]':''}
-"set statusline+=%*
-"set statusline+=%=                "left/right separator
-"set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-"set statusline+=%c,               "cursor column
-"set statusline+=%l/%L             "cursor line/total lines
-"set statusline+=\ %P              "percent through file
 set laststatus=2
 set autoread
 set noundofile
@@ -291,6 +178,7 @@ if s:is_mac
     vnoremap <silent> <SPACE>y :w !pbcopy<CR><CR>
     nnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
     vnoremap <silent> <SPACE>p :r !pbpaste<CR><CR>
+    set clipboard+=unnamed,autoselect
 elseif s:is_windows
     set clipboard+=unnamed
 else
@@ -460,12 +348,12 @@ else
         set term=gnome-256color
         " colorscheme desert
     else
-        set t_Co=256
+        " set t_Co=256
         " colorscheme vibrantink
         set guitablabel=%M%t
     endif
     if has("gui_mac") || has("gui_macvim")
-        set antialias
+        " set antialias
         set guifont=Ricty\ Diminished:h14
         " set guifont=Monaco:h10
     endif
@@ -509,6 +397,8 @@ endfunction
 set number
 "バックアップファイルを作るディレクトリ
 set backupdir=$HOME/vimbackup
+set backupskip=/tmp/*,/private/tmp/*
+
 " migemo
 if has("migemo")
     set migemo

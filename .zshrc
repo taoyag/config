@@ -20,12 +20,14 @@ darwin*)
   export PATH=$M2:$PATH
   # oracle client
   export SQLPATH=$HOME/sql
-  export ORACLE_HOME=~/bin/sqlplus/instantclient_11_2
+  export ORACLE_HOME=~/bin/sqlplus/instantclient_12_1
+  # export ORACLE_HOME=~/bin/sqlplus/instantclient_11_2
   export PATH=$ORACLE_HOME:$PATH
-  export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
+  export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_12_1
+  # export DYLD_LIBRARY_PATH=~/bin/sqlplus/instantclient_11_2
   export NLS_LANG=japanese_japan.UTF8
 
-  alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias vi='env LANG=ja_JP.UTF-8 reattach-to-user-namespace /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
   alias ls='ls -vG'
   alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
@@ -49,6 +51,7 @@ linux*)
   ;;
 esac
 
+alias g='git'
 export PATH=$HOME/bin:$HOME/local/bin:$HOME/.composer/vendor/bin:$PATH
 
 autoload -U compinit
@@ -74,7 +77,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 
 case ${UID} in
 0)
-    PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
+    PROMPT="%(!.#.$) "
+    # PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
     RPROMPT="[%~]"
     PROMPT2="%B%{[31m%}%_#%{[m%}%b "
     SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
@@ -82,7 +86,8 @@ case ${UID} in
         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
+    PROMPT="%(!.#.$) "
+    # PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
     RPROMPT="[%~]"
     PROMPT2="%{[31m%}%_%%%{[m%} "
     SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
@@ -287,20 +292,30 @@ function tmux_automatically_attach_session()
                 fi
             fi
 
-            if is_osx && is_exists 'reattach-to-user-namespace'; then
-                # on OS X force tmux's default command
-                # to spawn a shell in the user's namespace
-                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
-            else
-                tmux new-session && echo "tmux created new session"
-            fi
+            # if is_osx && is_exists 'reattach-to-user-namespace'; then
+                # # on OS X force tmux's default command
+                # # to spawn a shell in the user's namespace
+                # tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+                # tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+            # else
+                # tmux new-session && echo "tmux created new session"
+            # fi
+            tmux new-session && echo "tmux created new session"
         fi
     fi
 }
-tmux_automatically_attach_session
+# tmux_automatically_attach_session
 
-source dnvm.sh
+function tm()
+{
+    if [ -n "${1}" ]; then
+        tmux attach-session -t ${1} || tmux new-session -s ${1}
+    else
+        tmux attach-session || tmux new-session
+    fi
+}
+
+# source dnvm.sh
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # export PATH=/usr/local/opt/openssl/bin:$PATH
@@ -328,5 +343,7 @@ export PATH=/Applications/XAMPP/bin:$HOME/.nodebrew/current/bin:$PATH
 export PGDATA=/usr/local/var/postgres
 
 export PATH=/Applications/XAMPP/bin:$PATH
+
+export PATH=$PATH:$HOME/local/flutter/bin
 
 [ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local

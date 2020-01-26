@@ -1,8 +1,10 @@
 [user]
-	name = 
-	email = 
+	name = taoyag
+	email = taoyag@gmail.com
 [core]
 	excludesfile = /Users/taoyag/.gitignore_global
+	quotepath = false
+	editor = env LANG=ja_JP.UTF-8 reattach-to-user-namespace /Applications/MacVim.app/Contents/MacOS/Vim
 [color]
     status = auto
     diff = auto
@@ -20,6 +22,9 @@
     ci = commit -a
     cam = commit -a --amend
     co = checkout
+	br = branch --sort=-authordate
+	df = diff
+	gr = grep
 
 [github]
 	user = taoyag
@@ -27,5 +32,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[commit]
+	; template = /Users/taoyag/.stCommitMsg

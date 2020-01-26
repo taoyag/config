@@ -1,0 +1,118 @@
+{
+  "title": "ALT <=> CMD in Remote Desktop",
+  "rules": [
+    {
+      "description": "Swap option and command in Remote Desktop",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_option",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                  "^com\\.microsoft\\.rdc\\.mac",
+                  "^com\\.microsoft\\.rdc\\.osx",
+                  "^com\\.microsoft\\.rdc\\.macos",
+                  "^com\\.microsoft\\.rdc\\.osx\\.beta"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_gui",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_alt"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                  "^com\\.microsoft\\.rdc\\.mac",
+                  "^com\\.microsoft\\.rdc\\.osx",
+                  "^com\\.microsoft\\.rdc\\.macos",
+                  "^com\\.microsoft\\.rdc\\.osx\\.beta"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "lang2",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_alt"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                  "^com\\.microsoft\\.rdc\\.mac",
+                  "^com\\.microsoft\\.rdc\\.osx",
+                  "^com\\.microsoft\\.rdc\\.macos",
+                  "^com\\.microsoft\\.rdc\\.osx\\.beta"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "lang1",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_alt"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                  "^com\\.microsoft\\.rdc\\.mac",
+                  "^com\\.microsoft\\.rdc\\.osx",
+                  "^com\\.microsoft\\.rdc\\.macos",
+                  "^com\\.microsoft\\.rdc\\.osx\\.beta"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
