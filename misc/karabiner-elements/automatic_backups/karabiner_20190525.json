@@ -11,8 +11,7 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
+                    "basic.to_if_held_down_threshold_milliseconds": 500
                 },
                 "rules": []
             },
@@ -213,8 +212,7 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "ansi",
-                "mouse_key_xy_scale": 100
+                "keyboard_type": "ansi"
             }
         },
         {
@@ -223,8 +221,7 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
+                    "basic.to_if_held_down_threshold_milliseconds": 500
                 },
                 "rules": []
             },
@@ -393,8 +390,7 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "ansi",
-                "mouse_key_xy_scale": 100
+                "keyboard_type": "ansi"
             }
         },
         {
@@ -403,8 +399,7 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
+                    "basic.to_if_held_down_threshold_milliseconds": 500
                 },
                 "rules": []
             },
@@ -530,8 +525,7 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "jis",
-                "mouse_key_xy_scale": 100
+                "keyboard_type": "jis"
             }
         },
         {
@@ -540,59 +534,9 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
+                    "basic.to_if_held_down_threshold_milliseconds": 500
                 },
                 "rules": [
-                    {
-                        "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 2)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "japanese_kana"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
                     {
                         "description": "escキーを押したときに、英数キーも送信する（vim用）",
                         "manipulators": [
@@ -2614,6 +2558,55 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 2)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -2769,8 +2762,7 @@
                 }
             ],
             "virtual_hid_keyboard": {
-                "country_code": 0,
-                "mouse_key_xy_scale": 100
+                "country_code": 0
             }
         }
     ]

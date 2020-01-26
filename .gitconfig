@@ -1,6 +1,6 @@
 [user]
-	name = 
-	email = 
+	name = taoyag
+	email = taoyag@gmail.com
 [core]
 	excludesfile = /Users/taoyag/.gitignore_global
 	quotepath = false
@@ -22,7 +22,7 @@
     ci = commit -a
     cam = commit -a --amend
     co = checkout
-	br = branch
+	br = branch --sort=-authordate
 	df = diff
 	gr = grep
 

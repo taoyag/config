@@ -348,12 +348,12 @@ else
         set term=gnome-256color
         " colorscheme desert
     else
-        set t_Co=256
+        " set t_Co=256
         " colorscheme vibrantink
         set guitablabel=%M%t
     endif
     if has("gui_mac") || has("gui_macvim")
-        set antialias
+        " set antialias
         set guifont=Ricty\ Diminished:h14
         " set guifont=Monaco:h10
     endif

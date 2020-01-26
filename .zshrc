@@ -77,7 +77,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 
 case ${UID} in
 0)
-    PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
+    PROMPT="%(!.#.$) "
+    # PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
     RPROMPT="[%~]"
     PROMPT2="%B%{[31m%}%_#%{[m%}%b "
     SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
@@ -85,7 +86,8 @@ case ${UID} in
         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
+    PROMPT="%(!.#.$) "
+    # PROMPT="[${USER}@${HOSTNAME}] %(!.#.$) "
     RPROMPT="[%~]"
     PROMPT2="%{[31m%}%_%%%{[m%} "
     SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
@@ -341,5 +343,7 @@ export PATH=/Applications/XAMPP/bin:$HOME/.nodebrew/current/bin:$PATH
 export PGDATA=/usr/local/var/postgres
 
 export PATH=/Applications/XAMPP/bin:$PATH
+
+export PATH=$PATH:$HOME/local/flutter/bin
 
 [ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
