@@ -29,3 +29,4 @@ done
 
 # misc
 ln -sf "$src/misc/Karabiner/private.xml" "$HOME/Library/Application Support/Karabiner/private.xml"
+ln -sf "$src/nvim" "$HOME/.config/nvim"

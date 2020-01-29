@@ -8,7 +8,8 @@ darwin*)
   export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   export LSCOLORS=gxfxcxdxbxegedabagacad
-  export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
+  # export VIMRUNTIME=/Applications/MacVim.app/Contents/Resources/vim/runtime
+  export VIMRUNTIME=
   export PATH=$JAVA_HOME/bin:$PATH
   export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
   
@@ -30,7 +31,7 @@ darwin*)
   alias vi='env LANG=ja_JP.UTF-8 reattach-to-user-namespace /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias less="/Applications/MacVim.app/Contents/Resources/vim/runtime/macros/less.sh"
   alias ls='ls -vG'
-  alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
+  # alias man='TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man'
 
   if [ ! -S $SSH_AUTH_SOCK ]; then
       eval `ssh-agent -a $SSH_AUTH_SOCK`
