@@ -80,7 +80,11 @@ nnoremap <silent> [denite]n  :<C-u>Denite buffer -split=floating<CR>
 nnoremap <silent> [denite]f  :<C-u>Denite buffer file file/old file:new -split=floating<CR>
 nnoremap <silent> [denite]r  :<C-u>Denite register -split=floating<CR>
 nnoremap <silent> [denite]b  :<C-u>Denite buffer file -split=floating<CR>
-nnoremap <silent> [denite]g  :<C-u>Denite grep: -no-empty<CR>
+nnoremap <silent> [denite]gg  :<C-u>Denite grep: -buffer-name=denite-grep-buffer<CR>
+nnoremap <silent> [denite]gr  :<C-u>Denite -resume -buffer-name=denite-grep-buffer<CR>
+nnoremap <silent> [denite]gn  :<C-u>Denite -resume -buffer-name=denite-grep-buffer -select=+1 -immediately<CR>
+nnoremap <silent> [denite]gp  :<C-u>Denite -resume -buffer-name=denite-grep-buffer -select=-1 -immediately<CR>
+" nnoremap <silent> [denite]g  :<C-u>Denite grep: -no-empty<CR>
 nnoremap <silent> [denite]j  :<C-u>DeniteCursorWord grep:<CR>
 nnoremap <silent> [denite]o  :<C-u>Denite outline<CR>
 nnoremap <silent> [denite]l  :<C-u>Denite line<CR>
@@ -100,35 +104,23 @@ noremap [denite]t :<C-u>Denite tag:<C-r>=expand('<cword>')<CR><CR>
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  nnoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d       denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q       denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> <C-t>   denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> <C-v>   denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> <C-h>   denite#do_map('do_action', 'split')
 endfunction
 
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
-  imap <buffer> jj      <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  inoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  inoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
+  imap <buffer> jj <Plug>(denite_filter_quit)
+  inoremap <silent><buffer><expr> <C-t> denite#do_map('do_action', 'tabopen')
+  inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
+  inoremap <silent><buffer><expr> <C-h> denite#do_map('do_action', 'split')
 endfunction
 
 " "nnoremap    [unite]   <Nop>

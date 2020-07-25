@@ -8,7 +8,7 @@ source ~/.config/nvim/plugins/coc.rc.vim
 
 [[plugins]]
 repo = "Shougo/defx.nvim"
-depends = ["defx-git"]
+depends = ["defx-git", "defx-icons"]
 hook_add = """
 source ~/.config/nvim/plugins/defx.rc.vim
 """
@@ -18,6 +18,12 @@ repo ="kristijanhusak/defx-git"
 hook_add = """
 source ~/.config/nvim/plugins/defx-git.rc.vim
 """
+
+[[plugins]]
+repo ="kristijanhusak/defx-icons"
+
+[[plugins]]
+repo ="ryanoasis/vim-devicons"
 
 [[plugins]]
 repo = "Shougo/denite.nvim"
@@ -65,3 +71,43 @@ hook_add = """
 source ~/.config/nvim/plugins/vdebug.rc.vim
 """
 
+[[plugins]]
+repo = "kkoomen/vim-doge"
+hook_add = """
+source ~/.config/nvim/plugins/vim-doge.rc.vim
+"""
+
+[[plugins]]
+repo = "shuntaka9576/preview-swagger.nvim"
+build = "yarn install"
+
+[[plugins]]
+repo = "tpope/vim-fugitive"
+hook_add = """
+source ~/.config/nvim/plugins/vim-fugitive.rc.vim
+"""
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = """
+source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
+"""
+
+[[plugins]]
+repo ="hashivim/vim-terraform"
+
+[[plugins]]
+repo = "francoiscabrol/ranger.vim"
+depends = ["bclose.vim"]
+hook_add = """
+source ~/.config/nvim/plugins/ranger.rc.vim
+"""
+
+[[plugins]]
+repo = "rbgrouleff/bclose.vim"
+
+[[plugins]]
+repo = "liuchengxu/vim-which-key"
+hook_add = """
+source ~/.config/nvim/plugins/vim-which-key.rc.vim
+"""

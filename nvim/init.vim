@@ -107,6 +107,7 @@ set hidden
 set mouse=a
 " set ttymouse=xterm2
 
+set shell=bash
 " clipboard
 set clipboard+=unnamed
 " if s:is_mac
