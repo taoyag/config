@@ -333,3 +333,35 @@ inoremap <silent> jj <ESC>
 " ;でExコマンド入力( ;と:を入替)
 noremap ; :
 noremap : ;
+
+
+nnoremap [TABCMD]  <nop>
+nmap     t [TABCMD]
+
+nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
+nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
+nnoremap <silent> [TABCMD]n :<c-u>tabnext<cr>
+nnoremap <silent> [TABCMD]N :<c-u>tabNext<cr>
+nnoremap <silent> [TABCMD]p :<c-u>tabprevious<cr>
+nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
+nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
+nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
+nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+nnoremap <silent> [TABCMD]t :<c-u>Unite -immediately tab:no-current<cr>
+
+for n in range(1, 9)
+  execute 'nnoremap <silent> [TABCMD]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+
+" ディレクトリが無い場合に作成する
+augroup vimrc-auto-mkdir  " {{{
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)  " {{{
+    if !isdirectory(a:dir) && (a:force ||
+    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction  " }}}
+augroup END  " }}}

@@ -348,3 +348,5 @@ export PATH=/Applications/XAMPP/bin:$PATH
 export PATH=$PATH:$HOME/local/flutter/bin
 
 [ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -22,14 +22,6 @@
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",
   "languageserver": {
-    "intelephense": {
-      "command": "intelephense",
-      "args": ["--stdio"],
-      "filetypes": ["php"],
-      "initializationOptions": {
-        "storagePath": "/tmp/intelephense"
-      }
-    },
     "vls": {
       "command": "vls",
       "filetypes": ["vue"]
@@ -40,21 +32,28 @@
       "initializationOptions": {}
     }
   },
+  "vetur.format.defaultFormatter.html": "prettier",
   "cSpell.userWords": [
     "DYNAMODB",
     "Dispatchable",
     "Dreamonkey",
+    "JIRA",
     "Laravel",
     "Nuxt",
     "Queueable",
     "Tymon",
+    "UNSUBMITTED",
     "Unprocessable",
+    "arraybuffer",
     "camelcase",
     "chmod",
     "cidr",
     "connecteds",
     "datetime",
+    "dont",
+    "echodoc",
     "manuallies",
+    "mkdir",
     "mysqladmin",
     "nuxtjs",
     "phpcs",
@@ -66,6 +65,7 @@
     "unanalyzable",
     "unanalyzables",
     "uploader",
+    "vetur",
     "vuetify",
     "vuex",
     "whielist"

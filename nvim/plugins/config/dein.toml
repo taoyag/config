@@ -111,3 +111,37 @@ repo = "liuchengxu/vim-which-key"
 hook_add = """
 source ~/.config/nvim/plugins/vim-which-key.rc.vim
 """
+
+[[plugins]]
+repo = "junegunn/vim-easy-align"
+hook_add = """
+source ~/.config/nvim/plugins/vim-easy-align.rc.vim
+"""
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+    autocmd BufRead,BufNewFile *.md  set filetype=markdown
+    nnoremap <silent> <C-p> :PrevimOpen<CR>
+    let g:vim_markdown_folding_disabled=1
+    let g:previm_enable_realtime=1
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = """
+source ~/.config/nvim/plugins/fzf.rc.vim
+"""
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add = """
+source ~/.config/nvim/plugins/vim-rooter.rc.vim
+"""
+
