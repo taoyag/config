@@ -56,6 +56,10 @@ let &t_8b = "\[48;2;%lu;%lu;%lum"
 
 set background=dark
 colorscheme solarized8
+hi Normal guibg=NONE
+hi LineNr guibg=NONE
+hi NonText guibg=NONE
+hi SpecialKey guibg=NONE
 
 " syntax on
 set number
