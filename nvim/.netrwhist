@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/Users/taoyag/git/aws-sls-sample/aws-sls-spa-sample-terraform'
-let g:netrw_dirhist_2='/Users/taoyag/git/third-inc/kanri-roid_docker/db/my.cnf'
-let g:netrw_dirhist_1='/Users/taoyag/git/third-inc/kanri-roid_api/app/Http/Controllers/Dashboard/Notice'
