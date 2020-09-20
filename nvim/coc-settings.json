@@ -1,0 +1,75 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "vue",
+    "php"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx",
+    "vue"
+  ],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "languageserver": {
+    "vls": {
+      "command": "vls",
+      "filetypes": ["vue"]
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    }
+  },
+  "vetur.format.defaultFormatter.html": "prettier",
+  "cSpell.userWords": [
+    "DYNAMODB",
+    "Dispatchable",
+    "Dreamonkey",
+    "JIRA",
+    "Laravel",
+    "Nuxt",
+    "Queueable",
+    "Tetsuo",
+    "Tymon",
+    "UNSUBMITTED",
+    "Unprocessable",
+    "arraybuffer",
+    "camelcase",
+    "chmod",
+    "cidr",
+    "connecteds",
+    "datetime",
+    "dont",
+    "echodoc",
+    "manuallies",
+    "mkdir",
+    "mysqladmin",
+    "nuxtjs",
+    "phpcs",
+    "phpstan",
+    "phpunit",
+    "reviewdog",
+    "snakecase",
+    "systemvars",
+    "unanalyzable",
+    "unanalyzables",
+    "uploader",
+    "vetur",
+    "vuetify",
+    "vuex",
+    "whielist"
+  ]
+}

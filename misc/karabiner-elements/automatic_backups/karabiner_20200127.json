@@ -143,9 +143,6 @@
                 }
             ],
             "name": "Default profile",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -358,9 +355,6 @@
                 }
             ],
             "name": "macbook air",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -514,9 +508,6 @@
                 }
             ],
             "name": "remote desktop",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -2766,9 +2757,6 @@
                 }
             ],
             "name": "HHKB",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
             "selected": true,
             "simple_modifications": [
                 {

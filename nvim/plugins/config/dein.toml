@@ -1,0 +1,147 @@
+[[plugins]]
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
+hook_add = """
+source ~/.config/nvim/plugins/coc.rc.vim
+"""
+
+[[plugins]]
+repo = "Shougo/defx.nvim"
+depends = ["defx-git", "defx-icons"]
+hook_add = """
+source ~/.config/nvim/plugins/defx.rc.vim
+"""
+
+[[plugins]]
+repo ="kristijanhusak/defx-git"
+hook_add = """
+source ~/.config/nvim/plugins/defx-git.rc.vim
+"""
+
+[[plugins]]
+repo ="kristijanhusak/defx-icons"
+
+[[plugins]]
+repo ="ryanoasis/vim-devicons"
+
+[[plugins]]
+repo = "Shougo/denite.nvim"
+hook_add = """
+source ~/.config/nvim/plugins/denite.rc.vim
+"""
+
+[[plugins]]
+repo = "shougo/deol.nvim"
+hook_add = """
+source ~/.config/nvim/plugins/deol.rc.vim
+"""
+
+[[plugins]]
+repo = "tpope/vim-sensible"
+
+[[plugins]]
+repo = "lifepillar/vim-solarized8"
+
+[[plugins]]
+repo = "tpope/vim-surround"
+
+[[plugins]]
+repo = "itchyny/lightline.vim"
+hook_add = """
+source ~/.config/nvim/plugins/lightline.rc.vim
+"""
+
+# syntax for Vue/Nuxt
+[[plugins]]
+repo = "posva/vim-vue"
+hook_add = """
+source ~/.config/nvim/plugins/vim-vue.rc.vim
+"""
+
+[[plugins]]
+repo = "preservim/nerdcommenter"
+hook_add = """
+source ~/.config/nvim/plugins/nerdcommenter.rc.vim
+"""
+
+[[plugins]]
+repo = "vim-vdebug/vdebug"
+hook_add = """
+source ~/.config/nvim/plugins/vdebug.rc.vim
+"""
+
+[[plugins]]
+repo = "kkoomen/vim-doge"
+hook_add = """
+source ~/.config/nvim/plugins/vim-doge.rc.vim
+"""
+
+[[plugins]]
+repo = "shuntaka9576/preview-swagger.nvim"
+build = "yarn install"
+
+[[plugins]]
+repo = "tpope/vim-fugitive"
+hook_add = """
+source ~/.config/nvim/plugins/vim-fugitive.rc.vim
+"""
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = """
+source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
+"""
+
+[[plugins]]
+repo ="hashivim/vim-terraform"
+
+[[plugins]]
+repo = "francoiscabrol/ranger.vim"
+depends = ["bclose.vim"]
+hook_add = """
+source ~/.config/nvim/plugins/ranger.rc.vim
+"""
+
+[[plugins]]
+repo = "rbgrouleff/bclose.vim"
+
+[[plugins]]
+repo = "liuchengxu/vim-which-key"
+hook_add = """
+source ~/.config/nvim/plugins/vim-which-key.rc.vim
+"""
+
+[[plugins]]
+repo = "junegunn/vim-easy-align"
+hook_add = """
+source ~/.config/nvim/plugins/vim-easy-align.rc.vim
+"""
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+    autocmd BufRead,BufNewFile *.md  set filetype=markdown
+    nnoremap <silent> <C-p> :PrevimOpen<CR>
+    let g:vim_markdown_folding_disabled=1
+    let g:previm_enable_realtime=1
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = """
+source ~/.config/nvim/plugins/fzf.rc.vim
+"""
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add = """
+source ~/.config/nvim/plugins/vim-rooter.rc.vim
+"""
+
