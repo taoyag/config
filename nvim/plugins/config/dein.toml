@@ -145,3 +145,9 @@ hook_add = """
 source ~/.config/nvim/plugins/vim-rooter.rc.vim
 """
 
+[[plugins]]
+repo = 'vim-test/vim-test'
+hook_add = """
+source ~/.config/nvim/plugins/vim-test.rc.vim
+"""
+
