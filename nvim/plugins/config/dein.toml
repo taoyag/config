@@ -151,3 +151,9 @@ hook_add = """
 source ~/.config/nvim/plugins/vim-test.rc.vim
 """
 
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+hook_add = """
+source ~/.config/nvim/plugins/auto-pairs.rc.vim
+"""
+
