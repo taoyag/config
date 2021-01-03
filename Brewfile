@@ -1,44 +1,92 @@
-update
-upgrade
-tap homebrew/versions
-tap phinze/homebrew-cask
-tap homebrew/binary
-install brew-cask
-install zsh
-install autojump
-install git
-install ctags
-install tmux
-install tig
-install ansible
-install wget
-install curl
-install jq
-install boot2docker
-install reattach-to-user-namespace
-cask install dash
-cask install iterm2
-cask install virtualbox
-cask install vagrant
-cask install kobito
-cask install dropbox
-cask install evernote
-cask install skitch
-cask install github
-cask install sequel-pro
-cask install lastpass-universal
-cask install bettertouchtool
-cask install the-unarchiver
-cask install coteditor
-cask install istat-menus
-cask install bartender
-cask install skype
-# cask install alfred
-cask install xtrafinder
-cask install opera
-# cask install lastfm
-cask install hyperswitch
-# cask install clipmenu
-cask install clipy
-#
-cleanup
+tap "adoptopenjdk/openjdk"
+tap "atlassian/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "mutagen-io/mutagen"
+tap "phinze/cask"
+tap "tholu/tap"
+brew "atool"
+brew "autoconf"
+brew "autojump"
+brew "bat"
+brew "cocoapods"
+brew "ctags"
+brew "curl"
+brew "direnv"
+brew "fasd"
+brew "fish"
+brew "fzf"
+brew "gawk"
+brew "git"
+brew "git-secrets"
+brew "highlight"
+brew "libimobiledevice", args: ["HEAD"]
+brew "ideviceinstaller"
+brew "imagemagick"
+brew "ios-deploy"
+brew "jmeter"
+brew "jq"
+brew "libcaca"
+brew "libidn2"
+brew "libusbmuxd", args: ["HEAD"]
+brew "lynx"
+brew "media-info"
+brew "mysql"
+brew "neovim", args: ["HEAD"]
+brew "nkf"
+brew "peco"
+brew "postgresql"
+brew "putty"
+brew "ranger"
+brew "reattach-to-user-namespace"
+brew "ripgrep"
+brew "subversion"
+brew "tfenv"
+brew "tmux"
+brew "translate-shell"
+brew "tree"
+brew "w3m"
+brew "wget"
+brew "xpdf"
+brew "z"
+brew "zabbix", args: ["without-server-proxy"]
+brew "zlib"
+brew "zsh"
+brew "atlassian/tap/atlassian-plugin-sdk"
+brew "mutagen-io/mutagen/mutagen"
+brew "tholu/tap/subversion18", args: ["with-unicode-path"]
+cask "adoptopenjdk/openjdk/adoptopenjdk11"
+cask "phinze/cask/alacritty"
+cask "phinze/cask/aws-vault"
+cask "phinze/cask/bettertouchtool"
+cask "phinze/cask/chatwork"
+cask "phinze/cask/clipy"
+cask "phinze/cask/coteditor"
+cask "phinze/cask/dash"
+cask "phinze/cask/docker"
+cask "phinze/cask/dropbox"
+cask "phinze/cask/firefox"
+cask "phinze/cask/gyazo"
+cask "phinze/cask/hammerspoon"
+cask "phinze/cask/iterm2"
+cask "phinze/cask/karabiner-elements"
+cask "phinze/cask/libreoffice"
+cask "phinze/cask/macvim"
+cask "phinze/cask/maczip4win"
+cask "phinze/cask/mouse-locator"
+cask "phinze/cask/mplayerx"
+cask "phinze/cask/opera"
+cask "phinze/cask/psequel"
+cask "phinze/cask/sequel-pro"
+cask "phinze/cask/sharemouse"
+cask "phinze/cask/skitch"
+cask "phinze/cask/skype"
+cask "phinze/cask/slack"
+cask "phinze/cask/sourcetree"
+cask "phinze/cask/spectacle"
+cask "phinze/cask/the-unarchiver"
+cask "phinze/cask/transmission"
+cask "phinze/cask/vagrant"
+cask "phinze/cask/virtualbox"
+cask "phinze/cask/xquartz"

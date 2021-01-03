@@ -22,6 +22,10 @@
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",
+  // codelens
+  "codeLens.enable": true,
+  "java.referencesCodeLens.enabled": true,
+
   "languageserver": {
     "vls": {
       "command": "vls",
