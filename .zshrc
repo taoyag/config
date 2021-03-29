@@ -350,3 +350,7 @@ export PATH=$PATH:$HOME/local/flutter/bin
 [ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/taoyag/.sdkman"
+[[ -s "/Users/taoyag/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/taoyag/.sdkman/bin/sdkman-init.sh"
