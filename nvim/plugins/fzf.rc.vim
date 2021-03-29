@@ -1,4 +1,4 @@
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 
 nnoremap [Fzf] <Nop>
 nmap f [Fzf]
