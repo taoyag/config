@@ -132,6 +132,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Explorer
 nnoremap <silent> <space>x  :<C-u>CocCommand explorer<CR>
 
+" coc-restclient
+nnoremap <silent> <space>0  :<C-u>CocCommand rest-client.request<CR>
 
 " coc-snippets
 " Use <C-l> for trigger snippet expand.
