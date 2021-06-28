@@ -9,7 +9,8 @@
     "javascriptreact",
     "typescript.tsx",
     "vue",
-    "php"
+    "php",
+    "scala"
   ],
   "eslint.filetypes": [
     "javascript",
@@ -22,10 +23,14 @@
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",
+  "rest-client.enable": true,
+  "rest-client.showHeaders": true,
+  "rest-client.proxy": "",
+  "rest-client.proxyStrictSSL": false,
+  "rest-client.excludeHostsForProxy": [],
   // codelens
   "codeLens.enable": true,
   "java.referencesCodeLens.enabled": true,
-
   "languageserver": {
     "vls": {
       "command": "vls",
@@ -56,10 +61,12 @@
     "camelcase",
     "chmod",
     "cidr",
+    "cond",
     "connecteds",
     "datetime",
     "dont",
     "echodoc",
+    "jobsearch",
     "manuallies",
     "mkdir",
     "mysqladmin",
