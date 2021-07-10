@@ -4,6 +4,7 @@ set ignorecase
 set smartcase
 set saney
 set clipboard=unnamed
+set surround
 
 " insert modeを抜けるとIME OFF
 set imd
@@ -39,3 +40,31 @@ noremap <Space>b <C-b>
 " 行選択
 noremap vv v$
 
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+
+nnoremap <C-l> :nohlsearch<CR>
+
+nnoremap <Space><Space> :<C-u>action AceAction<CR>
+
+nnoremap K :<C-u>action QuickJavaDoc<CR>
+nnoremap ,gi :<C-u>action GotoImplementation<CR>
+nnoremap ,gs :<C-u>action GotoSuperMethod<CR>
+nnoremap ,gt :<C-u>action GotoTest<CR>
+nnoremap ,rn :<C-u>action RenameElement<CR>
+nnoremap ff :<C-u>action GotoClass<CR>
+nnoremap fn :<C-u>action Switcher<CR>
+nnoremap fo :<C-u>action FileStructurePopup<CR>
+nnoremap fp :<C-u>action GotoFile<CR>
+nnoremap fgg :<C-u>action FindInPath<CR>
+nnoremap <Space>a :<C-u>action GotoAction<CR>
+nnoremap ,ac :<C-u>action GotoAction<CR>
+
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>

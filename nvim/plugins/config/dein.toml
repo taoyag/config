@@ -6,36 +6,36 @@ hook_add = """
 source ~/.config/nvim/plugins/coc.rc.vim
 """
 
-[[plugins]]
-repo = "Shougo/defx.nvim"
-depends = ["defx-git", "defx-icons"]
-hook_add = """
-source ~/.config/nvim/plugins/defx.rc.vim
-"""
+# [[plugins]]
+# repo = "Shougo/defx.nvim"
+# depends = ["defx-git", "defx-icons"]
+# hook_add = """
+# source ~/.config/nvim/plugins/defx.rc.vim
+# """
+# 
+# [[plugins]]
+# repo ="kristijanhusak/defx-git"
+# hook_add = """
+# source ~/.config/nvim/plugins/defx-git.rc.vim
+# """
 
-[[plugins]]
-repo ="kristijanhusak/defx-git"
-hook_add = """
-source ~/.config/nvim/plugins/defx-git.rc.vim
-"""
-
-[[plugins]]
-repo ="kristijanhusak/defx-icons"
+# [[plugins]]
+# repo ="kristijanhusak/defx-icons"
 
 [[plugins]]
 repo ="ryanoasis/vim-devicons"
 
-[[plugins]]
-repo = "Shougo/denite.nvim"
-hook_add = """
-source ~/.config/nvim/plugins/denite.rc.vim
-"""
-
-[[plugins]]
-repo = "shougo/deol.nvim"
-hook_add = """
-source ~/.config/nvim/plugins/deol.rc.vim
-"""
+# [[plugins]]
+# repo = "Shougo/denite.nvim"
+# hook_add = """
+# source ~/.config/nvim/plugins/denite.rc.vim
+# """
+#
+# [[plugins]]
+# repo = "shougo/deol.nvim"
+# hook_add = """
+# source ~/.config/nvim/plugins/deol.rc.vim
+# """
 
 [[plugins]]
 repo = "tpope/vim-sensible"
@@ -121,14 +121,19 @@ source ~/.config/nvim/plugins/vim-easy-align.rc.vim
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 
+# [[plugins]]
+# repo = 'previm/previm'
+# hook_add = '''
+    # autocmd BufRead,BufNewFile *.md  set filetype=markdown
+    # nnoremap <silent> <C-p> :PrevimOpen<CR>
+    # let g:vim_markdown_folding_disabled=1
+    # let g:previm_enable_realtime=1
+# '''
+
 [[plugins]]
-repo = 'previm/previm'
-hook_add = '''
-    autocmd BufRead,BufNewFile *.md  set filetype=markdown
-    nnoremap <silent> <C-p> :PrevimOpen<CR>
-    let g:vim_markdown_folding_disabled=1
-    let g:previm_enable_realtime=1
-'''
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = 'markdown'
+build = 'sh -c "cd app && yarn install"'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -157,9 +162,17 @@ hook_add = """
 source ~/.config/nvim/plugins/auto-pairs.rc.vim
 """
 
+<<<<<<< HEAD
 [[plugins]]
 repo = 'tidalcycles/vim-tidal'
 hook_add = """
 source ~/.config/nvim/plugins/vim-tidal.rc.vim
 """
 
+# [[plugins]]
+# repo = 'sharat87/roast.vim'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+hook_add = """
+source ~/.config/nvim/plugins/vim-closetag.rc.vim
