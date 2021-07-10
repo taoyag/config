@@ -9,7 +9,8 @@
     "javascriptreact",
     "typescript.tsx",
     "vue",
-    "php"
+    "php",
+    "scala"
   ],
   "eslint.filetypes": [
     "javascript",
@@ -25,7 +26,9 @@
   // codelens
   "codeLens.enable": true,
   "java.referencesCodeLens.enabled": true,
-
+  "java.jdt.ls.vmargs": "-javaagent:/usr/local/lib/lombok/lombok.jar",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
   "languageserver": {
     "vls": {
       "command": "vls",
@@ -35,16 +38,30 @@
       "command": "terraform-lsp",
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {}
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": ["haskell", "lhaskell"]
     }
   },
   "vetur.format.defaultFormatter.html": "prettier",
   "cSpell.userWords": [
     "Autowired",
+    "DBIO",
     "DYNAMODB",
     "Dispatchable",
     "Dreamonkey",
     "IMAGEPATH",
     "JIRA",
+    "Jdbc",
     "Laravel",
     "Nuxt",
     "Queueable",

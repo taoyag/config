@@ -157,3 +157,9 @@ hook_add = """
 source ~/.config/nvim/plugins/auto-pairs.rc.vim
 """
 
+[[plugins]]
+repo = 'tidalcycles/vim-tidal'
+hook_add = """
+source ~/.config/nvim/plugins/vim-tidal.rc.vim
+"""
+
