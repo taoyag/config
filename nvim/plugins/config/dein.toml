@@ -6,58 +6,27 @@ hook_add = """
 source ~/.config/nvim/plugins/coc.rc.vim
 """
 
-# [[plugins]]
-# repo = "Shougo/defx.nvim"
-# depends = ["defx-git", "defx-icons"]
-# hook_add = """
-# source ~/.config/nvim/plugins/defx.rc.vim
-# """
-# 
-# [[plugins]]
-# repo ="kristijanhusak/defx-git"
-# hook_add = """
-# source ~/.config/nvim/plugins/defx-git.rc.vim
-# """
-
-# [[plugins]]
-# repo ="kristijanhusak/defx-icons"
-
-[[plugins]]
-repo ="ryanoasis/vim-devicons"
-
-# [[plugins]]
-# repo = "Shougo/denite.nvim"
-# hook_add = """
-# source ~/.config/nvim/plugins/denite.rc.vim
-# """
-#
-# [[plugins]]
-# repo = "shougo/deol.nvim"
-# hook_add = """
-# source ~/.config/nvim/plugins/deol.rc.vim
-# """
-
 [[plugins]]
 repo = "tpope/vim-sensible"
 
-[[plugins]]
-repo = "lifepillar/vim-solarized8"
+# [[plugins]]
+# repo = "lifepillar/vim-solarized8"
 
 [[plugins]]
 repo = "tpope/vim-surround"
 
-[[plugins]]
-repo = "itchyny/lightline.vim"
-hook_add = """
-source ~/.config/nvim/plugins/lightline.rc.vim
-"""
+# [[plugins]]
+# repo = "itchyny/lightline.vim"
+# hook_add = """
+# source ~/.config/nvim/plugins/lightline.rc.vim
+# """
 
 # syntax for Vue/Nuxt
-[[plugins]]
-repo = "posva/vim-vue"
-hook_add = """
-source ~/.config/nvim/plugins/vim-vue.rc.vim
-"""
+# [[plugins]]
+# repo = "posva/vim-vue"
+# hook_add = """
+# source ~/.config/nvim/plugins/vim-vue.rc.vim
+# """
 
 [[plugins]]
 repo = "preservim/nerdcommenter"
@@ -121,15 +90,6 @@ source ~/.config/nvim/plugins/vim-easy-align.rc.vim
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 
-# [[plugins]]
-# repo = 'previm/previm'
-# hook_add = '''
-    # autocmd BufRead,BufNewFile *.md  set filetype=markdown
-    # nnoremap <silent> <C-p> :PrevimOpen<CR>
-    # let g:vim_markdown_folding_disabled=1
-    # let g:previm_enable_realtime=1
-# '''
-
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
 on_ft = 'markdown'
@@ -137,12 +97,6 @@ build = 'sh -c "cd app && yarn install"'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-hook_add = """
-source ~/.config/nvim/plugins/fzf.rc.vim
-"""
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
@@ -162,17 +116,46 @@ hook_add = """
 source ~/.config/nvim/plugins/auto-pairs.rc.vim
 """
 
-<<<<<<< HEAD
 [[plugins]]
 repo = 'tidalcycles/vim-tidal'
 hook_add = """
 source ~/.config/nvim/plugins/vim-tidal.rc.vim
 """
 
-# [[plugins]]
-# repo = 'sharat87/roast.vim'
-
 [[plugins]]
 repo = 'alvan/vim-closetag'
 hook_add = """
 source ~/.config/nvim/plugins/vim-closetag.rc.vim
+"""
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = '0'
+hook_add = """
+source ~/.config/nvim/plugins/nvim-treesitter.rc.vim
+"""
+
+[[plugins]]
+repo = 'ishan9299/nvim-solarized-lua'
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+
+[[plugins]]
+repo = 'nvim-lua/popup.nvim'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+hook_add = """
+source ~/.config/nvim/plugins/telescope.rc.vim
+"""
+
+[[plugins]]
+repo = 'hoob3rt/lualine.nvim'
+hook_add = """
+source ~/.config/nvim/plugins/lualine.rc.vim
+"""
