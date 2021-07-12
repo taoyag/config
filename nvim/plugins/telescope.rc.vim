@@ -5,6 +5,9 @@ require('telescope').setup{
     mappings = {
       n = {
         ["q"] = actions.close
+      },
+      i = {
+        ["<esc>"] = actions.close
       }
     },
     vimgrep_arguments = {

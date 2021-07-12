@@ -1,10 +1,10 @@
-[[plugins]]
-repo = "neoclide/coc.nvim"
-merge = 0
-rev = "release"
-hook_add = """
-source ~/.config/nvim/plugins/coc.rc.vim
-"""
+# [[plugins]]
+# repo = "neoclide/coc.nvim"
+# merge = 0
+# rev = "release"
+# hook_add = """
+# source ~/.config/nvim/plugins/coc.rc.vim
+# """
 
 [[plugins]]
 repo = "tpope/vim-sensible"
@@ -64,13 +64,6 @@ source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
 
 [[plugins]]
 repo ="hashivim/vim-terraform"
-
-[[plugins]]
-repo = "francoiscabrol/ranger.vim"
-depends = ["bclose.vim"]
-hook_add = """
-source ~/.config/nvim/plugins/ranger.rc.vim
-"""
 
 [[plugins]]
 repo = "rbgrouleff/bclose.vim"
@@ -158,4 +151,31 @@ source ~/.config/nvim/plugins/telescope.rc.vim
 repo = 'hoob3rt/lualine.nvim'
 hook_add = """
 source ~/.config/nvim/plugins/lualine.rc.vim
+"""
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+hook_add = """
+source ~/.config/nvim/plugins/nvim-lspconfig.rc.vim
+"""
+
+[[plugins]]
+repo = 'hrsh7th/nvim-compe'
+hook_add = """
+source ~/.config/nvim/plugins/nvim-compe.rc.vim
+"""
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+hook_add = """
+source ~/.config/nvim/plugins/vim-vsnip.rc.vim
+"""
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+hook_add = """
+source ~/.config/nvim/plugins/lspsaga.rc.vim
 """

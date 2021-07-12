@@ -77,6 +77,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
+set smartindent
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
@@ -317,4 +318,10 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable        "dont fold by default
 
-colorscheme solarized8
+colorscheme solarized
+
+
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.php setlocal shiftwidth=4 softtabstop=4 expandtab autoindent smartindent
+augroup END
